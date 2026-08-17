@@ -1,22 +1,20 @@
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../config/firebase";
 import type { IProperty } from "../types/propertyType";
+import { addData, readData } from "./FirebaseAPI";
 
-
-export const listenToProperties = (
+export const readProperties = (
     callback: (properties: IProperty[]) => void
 ) => {
-    const stopListening = onSnapshot(
-        collection(db, "properties"),
-        (querySnapshot) => {
-            const properties = querySnapshot.docs.map((doc) => ({
-                id: doc.id,
-                ...doc.data(),
-            })) as IProperty[];
-
-            callback(properties);
-        }
+    return readData<IProperty>(
+        "properties",
+        callback
     );
+};
 
-    return stopListening;
+export const addProperty = (
+    property: Omit<IProperty, "id">
+) => {
+    return addData(
+        "properties",
+        property
+    );
 };
