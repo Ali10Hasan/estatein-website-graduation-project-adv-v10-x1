@@ -1,15 +1,22 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "../config/firebase";
 import type { IProperty } from "../types/propertyType";
 
 
-export const getProperties = async (): Promise<IProperty[]> => {
-    const querySnapshot = await getDocs(collection(db, "properties"));
+export const listenToProperties = (
+    callback: (properties: IProperty[]) => void
+) => {
+    const stopListening = onSnapshot(
+        collection(db, "properties"),
+        (querySnapshot) => {
+            const properties = querySnapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            })) as IProperty[];
 
-    const properties = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-    })) as IProperty[];
+            callback(properties);
+        }
+    );
 
-    return properties;
+    return stopListening;
 };
