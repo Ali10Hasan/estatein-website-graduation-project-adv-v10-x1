@@ -1,10 +1,12 @@
 import { Outlet } from 'react-router-dom'
-import DataListener from '../components/DataListener'
+import Banner from '../components/Banner'
+import Navbar from '../components/Navbar'
 
 const RootLayout = () => {
     return (
         <div>
-            <DataListener />
+            <Banner/>
+            <Navbar/>
             <Outlet />
         </div>
     )
