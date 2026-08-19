@@ -12,6 +12,9 @@ import { Provider } from 'react-redux';
 import store from './redux/store/store';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
+import Login from './pages/Login';
+import DashboardLayout from './pages/DashboardLayout';
+import DataListener from './components/DataListener';
 
 
 export const router = createBrowserRouter([
@@ -46,8 +49,18 @@ export const router = createBrowserRouter([
     ]
   },
   {
-    path: "dashboard",
-    element: <Dashboard/>, 
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        index: true,
+        element: <Dashboard />,
+      },
+    ],
   }
 ],
 );
@@ -55,7 +68,8 @@ export const router = createBrowserRouter([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router} />
+      <DataListener />
+      <RouterProvider router={router} />
     </Provider>
   </StrictMode>,
 )
