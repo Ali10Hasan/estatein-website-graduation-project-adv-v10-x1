@@ -5,9 +5,9 @@ import Navbar from '../components/Navbar'
 
 const RootLayout = () => {
     return (
-        <div>
-            <Banner/>
-            <Navbar/>
+        <div className='bg-grey-08'>
+            <Banner />
+            <Navbar />
             <Outlet />
             <Footer/>
         </div>
