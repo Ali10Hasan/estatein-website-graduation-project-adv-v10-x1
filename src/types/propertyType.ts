@@ -6,10 +6,10 @@ export interface IProperty {
 
     location?: string;
     price: number;
-    propertyType: string;
+    propertyType?: string;
 
-    bedrooms: number;
-    bathrooms: number;
+    bedrooms?: number;
+    bathrooms?: number;
 
     area?: number;
 
