@@ -2,11 +2,13 @@ import type { IProperty } from "../types/propertyType";
 import { addData, deleteData, readData, updateData } from "./FirebaseAPI";
 
 export const readProperties = (
-    callback: (properties: IProperty[]) => void
+    callback: (properties: IProperty[]) => void,
+    errorCallback?: (error: Error) => void
 ) => {
     return readData<IProperty>(
         "properties",
-        callback
+        callback,
+        errorCallback
     );
 };
 

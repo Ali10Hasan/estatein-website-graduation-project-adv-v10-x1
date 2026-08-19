@@ -31,8 +31,3 @@
     --color-grey-50: #808080;
     --color-grey-60: #999999;
 }
-@layer components {
-    .nav-item {
-        @apply hover:bg-grey-15 p-10 rounded-lg transition-colors
-    }
-}

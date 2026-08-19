@@ -3,30 +3,73 @@ import { useDispatch } from "react-redux";
 
 import type { AppDispatch } from "../redux/store/store";
 
-import { readProperties } from "../data/propertiesAPI";
-import { readFaqs } from "../data/faqsApi";
+import { readFaqs } from "../data/faqsAPI";
 import { readTestimonials } from "../data/testimonialsAPI";
 
-import { setProperties } from "../redux/slices/propertiesSlice";
-import { setFaqs } from "../redux/slices/faqSlice";
-import { setTestimonials } from "../redux/slices/testimonialsSlice";
+import { setProperties, setPropertiesError } from "../redux/slices/propertiesSlice";
+import { setFaqs, setFaqsError } from "../redux/slices/faqSlice";
+import { setTestimonials, setTestimonialsError } from "../redux/slices/testimonialsSlice";
+import { readProperties } from "../data/propertiesAPI";
 
 const DataListener = () => {
+
     const dispatch = useDispatch<AppDispatch>();
 
     useEffect(() => {
 
-        readProperties((properties) => {
-            dispatch(setProperties(properties));
-        });
+        const stopPropertiesListener = readProperties(
+            (properties) => {
+                dispatch(
+                    setProperties(properties)
+                );
+            },
+            () => {
+                dispatch(
+                    setPropertiesError(
+                        "Failed to load properties."
+                    )
+                );
+            }
+        );
 
-        readFaqs((faqs) => {
-            dispatch(setFaqs(faqs));
-        });
 
-        readTestimonials((testimonials) => {
-            dispatch(setTestimonials(testimonials));
-        });
+        const stopFaqsListener = readFaqs(
+            (faqs) => {
+                dispatch(
+                    setFaqs(faqs)
+                );
+            },
+            () => {
+                dispatch(
+                    setFaqsError(
+                        "Failed to load FAQs."
+                    )
+                );
+            }
+        );
+
+
+        const stopTestimonialsListener = readTestimonials(
+            (testimonials) => {
+                dispatch(
+                    setTestimonials(testimonials)
+                );
+            },
+            () => {
+                dispatch(
+                    setTestimonialsError(
+                        "Failed to load testimonials."
+                    )
+                );
+            }
+        );
+
+
+        return () => {
+            stopPropertiesListener();
+            stopFaqsListener();
+            stopTestimonialsListener();
+        };
 
     }, [dispatch]);
 
