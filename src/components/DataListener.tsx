@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 
 import type { AppDispatch } from "../redux/store/store";
 
-import { readProperties } from "../data/propertiesAPI";
 import { readFaqs } from "../data/faqsAPI";
 import { readTestimonials } from "../data/testimonialsAPI";
 
 import { setProperties, setPropertiesError } from "../redux/slices/propertiesSlice";
 import { setFaqs, setFaqsError } from "../redux/slices/faqSlice";
 import { setTestimonials, setTestimonialsError } from "../redux/slices/testimonialsSlice";
+import { readProperties } from "../data/propertiesAPI";
 
 const DataListener = () => {
 
