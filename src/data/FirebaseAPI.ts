@@ -4,7 +4,8 @@ import { db } from "../config/firebase";
 
 export const readData = <T>(
     collectionName: string,
-    callback: (data: T[]) => void
+    callback: (data: T[]) => void,
+    errorCallback?: (error: Error) => void
 ) => {
     const stopListener = onSnapshot(
         collection(db, collectionName),
@@ -16,6 +17,15 @@ export const readData = <T>(
             })) as T[];
 
             callback(data);
+        },
+
+        (error) => {
+            console.error(
+                `Error reading ${collectionName}:`,
+                error
+            );
+
+            errorCallback?.(error);
         }
     );
 
@@ -34,8 +44,13 @@ export const addData = async (
     return docRef.id;
 };
 
-export const updateData = async ( collectionName: string, id: string, data: object ) => {
-    const docRef = doc( db, collectionName, id );
+export const updateData = async (
+    collectionName: string,
+    id: string,
+    data: object
+) => {
+    const docRef = doc(db, collectionName, id);
+
     try {
         await updateDoc(docRef, data);
     } catch (error) {
@@ -45,8 +60,12 @@ export const updateData = async ( collectionName: string, id: string, data: obje
     
 };
 
-export const deleteData = async ( collectionName: string, id: string ) => {
-    const docRef = doc( db, collectionName, id );
+export const deleteData = async (
+    collectionName: string,
+    id: string
+) => {
+    const docRef = doc(db, collectionName, id);
+
     try {
         await deleteDoc(docRef);
     } catch (error) {
