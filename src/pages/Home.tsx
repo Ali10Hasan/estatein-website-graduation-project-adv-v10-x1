@@ -26,7 +26,9 @@ const CardAdvantagesData: CardAdvatagesProps[]=[
         advantage:"Smart Investments, Informed Decisions"
     },
 ]
+
 const Home = () => {
+
     return (
        <div className="Site-Advatages-Container mt-[40px] mb-[60px] mx-[13px] md:mx-0 md:mt-[20px] flex flex-wrap gap-[10px] md:gap-[20px] items-center justify-start w-[calc(100%-26px)] md:w-full bg-grey-08 p-[4px] md:p-[20px] rounded-[12px] md:rounded-[0px] shadow-[0px_0px_0px_4px_rgba(25,_25,_25,_1)] md:shadow-[0px_0px_0px_10px_rgba(25,_25,_25,_1)]">
     {CardAdvantagesData.map((item, index) => {
@@ -38,7 +40,6 @@ const Home = () => {
     })}
 </div>
 
-    )
-}
-
-export default Home
+    );
+};
+export default Home;
