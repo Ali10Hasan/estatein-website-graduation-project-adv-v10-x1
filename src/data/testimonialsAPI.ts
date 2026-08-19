@@ -2,11 +2,13 @@ import type { ITestimonial } from "../types/testimonialType";
 import { addData, deleteData, readData, updateData } from "./FirebaseAPI";
 
 export const readTestimonials = (
-    callback: (testimonials: ITestimonial[]) => void
+    callback: (testimonials: ITestimonial[]) => void,
+    errorCallback?: (error: Error) => void
 ) => {
     return readData<ITestimonial>(
         "testimonials",
-        callback
+        callback,
+        errorCallback
     );
 };
 

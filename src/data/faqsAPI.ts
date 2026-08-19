@@ -2,11 +2,13 @@ import type { IFaq } from "../types/faqType";
 import { addData, deleteData, readData, updateData } from "./FirebaseAPI";
 
 export const readFaqs = (
-    callback: (faqs: IFaq[]) => void
+    callback: (faqs: IFaq[]) => void,
+    errorCallback?: (error: Error) => void
 ) => {
     return readData<IFaq>(
         "faqs",
-        callback
+        callback,
+        errorCallback
     );
 };
 
