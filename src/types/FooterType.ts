@@ -1,3 +1,5 @@
+import type { IconType } from "react-icons/lib";
+
 export interface BrandingData {
   logoIcon: string;
   logoText: string;
@@ -12,5 +14,5 @@ export interface ColumnData {
 export interface FooterBottomData {
   copyright: string;
   legalLinks: string;
-  socialIcons: string[];
+  socialIcons: IconType[];
 }

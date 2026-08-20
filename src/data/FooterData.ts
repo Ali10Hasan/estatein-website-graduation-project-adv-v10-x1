@@ -1,11 +1,16 @@
-import type { BrandingData, ColumnData, FooterBottomData } from "../type";
-
+import { TiSocialLinkedin } from "react-icons/ti";
+import type { BrandingData, ColumnData, FooterBottomData } from "../types/FooterType";
+import { CiTwitter } from "react-icons/ci";
+import { PiTwitterLogoThin, PiYoutubeLogoThin } from "react-icons/pi";
+import { BiLogoFacebook } from "react-icons/bi";
+import { RxTwitterLogo } from "react-icons/rx";
+import { SlSocialTwitter } from "react-icons/sl";
 export const brandingData: BrandingData = {
-  logoIcon: "/logo.png",
+  logoIcon: "assets/imgs/EstateinLogo.webp",
   logoText: "Estatein",
-  emailIcon: "/EmailImage.png",
+  emailIcon: "assets/imgs/icons/EmailImage.png",
   emailPlaceholder: "Enter Your Email",
-  shareIcon: "/ShareImage.png",
+  shareIcon: "assets/imgs/icons/ShareImage.png",
 };
 
 export const columnsData: { [key: string]: ColumnData } = {
@@ -19,5 +24,5 @@ export const columnsData: { [key: string]: ColumnData } = {
 export const footerBottomData:FooterBottomData = {
   copyright: "@2023 Estatein. All Rights Reserved.",
   legalLinks: "Terms & Conditions",
-  socialIcons: ["/face.png", "/linkedin.png", "/twitter.png", "/youtube.png"],
+  socialIcons: [BiLogoFacebook,TiSocialLinkedin,PiTwitterLogoThin,PiYoutubeLogoThin ],
 };
