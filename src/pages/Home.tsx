@@ -1,10 +1,19 @@
+import Hero from "../components/Hero/Hero";
+import PropertiesList from "../components/sections/PropertiesSection/PropertiesList";
+import SiteAdvantage from "../components/sections/SiteAdvantage";
+
+
 const Home = () => {
 
     return (
-        <div>
-            <h1>Home</h1>
-        </div>
+        <>
+            <Hero />
+            <SiteAdvantage/>
+            <PropertiesList />
+        </>
+
+
+
     );
 };
-
 export default Home;

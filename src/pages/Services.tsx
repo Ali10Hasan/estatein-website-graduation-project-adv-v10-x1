@@ -1,7 +1,14 @@
+import PageHero from "../components/Hero/PageHero"
 
 const Services = () => {
     return (
-        <div>Services</div>
+        <div>
+            <PageHero
+                title={"Elevate Your Real Estate Experience"}
+                description={"Welcome to Estatein, where your real estate aspirations meet expert guidance. Explore our comprehensive range of services, each designed to cater to your unique needs and dreams."}
+                className="2xl:h-390 xl:h-315 h-278"
+            />
+        </div>
     )
 }
 
