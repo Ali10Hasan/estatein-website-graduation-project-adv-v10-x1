@@ -1,18 +1,36 @@
 import { Fragment, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useOutletContext } from "react-router-dom";
 
-import type { RootState } from "../../redux/store/store";
+import type { AppDispatch, RootState } from "../../redux/store/store";
+import { deleteProperty } from "../../redux/slices/propertiesSlice";
+import type { DashboardOutletContext } from "../../pages/DashboardLayout";
 
 import Loading from "../Loading";
 import Error from "../Error";
 import ActionButtons from "./ActionButtons";
 
 const PropertiesTable = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const { onEditProperty } = useOutletContext<DashboardOutletContext>();
+
     const { items, loading, error } = useSelector(
         (state: RootState) => state.properties
     );
 
     const [expandedId, setExpandedId] = useState<string | null>(null);
+
+    const handleEdit = (id: string) => {
+        const property = items.find((item) => item.id === id);
+
+        if (property) {
+            onEditProperty(property);
+        }
+    };
+
+    const handleDelete = (id: string) => {
+        return dispatch(deleteProperty(id)).unwrap();
+    };
 
     if (loading) {
         return <Loading />;
@@ -146,7 +164,8 @@ const PropertiesTable = () => {
                                     <td className="px-20 py-20">
                                         <ActionButtons
                                             id={property.id}
-                                            collectionName="properties"
+                                            onEdit={handleEdit}
+                                            onDelete={handleDelete}
                                         />
                                     </td>
                                 </tr>
