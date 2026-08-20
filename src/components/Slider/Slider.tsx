@@ -1,14 +1,6 @@
-import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import  { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import type { SliderProps } from "../../types/sliderType";
 
-interface SliderProps {
-  children: React.ReactNode[];
-  currentIndex: number;
-  gap?: number;
-  desktopCards?: number;
-  tabletCards?: number;
-  mobileCards?: number;
-  onVisibleCardsChange: (count: number) => void;
-}
 
 export default function Slider({
   children,

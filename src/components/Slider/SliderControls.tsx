@@ -1,15 +1,6 @@
 import { FaArrowLeft ,FaArrowRight } from "react-icons/fa6";
+import type { SliderControlsProps } from "../../types/sliderType";
 
-interface SliderControlsProps {
-    canPrev: boolean;
-    canNext: boolean;
-    onPrev: () => void;
-    onNext: () => void;
-    formattedCurrent: string;
-    formattedTotal: string;
-    showNumberBetween?: boolean;
-    fullWidth?: boolean; 
-}
 
 export function SliderControls({
     canPrev,
