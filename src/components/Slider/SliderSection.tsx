@@ -1,19 +1,10 @@
-import { useState, useCallback, type ReactNode } from "react";
+import { useState, useCallback } from "react";
 import Slider from "../Slider/Slider";
 import { SliderControls } from "../Slider/SliderControls";
 import Button from "../../components/Button";
+import type { HeaderProp } from "../../types/sliderType";
 
-interface HeaderProp {
-  title: string;
-  desc: string;
-  children: ReactNode[]; 
-  desktopCards?: number;
-  tabletCards?: number;
-  mobileCards?: number;
-  showButton?: boolean;
-  buttonContent?: string;
-  buttonClassName?: string;
-}
+
 
 function SliderSection({
   title,
@@ -59,8 +50,7 @@ const totalItems = children.length;
   );
 
   return (
-    <section className="bg-grey-08 px-16 py-10 md:px-80 min-[1440px]:px-162">
-      <div className="">
+    <section className="bg-grey-08 ">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-40 md:mb-60 lg:mb-80">
           <div className="md:max-w-975 min-[1440px]:max-w-1200 ">
             <h1 className="text-[28px] md:text-[38px] font-semibold  mb-6 md:mb-10 text-white"> {title} </h1>
@@ -107,7 +97,6 @@ const totalItems = children.length;
             />
           </div>
         </div>
-      </div>
     </section>
   );
 }
