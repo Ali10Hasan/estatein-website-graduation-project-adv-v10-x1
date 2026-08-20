@@ -1,14 +1,31 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useOutletContext } from "react-router-dom";
 import ActionButtons from "../dashboard/ActionButtons";
 
-import type { RootState } from "../../redux/store/store";
+import type { AppDispatch, RootState } from "../../redux/store/store";
+import { deleteTestimonial } from "../../redux/slices/testimonialsSlice";
+import type { DashboardOutletContext } from "../../pages/DashboardLayout";
 import RatingStars from "../AtomComponents/RatingStars";
 
 const TestimonialsTable = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const { onEditTestimonial } = useOutletContext<DashboardOutletContext>();
 
     const testimonials = useSelector(
         (state: RootState) => state.testimonials.items
     );
+
+    const handleEdit = (id: string) => {
+        const testimonial = testimonials.find((item) => item.id === id);
+
+        if (testimonial) {
+            onEditTestimonial(testimonial);
+        }
+    };
+
+    const handleDelete = (id: string) => {
+        return dispatch(deleteTestimonial(id)).unwrap();
+    };
 
     return (
         <div className="w-full overflow-x-auto rounded-xl border border-grey-15">
@@ -133,7 +150,8 @@ const TestimonialsTable = () => {
 
                                 <ActionButtons
                                     id={testimonial.id}
-                                    collectionName="testimonials"
+                                    onEdit={handleEdit}
+                                    onDelete={handleDelete}
                                 />
 
                             </td>

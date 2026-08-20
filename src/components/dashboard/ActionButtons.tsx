@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { FiEdit2, FiTrash2, FiX, FiAlertTriangle } from "react-icons/fi";
 
-import { deleteData } from "../../data/FirebaseAPI";
-
 interface ActionButtonsProps {
     id: string;
-    collectionName: "faqs" | "testimonials" | "properties";
-    onEdit?: (id: string) => void;
+    onEdit: (id: string) => void;
+    onDelete: (id: string) => Promise<unknown> | unknown;
 }
 
-const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
+const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
 
     const [showModal, setShowModal] = useState(false);
     const [deleting, setDeleting] = useState(false);
@@ -20,10 +18,7 @@ const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
 
             setDeleting(true);
 
-            await deleteData(
-                collectionName,
-                id
-            );
+            await onDelete(id);
 
             setShowModal(false);
 
@@ -49,7 +44,7 @@ const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
 
                 <button
                     type="button"
-                    onClick={() => onEdit?.(id)}
+                    onClick={() => onEdit(id)}
                     className="
                         flex
                         h-40

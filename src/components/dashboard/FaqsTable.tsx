@@ -1,14 +1,31 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useOutletContext } from "react-router-dom";
 
-import type { RootState } from "../../redux/store/store";
+import type { AppDispatch, RootState } from "../../redux/store/store";
+import { deleteFaq } from "../../redux/slices/faqSlice";
+import type { DashboardOutletContext } from "../../pages/DashboardLayout";
 
 import ActionButtons from "../dashboard/ActionButtons";
 
 const FaqsTable = () => {
+    const dispatch = useDispatch<AppDispatch>();
+    const { onEditFaq } = useOutletContext<DashboardOutletContext>();
 
     const faqs = useSelector(
         (state: RootState) => state.faqs.items
     );
+
+    const handleEdit = (id: string) => {
+        const faq = faqs.find((item) => item.id === id);
+
+        if (faq) {
+            onEditFaq(faq);
+        }
+    };
+
+    const handleDelete = (id: string) => {
+        return dispatch(deleteFaq(id)).unwrap();
+    };
 
     return (
         <div className="w-full overflow-x-auto rounded-xl border border-grey-15">
@@ -74,7 +91,8 @@ const FaqsTable = () => {
 
                                 <ActionButtons
                                     id={faq.id}
-                                    collectionName="faqs"
+                                    onEdit={handleEdit}
+                                    onDelete={handleDelete}
                                 />
 
                             </td>

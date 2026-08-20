@@ -1,5 +1,36 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { ITestimonial } from "../../types/testimonialType";
+import {
+    addTestimonial as addTestimonialToFirebase,
+    deleteTestimonial as deleteTestimonialFromFirebase,
+    updateTestimonial as updateTestimonialInFirebase,
+} from "../../data/testimonialsAPI";
+
+interface UpdateTestimonialPayload {
+    id: string;
+    data: Partial<Omit<ITestimonial, "id">>;
+}
+
+export const addTestimonial = createAsyncThunk(
+    "testimonials/addTestimonial",
+    async (testimonial: Omit<ITestimonial, "id">) => {
+        return addTestimonialToFirebase(testimonial);
+    }
+);
+
+export const updateTestimonial = createAsyncThunk(
+    "testimonials/updateTestimonial",
+    async ({ id, data }: UpdateTestimonialPayload) => {
+        await updateTestimonialInFirebase(id, data);
+    }
+);
+
+export const deleteTestimonial = createAsyncThunk(
+    "testimonials/deleteTestimonial",
+    async (id: string) => {
+        await deleteTestimonialFromFirebase(id);
+    }
+);
 
 interface TestimonialsState {
     items: ITestimonial[];

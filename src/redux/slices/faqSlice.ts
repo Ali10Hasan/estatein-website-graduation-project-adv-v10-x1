@@ -1,5 +1,36 @@
-import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { IFaq } from "../../types/faqType";
+import {
+    addFaq as addFaqToFirebase,
+    deleteFaq as deleteFaqFromFirebase,
+    updateFaq as updateFaqInFirebase,
+} from "../../data/faqsAPI";
+
+interface UpdateFaqPayload {
+    id: string;
+    data: Partial<Omit<IFaq, "id">>;
+}
+
+export const addFaq = createAsyncThunk(
+    "faqs/addFaq",
+    async (faq: Omit<IFaq, "id">) => {
+        return addFaqToFirebase(faq);
+    }
+);
+
+export const updateFaq = createAsyncThunk(
+    "faqs/updateFaq",
+    async ({ id, data }: UpdateFaqPayload) => {
+        await updateFaqInFirebase(id, data);
+    }
+);
+
+export const deleteFaq = createAsyncThunk(
+    "faqs/deleteFaq",
+    async (id: string) => {
+        await deleteFaqFromFirebase(id);
+    }
+);
 
 interface FaqState {
     items: IFaq[];
