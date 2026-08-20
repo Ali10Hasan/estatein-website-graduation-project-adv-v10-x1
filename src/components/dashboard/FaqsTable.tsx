@@ -11,7 +11,7 @@ const FaqsTable = () => {
     );
 
     return (
-        <div className="w-full overflow-x-auto rounded-12 border border-grey-15">
+        <div className="w-full overflow-x-auto rounded-xl border border-grey-15">
 
             <table className="w-full min-w-700 border-collapse">
 

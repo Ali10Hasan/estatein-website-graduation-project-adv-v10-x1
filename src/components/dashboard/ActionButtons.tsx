@@ -57,7 +57,7 @@ const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
                         cursor-pointer
                         items-center
                         justify-center
-                        rounded-8
+                        rounded-lg
                         border
                         border-grey-15
                         bg-grey-10
@@ -84,7 +84,7 @@ const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
                         cursor-pointer
                         items-center
                         justify-center
-                        rounded-8
+                        rounded-lg
                         border
                         border-grey-15
                         bg-grey-10
@@ -134,7 +134,7 @@ const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
                             w-full
                             max-w-450
                             overflow-hidden
-                            rounded-16
+                            rounded-lg
                             border
                             border-grey-15
                             bg-grey-10
@@ -268,7 +268,7 @@ const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
                                 disabled={deleting}
                                 className="
                                     cursor-pointer
-                                    rounded-8
+                                    rounded-lg
                                     border
                                     border-grey-15
                                     bg-grey-10
@@ -297,7 +297,7 @@ const ActionButtons = ({ id, collectionName, onEdit }: ActionButtonsProps) => {
                                 className="
                                     min-w-90
                                     cursor-pointer
-                                    rounded-8
+                                    rounded-lg
                                     bg-red-700
                                     px-20
                                     py-11
