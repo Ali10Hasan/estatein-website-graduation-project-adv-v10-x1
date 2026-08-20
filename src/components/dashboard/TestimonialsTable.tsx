@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
-
-import RatingStars from "../RatingStars";
 import ActionButtons from "../dashboard/ActionButtons";
 
 import type { RootState } from "../../redux/store/store";
+import RatingStars from "../AtomComponents/RatingStars";
 
 const TestimonialsTable = () => {
 
@@ -12,7 +11,7 @@ const TestimonialsTable = () => {
     );
 
     return (
-        <div className="w-full overflow-x-auto rounded-12 border border-grey-15">
+        <div className="w-full overflow-x-auto rounded-xl border border-grey-15">
 
             <table className="w-full min-w-800 border-collapse">
 

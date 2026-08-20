@@ -28,7 +28,7 @@ const DashboardSidebar = () => {
 
     return (
         <aside
-            className="flex h-screen w-260 shrink-0 flex-col border-r border-grey-15 px-16 py-24"
+            className="flex h-auto w-260 shrink-0 flex-col border-r border-grey-15 px-16 py-35"
         >
 
             {/* Logo */}
@@ -38,7 +38,7 @@ const DashboardSidebar = () => {
                 <img
                     src="/assets/imgs/EstateinLogo.webp"
                     alt="Estatein"
-                    className="h-28 w-94 object-contain"
+                    className="h-48 w-114 object-contain"
                 />
 
             </div>
@@ -60,7 +60,7 @@ const DashboardSidebar = () => {
                                 flex
                                 items-center
                                 gap-12
-                                rounded-8
+                                rounded-lg
                                 px-14
                                 py-12
                                 text-15
@@ -100,7 +100,7 @@ const DashboardSidebar = () => {
                     cursor-pointer
                     items-center
                     gap-12
-                    rounded-8
+                    rounded-lg
                     px-14
                     py-12
                     text-15
