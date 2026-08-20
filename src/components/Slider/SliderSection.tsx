@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import Slider from "../Slider/Slider";
 import { SliderControls } from "../Slider/SliderControls";
-import Button from "../../components/Button";
+import Button from "../AtomComponents/Button";
 import type { HeaderProp } from "../../types/sliderType";
 
 

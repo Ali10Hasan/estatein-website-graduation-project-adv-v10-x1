@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { IProperty } from "../../types/propertyType";
-import Button from "../Button";
+import type { IProperty } from "../../../types/propertyType";
+import Button from "../../AtomComponents/Button";
 
 export const PropertyCard = ({ images, title, shortDescription, category, bedrooms, bathrooms, propertyType, price, id }: IProperty) => {
     const navigate = useNavigate();

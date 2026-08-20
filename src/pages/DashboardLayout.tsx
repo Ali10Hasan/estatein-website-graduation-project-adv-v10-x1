@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom"
 
 const DashboardLayout = () => {
     return (
-        <div>
+        <div className="bg-grey-08">
             <Outlet />
         </div>
     )

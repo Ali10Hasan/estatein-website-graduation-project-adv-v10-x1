@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Container } from '../../../components/shared/Container';
-import { ValuedClientCard } from '../components/ValuedClientCard';
-import type { ClientItem } from '../../../types/client';
+import type { ClientItem } from '../../types/clientType';
+import Container from '../Container';
+import { ValuedClientCard } from '../ValuedClientCard';
+
 
 const CLIENTS_DATA: ClientItem[] = [
   {

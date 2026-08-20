@@ -8,23 +8,23 @@ const SiteAdvantage = () => {
 }
 const CardAdvantagesData: CardAdvatagesProps[] = [
     {
-        Arrow: "assets/imgs/icons/ArrowIcone.png",
-        Icone: "assets/imgs/icons/AdvantageIcone1.png",
+        Arrow: "/assets/icons/ArrowIcone.png",
+        Icone: "/assets/icons/AdvantageIcone1.png",
         advantage: "Find Your Dream Home"
     },
     {
-        Arrow: "assets/imgs/icons/ArrowIcone.png",
-        Icone: "assets/imgs/icons/AdvantageIcone2.png",
+        Arrow: "/assets/icons/ArrowIcone.png",
+        Icone: "/assets/icons/AdvantageIcone2.png",
         advantage: "Unlock Property Value"
     },
     {
-        Arrow: "assets/imgs/icons/ArrowIcone.png",
-        Icone: "assets/imgs/icons/AdvantageIcone3.png",
+        Arrow: "/assets/icons/ArrowIcone.png",
+        Icone: "/assets/icons/AdvantageIcone3.png",
         advantage: "Effortless Property Management"
     },
     {
-        Arrow: "assets/imgs/icons/ArrowIcone.png",
-        Icone: "assets/imgs/icons/AdvantageIcone4.png",
+        Arrow: "/assets/icons/ArrowIcone.png",
+        Icone: "/assets/icons/AdvantageIcone4.png",
         advantage: "Smart Investments, Informed Decisions"
     },
 ]

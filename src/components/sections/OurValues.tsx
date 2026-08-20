@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container } from '../../../components/shared/Container';
-import { ValueCard, type ValueItem } from '../components/ValueCard';
+import Container from '../Container';
+import { ValueCard, type ValueItem } from '../ValueCard';
+
 
 const VALUES_DATA: ValueItem[] = [
   {

@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { HiOutlineMenuAlt3 } from "react-icons/hi"
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
-import Button from "./Button"
+import Button from "./AtomComponents/Button"
 import { IoCloseOutline } from "react-icons/io5"
 const navLinks = [
   { path: "/", label: "Home" },

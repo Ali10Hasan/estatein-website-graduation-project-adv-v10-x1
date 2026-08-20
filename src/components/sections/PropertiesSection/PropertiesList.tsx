@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { readProperties } from "../../data/propertiesAPI";
-import { setProperties } from "../../redux/slices/propertiesSlice";
-import type { RootState } from "../../redux/store/store";
-import Loading from "../Loading";
+
 import PropertyCard from "./PropertyCard";
-import Error from "../Error";
+import { readProperties } from "../../../data/propertiesAPI";
+import { setProperties } from "../../../redux/slices/propertiesSlice";
+import Loading from "../../Loading";
+import Error from "../../Error";
+import type { RootState } from "../../../redux/store/store";
+
 
 
 const PropertiesList = () => {

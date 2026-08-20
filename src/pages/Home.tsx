@@ -1,6 +1,7 @@
 import Hero from "../components/Hero/Hero";
-import PropertiesList from "../components/PropertiesSection/PropertiesList";
-import SiteAdvantage from "../components/SiteAdvantage/SiteAdvantage";
+import PropertiesList from "../components/sections/PropertiesSection/PropertiesList";
+import SiteAdvantage from "../components/sections/SiteAdvantage";
+
 
 const Home = () => {
 
