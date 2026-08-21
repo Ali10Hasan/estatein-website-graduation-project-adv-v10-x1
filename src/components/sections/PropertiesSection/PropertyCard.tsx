@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import type { IProperty } from "../../../types/propertyType";
 import Button from "../../AtomComponents/Button";
 
-export const PropertyCard = ({ images, title, shortDescription, category, bedrooms, bathrooms, propertyType, price, id }: IProperty) => {
+interface PropertyCardProps extends IProperty {
+    showCategory?: boolean;
+    showDetails?: boolean;
+}
+
+export const PropertyCard = ({ images, title, shortDescription, category, bedrooms, bathrooms, propertyType, price, id, showCategory = true,
+    showDetails = true }: PropertyCardProps) => {
     const navigate = useNavigate();
 
     const [isExpanded, setIsExpanded] = useState(false);
@@ -29,8 +35,8 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
 
             <div className="flex flex-col justify-between">
                 <div>
-                    {category && (
-                        <div className="bg-grey-10 border border-grey-15 rounded-[28px] 2xl:px-14 2xl:py-8 px-12 py-6 font-medium text-[18px] text-white mb-16 2xl:mb-20">
+                    {showCategory && category && (
+                        <div className="bg-grey-10 border border-grey-15 rounded-[28px] 2xl:px-14 2xl:py-8 px-12 py-6 font-medium text-[18px] text-white mb-16 2xl:mb-20 w-fit">
                             {category}
                         </div>
                     )}
@@ -50,7 +56,7 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
                         )}
                     </p>
 
-                    {category == undefined && (
+                    {showDetails && bedrooms !== undefined && (
                         <div className="flex flex-wrap gap-6 mb-20 xl:mb-24 2xl:gap-10 2xl:mb-30">
                             <div className="bg-grey-10 border border-grey-15 rounded-[28px] px-14 py-6 xl:py-8 font-medium text-[14px] 2xl:text-[18px] flex items-center gap-4">
                                 <img src="/assets/imgs/properties/bedroomIcon.png" alt="bed" className="2xl:w-24 w-20 " />
