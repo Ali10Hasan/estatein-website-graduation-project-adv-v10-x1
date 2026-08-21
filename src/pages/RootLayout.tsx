@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom'
 import Footer from '../components/Footer'
 import Banner from '../components/Banner'
 import Navbar from '../components/Navbar'
+import CTA from '../components/CTA'
 
 const RootLayout = () => {
     return (
@@ -9,6 +10,7 @@ const RootLayout = () => {
             <Banner />
             <Navbar />
             <Outlet />
+            <CTA/>
             <Footer/>
         </div>
     )
