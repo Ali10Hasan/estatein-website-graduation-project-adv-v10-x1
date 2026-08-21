@@ -3,6 +3,7 @@ import Slider from "../Slider/Slider";
 import { SliderControls } from "../Slider/SliderControls";
 import Button from "../AtomComponents/Button";
 import type { HeaderProp } from "../../types/sliderType";
+import Stars from "../AtomComponents/Stars";
 
 
 
@@ -50,11 +51,12 @@ const totalItems = children.length;
   );
 
   return (
-    <section className="p-16 md:px-80 min-[1440px]:px-162">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-40 md:mb-60 lg:mb-80">
+    <section className="relative">
+      <Stars/>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 md:pt-6 lg:pt-10 mb-40 md:mb-60 lg:mb-80">
           <div className="md:max-w-975 min-[1440px]:max-w-1200 ">
-            <h1 className="text-3xl md:text-4xl font-semibold  mb-6 md:mb-10 text-white"> {title} </h1>
-            <p className="text-sm md:text-base min-[1440px]:text-lg text-grey-60 font-medium "> {desc} </p>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold  mb-6 md:mb-10 lg:mb-14 text-white"> {title} </h1>
+            <p className="text-sm md:text-base lg:text-lg min-[1440px]:text-lg text-grey-60 font-medium "> {desc} </p>
           </div>
 
           {showButton && (
