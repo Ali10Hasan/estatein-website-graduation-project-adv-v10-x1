@@ -62,7 +62,7 @@ export default function Slider({
         {children.map((child, index) => (
           <div
             key={index}
-            className="shrink-0 w-full md:w-auto"
+            className="shrink-0 w-full "
             style={cardStyle}>
             {child}
           </div>
