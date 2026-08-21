@@ -1,4 +1,5 @@
 import Hero from "../components/Hero/Hero";
+import FaqSection from "../components/sections/FaqSection";
 import PropertiesList from "../components/sections/PropertiesSection/PropertiesList";
 import SiteAdvantage from "../components/sections/SiteAdvantage";
 
@@ -14,6 +15,7 @@ const Home = () => {
                 sectionTitle="Featured Properties"
                 Sectiondescription="Explore our handpicked selection of featured properties. Each listing offers a glimpse into exceptional homes and investments available through Estatein."
             />
+            <FaqSection/>
         </>
 
 
