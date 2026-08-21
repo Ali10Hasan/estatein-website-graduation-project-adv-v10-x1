@@ -1,6 +1,6 @@
-import  { useRef, useEffect, useState, useCallback, useMemo } from "react";
+import { useRef, useEffect, useState, useCallback, useMemo } from "react";
 import type { SliderProps } from "../../types/sliderType";
-
+import type { CSSProperties } from "react";
 
 export default function Slider({
   children,
@@ -17,8 +17,8 @@ export default function Slider({
   const [visibleCards, setVisibleCards] = useState(mobileCards);
 
   const cardStyle = {
-    width: cardWidth > 0 ? `${cardWidth}px` : undefined,
-  };
+    "--card-w": cardWidth > 0 ? `${cardWidth}px` : "100%",
+  } as CSSProperties;
 
   const recalculate = useCallback(() => {
     const width = window.innerWidth;
@@ -50,20 +50,22 @@ export default function Slider({
     [cardWidth, gap, currentIndex]
   );
 
+  const trackStyle = {
+    "--gap": `${gap}px`,
+    "--tx": `${translateX}px`,
+  } as CSSProperties;
+
   return (
     <div ref={containerRef} className="overflow-hidden w-full mb-30 md:mb-40 lg:mb-50">
       <div
-        className="flex transition-transform duration-500 ease-in-out"
-        style={{
-          gap: `${gap}px`,
-          transform: `translateX(-${translateX}px)`,
-          width: "max-content",
-        }} >
+        className="flex gap-(--gap) transition-transform duration-500 ease-in-out w-max -translate-x-(--tx)"
+        style={trackStyle}  >
         {children.map((child, index) => (
           <div
             key={index}
-            className="shrink-0 w-full "
-            style={cardStyle}>
+            className="shrink-0 w-(--card-w)"
+            style={cardStyle}
+          >
             {child}
           </div>
         ))}
