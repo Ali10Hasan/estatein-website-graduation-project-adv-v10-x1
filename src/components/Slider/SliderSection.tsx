@@ -50,11 +50,11 @@ const totalItems = children.length;
   );
 
   return (
-    <section className="bg-grey-08 ">
+    <section className="p-16 md:px-80 min-[1440px]:px-162">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-40 md:mb-60 lg:mb-80">
           <div className="md:max-w-975 min-[1440px]:max-w-1200 ">
-            <h1 className="text-[28px] md:text-[38px] font-semibold  mb-6 md:mb-10 text-white"> {title} </h1>
-            <p className="text-[14px] md:text-[16px] min-[1440px]:text-[18px] text-grey-60 font-medium "> {desc} </p>
+            <h1 className="text-3xl md:text-4xl font-semibold  mb-6 md:mb-10 text-white"> {title} </h1>
+            <p className="text-sm md:text-base min-[1440px]:text-lg text-grey-60 font-medium "> {desc} </p>
           </div>
 
           {showButton && (
@@ -64,7 +64,7 @@ const totalItems = children.length;
 
         <Slider
           currentIndex={currentIndex}
-          gap={30}
+          gap={20}
           desktopCards={desktopCards}
           tabletCards={tabletCards}
           mobileCards={mobileCards}
@@ -73,7 +73,7 @@ const totalItems = children.length;
         </Slider>
 
         <div className="border-t border-grey-15 flex items-center justify-between gap-4 pt-16">
-          <div className="hidden md:block text-grey-60 text-[16px] min-[1440]:text-[20px] font-medium px-1">
+          <div className="hidden md:block text-grey-60 text-base min-[1440px]:text-xl font-medium px-1">
             <span className="text-white">{formattedCurrent}</span> of {formattedTotal}
           </div>
 
