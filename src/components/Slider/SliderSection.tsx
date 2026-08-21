@@ -15,9 +15,9 @@ function SliderSection({
   mobileCards = 1,
   showButton = true,
   buttonContent,
-  buttonClassName ,
+  buttonClassName,
 }: HeaderProp) {
-const totalItems = children.length;
+  const totalItems = children.length;
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(mobileCards);
@@ -25,7 +25,8 @@ const totalItems = children.length;
   const handleVisibleCardsChange = useCallback(
     (count: number) => {
       setVisibleCards(count);
-      setCurrentIndex((prev) => Math.min(prev, Math.max(totalItems - count, 0)));},
+      setCurrentIndex((prev) => Math.min(prev, Math.max(totalItems - count, 0)));
+    },
     [totalItems]
   );
 
@@ -50,53 +51,56 @@ const totalItems = children.length;
   );
 
   return (
-    <section className="p-16 md:px-80 min-[1440px]:px-162">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-40 md:mb-60 lg:mb-80">
-          <div className="md:max-w-975 min-[1440px]:max-w-1200 ">
-            <h1 className="text-3xl md:text-4xl font-semibold  mb-6 md:mb-10 text-white"> {title} </h1>
-            <p className="text-sm md:text-base min-[1440px]:text-lg text-grey-60 font-medium "> {desc} </p>
-          </div>
-
-          {showButton && (
-            <div className="hidden md:block shrink-0">{actionButton}</div>
-          )}
+    /* 
+    p-16 md:px-80 min-[1440px]:px-162
+    */
+    <section className="">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-40 md:mb-60 lg:mb-80">
+        <div className="md:max-w-975 min-[1440px]:max-w-1200 ">
+          <h1 className="text-3xl md:text-4xl font-semibold  mb-6 md:mb-10 text-white"> {title} </h1>
+          <p className="text-sm md:text-base min-[1440px]:text-lg text-grey-60 font-medium "> {desc} </p>
         </div>
 
-        <Slider
-          currentIndex={currentIndex}
-          gap={20}
-          desktopCards={desktopCards}
-          tabletCards={tabletCards}
-          mobileCards={mobileCards}
-          onVisibleCardsChange={handleVisibleCardsChange}>
-          {children}
-        </Slider>
+        {showButton && (
+          <div className="hidden md:block shrink-0">{actionButton}</div>
+        )}
+      </div>
 
-        <div className="border-t border-grey-15 flex items-center justify-between gap-4 pt-16">
-          <div className="hidden md:block text-grey-60 text-base min-[1440px]:text-xl font-medium px-1">
-            <span className="text-white">{formattedCurrent}</span> of {formattedTotal}
-          </div>
+      <Slider
+        currentIndex={currentIndex}
+        gap={20}
+        desktopCards={desktopCards}
+        tabletCards={tabletCards}
+        mobileCards={mobileCards}
+        onVisibleCardsChange={handleVisibleCardsChange}>
+        {children}
+      </Slider>
 
-          <div
-            className={
-              showButton
-                ? "flex items-center gap-3 w-full md:w-auto justify-between md:justify-end"
-                : "flex items-center w-full md:w-auto"
-            } >
-
-            {showButton && <div className="block md:hidden">{actionButton}</div>}
-            <SliderControls
-              canPrev={canPrev}
-              canNext={canNext}
-              onPrev={prev}
-              onNext={next}
-              formattedCurrent={formattedCurrent}
-              formattedTotal={formattedTotal}
-              showNumberBetween
-              fullWidth={!showButton}
-            />
-          </div>
+      <div className="border-t border-grey-15 flex items-center justify-between gap-4 pt-16">
+        <div className="hidden md:block text-grey-60 text-base min-[1440px]:text-xl font-medium px-1">
+          <span className="text-white">{formattedCurrent}</span> of {formattedTotal}
         </div>
+
+        <div
+          className={
+            showButton
+              ? "flex items-center gap-3 w-full md:w-auto justify-between md:justify-end"
+              : "flex items-center w-full md:w-auto"
+          } >
+
+          {showButton && <div className="block md:hidden">{actionButton}</div>}
+          <SliderControls
+            canPrev={canPrev}
+            canNext={canNext}
+            onPrev={prev}
+            onNext={next}
+            formattedCurrent={formattedCurrent}
+            formattedTotal={formattedTotal}
+            showNumberBetween
+            fullWidth={!showButton}
+          />
+        </div>
+      </div>
     </section>
   );
 }
