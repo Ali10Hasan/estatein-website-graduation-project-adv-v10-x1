@@ -38,7 +38,7 @@ const FilterSection = () => {
         <div className="Search">
         <Search/>
         </div>
-        <div  className="flex w-[85%] md:w-[95%] p-10 mx-auto bg-grey-10 flex-col md:flex-row md:justify-around rounded-[12px]  items-center gap-15 relative top-60 md:bottom-20 md:top-auto" >       
+        <div  className="flex w-[85%] md:w-[97%] p-10 mx-auto bg-grey-10 flex-col md:flex-row md:justify-around rounded-[12px]   gap-15 relative top-60 md:bottom-20 md:top-auto" >       
         {SelectionData.map((item,index)=>{
             return(
                 <>
