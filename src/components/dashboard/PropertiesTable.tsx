@@ -21,7 +21,9 @@ const PropertiesTable = () => {
     const [expandedId, setExpandedId] = useState<string | null>(null);
 
     const handleEdit = (id: string) => {
-        const property = items.find((item) => item.id === id);
+        const property = items.find(
+            (item) => item.id === id
+        );
 
         if (property) {
             onEditProperty(property);

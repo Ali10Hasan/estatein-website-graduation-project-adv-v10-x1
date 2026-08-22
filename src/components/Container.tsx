@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 interface containerProps{
   children: ReactNode;
-  className:string;
+  className?:string;
 }
 
 const Container = ({children , className}: containerProps) => {

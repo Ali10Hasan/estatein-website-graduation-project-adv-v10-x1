@@ -1,5 +1,6 @@
 import PageHero from "../components/Hero/PageHero"
 import FilterSection from "../components/SelectSection/FilterSection"
+import PropertiesList from "../components/sections/PropertiesSection/PropertiesList"
 
 const Properties = () => {
     return (
@@ -10,6 +11,12 @@ const Properties = () => {
                 className="2xl:h-450 xl:h-345 h-257"
             />
             <FilterSection/>
+            <PropertiesList
+                showDetails={false}
+                sectionTitle={"Discover a World of Possibilities"}
+                Sectiondescription="Our portfolio of properties is as diverse as your dreams. Explore the following categories to find the perfect property that resonates with your vision of home"
+            />
+ main
         </div>
     )
 }
