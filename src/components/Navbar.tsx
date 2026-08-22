@@ -36,7 +36,7 @@ const Navbar = () => {
       <Button 
         onClick={() => navigate('/contact')} 
         content="Contact us" 
-        className={`max-[992px]:hidden w-110 h-50 rounded-lg cursor-pointer bg-grey-08 ${isContactActive ? 'bg-purple-60' : 'hover:bg-grey-15'}`} 
+        className={`max-[992px]:hidden rounded-lg cursor-pointer bg-grey-08 ${isContactActive ? 'bg-purple-60' : 'hover:bg-grey-15'}`} 
       />
 
       <button 
@@ -63,7 +63,7 @@ const Navbar = () => {
               showMenu()
             }} 
             content="Contact us" 
-            className={`w-110 h-50 rounded-lg cursor-pointer bg-grey-08 ${isContactActive ? 'bg-purple-60' : 'hover:bg-grey-15'}`} 
+            className={`rounded-lg cursor-pointer bg-grey-08 ${isContactActive ? 'bg-purple-60' : 'hover:bg-grey-15'}`} 
           />
         </div>
       )}

@@ -1,58 +1,63 @@
-import React from 'react';
-import type { ClientItem } from '../../../types/client';
-import { ClientQuoteCard } from './ClientQuoteCard';
+import { AiOutlineThunderbolt } from 'react-icons/ai'
+import { BsGrid } from 'react-icons/bs'
+import { ClientQuoteCard } from './ClientQuoteCard'
+import type { ClientItem } from '../types/clientType'
+import Button from './AtomComponents/Button'
 
-export const ValuedClientCard: React.FC<ClientItem> = ({
+const ValuedClientCard = ({
   establishedYear,
   companyName,
   domain,
   category,
   testimonial,
-  websiteUrl = '#',
-}) => {
+  websiteUrl = '',
+}: ClientItem) => {
   return (
-    <article className="bg-[#1A1A1A] border border-[#262626] rounded-[12px] p-6 lg:p-[50px] flex flex-col justify-between gap-8 hover:border-[#703BF7]/40 transition-colors duration-300 w-full">
-      {/* Upper Container */}
-      <div className="flex items-center justify-between gap-[30px] w-full">
-        <div className="flex flex-col gap-[6px]">
-          <span className="text-[#999999] text-sm lg:text-base font-medium">
+    <div className="w-full h-full rounded-xl bg-grey-08 border border-grey-15 ring-grey-09 rounded-12 p-16 min-[992px]:p-50 flex flex-col justify-between gap-24 hover:border-purple-60/40 transition-colors shadow-[0px_0px_0px_6px_#191919]">
+      <div className="flex flex-col min-[992px]:flex-row min-[992px]:items-center justify-between gap-16 min-[992px]:gap-24 w-full">
+        <div className="flex flex-col gap-6">
+          <span className="text-grey-60 text-14 min-[992px]:text-16 font-medium">
             Since {establishedYear}
           </span>
-          <h3 className="text-xl lg:text-[30px] font-semibold text-white leading-[150%]">
+          <h3 className="text-20 min-[992px]:text-30 font-semibold text-white">
             {companyName}
           </h3>
         </div>
-        
-        {/* Visit Website Button (148px width, 63px height approx / padding 18px 24px) */}
-        <a
-          href={websiteUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-6 py-[18px] bg-[#1A1A1A] border border-[#262626] rounded-[10px] text-white text-sm lg:text-[18px] font-medium hover:bg-[#262626] hover:border-[#703BF7] transition-all whitespace-nowrap text-center"
-        >
-          Visit Website
-        </a>
+        <Button
+  content="Visit Website"
+  href={websiteUrl}
+  target="_blank"
+  className='w-full min-[992px]:w-auto py-18 px-24 bg-grey-15 rounded-xl border border-grey-15 text-white shrink-0'
+/>
       </div>
-
-      {/* Domain & Category Sub Container */}
-      <div className="grid grid-cols-2 gap-[30px] py-[16px] border-y border-[#262626]">
-        <div className="flex flex-col gap-2">
-          <span className="text-[#999999] text-xs lg:text-sm font-medium flex items-center gap-1.5">
-            <span className="w-[18px] h-[18px] opacity-60">❖</span> Domain
+      <div className="grid grid-cols-[1fr_auto_1fr] gap-x-24 gap-y-8 py-16 border-y border-grey-15">
+        <div className="flex items-center gap-6">
+          <BsGrid className="w-20 h-20 text-grey-60" />
+          <span className="text-grey-60 text-12 min-[992px]:text-14 font-medium">
+            Domain
           </span>
-          <p className="text-white text-sm lg:text-[18px] font-medium">{domain}</p>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <span className="text-[#999999] text-xs lg:text-sm font-medium flex items-center gap-1.5">
-            <span className="w-[18px] h-[18px] opacity-60">⚡</span> Category
-          </span>
-          <p className="text-white text-sm lg:text-[18px] font-medium">{category}</p>
-        </div>
-      </div>
+        <div className="row-span-2 w-1 bg-grey-15" />
 
-      {/* Testimonial Quote Sub Card */}
+        <div className="flex items-center gap-6">
+          <AiOutlineThunderbolt className="w-20 h-20 text-grey-60" />
+          <span className="text-grey-60 text-12 min-[992px]:text-14 font-medium">
+            Category
+          </span>
+        </div>
+
+        <p className="text-white text-14 min-[992px]:text-18 font-medium">
+          {domain}
+        </p>
+
+        <p className="text-white text-14 min-[992px]:text-18 font-medium">
+          {category}
+        </p>
+      </div>
       <ClientQuoteCard quote={testimonial} />
-    </article>
-  );
-};
+    </div>
+  )
+}
+
+export default ValuedClientCard
