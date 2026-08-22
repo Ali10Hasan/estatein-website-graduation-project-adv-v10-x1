@@ -8,6 +8,7 @@ import CardSkeleton from "../../CardSkeleton.tsx";
 import Error from "../../Error";
 import SliderSection from "../../Slider/SliderSection";
 import PropertyCard from "./PropertyCard";
+import Container from "../../Container.tsx";
 
 interface PropertiesListProps {
     showCategory?: boolean;
@@ -38,35 +39,37 @@ const PropertiesList = ({
 
 
     return (
-        <section className="2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
-            <SkeletonTheme baseColor="#1a1a1a" highlightColor="#2a2a2a">
-                <SliderSection
-                    title={sectionTitle}
-                    desc={Sectiondescription}
-                    desktopCards={3}
-                    tabletCards={2}
-                    mobileCards={1}
-                    showButton={true}
-                    buttonContent="View All Properties"
-                    buttonClassName="2xl:px-24 2xl:py-18 bg-grey-10 text-white border border-grey-15 rounded-[10px] text-[18px] font-medium"
-                >
-                    {loading ? (
-                        Array.from({ length: 3 }).map((_, index) => (
-                            <CardSkeleton variant="property" key={index} />
-                        ))
-                    ) : (
-                        items.map((property) => (
-                            <PropertyCard
-                                key={property.id}
-                                {...property}
-                                showCategory={showCategory}
-                                showDetails={showDetails}
-                            />
-                        ))
-                    )}
-                </SliderSection>
-            </SkeletonTheme>
-        </section>
+        <Container>
+            <section className="2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
+                <SkeletonTheme baseColor="#1a1a1a" highlightColor="#2a2a2a">
+                    <SliderSection
+                        title={sectionTitle}
+                        desc={Sectiondescription}
+                        desktopCards={3}
+                        tabletCards={2}
+                        mobileCards={1}
+                        showButton={true}
+                        buttonContent="View All Properties"
+                        buttonClassName="2xl:px-24 2xl:py-18 bg-grey-10 text-white border border-grey-15 rounded-[10px] text-[18px] font-medium"
+                    >
+                        {loading ? (
+                            Array.from({ length: 3 }).map((_, index) => (
+                                <CardSkeleton variant="property" key={index} />
+                            ))
+                        ) : (
+                            items.map((property) => (
+                                <PropertyCard
+                                    key={property.id}
+                                    {...property}
+                                    showCategory={showCategory}
+                                    showDetails={showDetails}
+                                />
+                            ))
+                        )}
+                    </SliderSection>
+                </SkeletonTheme>
+            </section>
+        </Container>
     );
 };
 

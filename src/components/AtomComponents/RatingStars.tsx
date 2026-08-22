@@ -6,7 +6,7 @@ interface RatingStarsProps {
 
 const RatingStars = ({ rating }: RatingStarsProps) => {
     return (
-        <div className="flex items-center lg:gap-10 gap-8">
+        <div className="flex flex-wrap items-center lg:gap-10 gap-8">
             {Array.from({ length: rating }).map((_, index) => (
                 <span className="flex 
                 items-center 

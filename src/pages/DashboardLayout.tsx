@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router-dom"
+import { Navigate, Outlet, useLocation } from "react-router-dom"
 import DashboardSidebar from "../components/dashboard/DashboardSidebar"
 import DashboardHeader from "../components/dashboard/DashboardHeader"
 import { useState } from "react";
@@ -33,6 +33,11 @@ const DashboardLayout = () => {
     const [editingTestimonial, setEditingTestimonial] = useState<ITestimonial | null>(null);
 
     const currentSection = location.pathname.split("/").pop();
+
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    } 
 
     const clearEditingItems = () => {
         setEditingProperty(null);

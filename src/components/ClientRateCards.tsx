@@ -3,7 +3,7 @@ import RatingStars from "./AtomComponents/RatingStars"
 
 const ClientRateCards = ({ title, review, image, rating, name, location }: ITestimonial) => {
   return (
-    <div className="w-full rounded-xl border border-grey-15 p-24 min-[992px]:p-40 flex flex-col justify-start text-white bg-grey-08 hover:bg-grey-15 transition-colors">
+    <div className="h-full min-h-400 w-full rounded-xl border border-grey-15 p-24 min-[992px]:p-30 flex flex-col justify-start text-white bg-grey-08 hover:bg-grey-15 transition-colors">
       <div>
         <div className="pb-40">
           <RatingStars rating={rating} />
@@ -17,7 +17,7 @@ const ClientRateCards = ({ title, review, image, rating, name, location }: ITest
         </p>
       </div>
 
-      <div className="flex items-center gap-12 pt-24 min-[992px]:pt-40">
+      <div className="flex items-center gap-12 pt-24 min-[992px]:pt-40 mt-auto">
         <img
           src={image}
           alt={name}
