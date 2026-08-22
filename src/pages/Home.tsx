@@ -10,6 +10,7 @@ const Home = () => {
     return (
         <>
             <Hero />
+
             <main>
             <SiteAdvantage />
             <PropertiesList
@@ -20,9 +21,8 @@ const Home = () => {
             <WhatClientsSaySection />
             <FaqSection/>
             </main>
+
         </>
-
-
 
     );
 };
