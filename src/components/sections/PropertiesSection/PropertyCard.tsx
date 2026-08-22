@@ -24,8 +24,7 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
         : description.slice(0, maxLength) + '...';
 
     return (
-        <div className="bg-grey-08 border border-grey-15 max-w-358 xl:max-w-413 2xl:max-w-lg p-24 xl:p-30 2xl:p-40 rounded-xl text-white flex flex-col gap-20 xl:gap-24 2xl:gap-30 h-full transition-all duration-300 hover:border-purple-60 group">
-            <div className="h-210 xl:h-255 2xl:h-318 rounded-[10px] overflow-hidden">
+            <div className="bg-grey-08 border border-grey-15 max-w-358 xl:max-w-413 2xl:max-w-lg p-24 xl:p-30 2xl:p-40 rounded-xl text-white flex flex-col gap-20 xl:gap-24 2xl:gap-30 h-full transition-all duration-300 hover:border-purple-60 group">            <div className="h-210 xl:h-255 2xl:h-318 rounded-[10px] overflow-hidden">
                 <img
                     src={cardImage}
                     alt={title}
@@ -33,7 +32,7 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
                 />
             </div>
 
-            <div className="flex flex-col justify-between">
+            <div className="flex flex-col flex-1">
                 <div>
                     {showCategory && category && (
                         <div className="bg-grey-10 border border-grey-15 rounded-[28px] 2xl:px-14 2xl:py-8 px-12 py-6 font-medium text-[18px] text-white mb-16 2xl:mb-20 w-fit">
@@ -74,7 +73,7 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
                     )}
                 </div>
 
-                <div className="flex flex-wrap justify-between items-center gap-30 xl:gap-40 2xl:gap-50">
+                <div className="flex flex-wrap justify-between items-center gap-30 xl:gap-40 2xl:gap-50 mt-auto">
                     <div>
                         <span className="font-medium text-[14px] lg:text-lg text-grey-60 block">Price</span>
                         <span className="font-semibold text-[18px] xl:text-[20px] 2xl:text-[24px]">${price}</span>

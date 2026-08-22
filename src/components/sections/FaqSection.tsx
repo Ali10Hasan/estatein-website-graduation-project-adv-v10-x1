@@ -51,7 +51,6 @@ const FaqSection = () => {
   }
 
   return (
-    <div className="px-80 max-[992px]:px-16">
       <Container className="my-80 md:my-96">
         <SliderSection
           title="Frequently Asked Questions"
@@ -68,7 +67,6 @@ const FaqSection = () => {
           ))}
         </SliderSection>
       </Container>
-    </div>
   );
 };
 
