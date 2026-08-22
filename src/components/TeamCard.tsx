@@ -8,7 +8,7 @@ export default function TeamCard({
   role,
 }: TeamCardProps) {
   return (
-    <div className="w-full rounded-xl border border-grey-15 p-20 md:p-24 lg:p-30 h-full">
+    <div className="w-full rounded-xl border border-grey-15 p-20 md:p-24 lg:p-30 h-full flex flex-col">
 
       <div className="relative">
         <img src={image}  alt={name} className=" w-full rounded-10 object-cover h-full"/>
@@ -17,7 +17,7 @@ export default function TeamCard({
           <FaTwitter className="size-20 lg:size-24" />
         </button>
       </div>
-      <div className="mt-40 md:mt-50 mb-16 md:mb-20 lg:mb-24 text-center">
+      <div className="mt-40 md:mt-50 mb-16 md:mb-20 lg:mb-24 text-center flex flex-col flex-1">
         <h3 className="font-urbanist text-xl lg:text-2xl font-semibold leading-24 text-white"> {name}</h3>
         <p className="mt-2 md:mt-4 lg:mt-6 font-urbanist text-sm lg:text-lg font-medium leading-24 text-grey-60"> {role} </p>
       </div>
