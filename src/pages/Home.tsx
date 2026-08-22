@@ -9,12 +9,11 @@ const Home = () => {
     return (
         <>
             <Hero />
-            <SiteAdvantage/>
+            <SiteAdvantage />
             <PropertiesList />
-            <FaqSection/>
+            <FaqSection />
+
         </>
-
-
 
     );
 };
