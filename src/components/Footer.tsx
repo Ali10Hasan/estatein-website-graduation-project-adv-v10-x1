@@ -30,11 +30,11 @@ const footerBottomData: FooterBottomData = {
 const Footer = () => {
 
   const renderColumn = (column: ColumnData , hasBorderBottom = false, hasBorderRight = false) => (
-    <div className={`w-full md:w-auto flex flex-col gap-y-[23px] pb-[20px] relative md:pb-0 md:mb-0`}>
-      <h3 className="text-[16px] md:text-[14px] lg:text-[20px] font-semibold text-grey-60">
+    <div className={`w-full md:w-auto flex flex-col gap-y-23 pb-20 relative md:pb-0 md:mb-0`}>
+      <h3 className="text-16 md:text-14 lg:text-[20px] font-semibold text-grey-60">
         {column.header}
       </h3>
-      <ul className="text-[14px] md:text-[16px] flex flex-col gap-y-[10px]">
+      <ul className="text-14 md:text-16 flex flex-col gap-y-10">
         {column.links.map((link, linkIndex) => (
           <li key={linkIndex}>
             <Link to="#" className="text-white">
@@ -44,13 +44,13 @@ const Footer = () => {
         ))}
       </ul>
 
-      {hasBorderBottom && <span className="absolute bottom-0 left-1 right-1 h-[2px] bg-[#262626] lg:hidden"></span>}
-      {hasBorderRight && <span className="absolute right-[-4%] top-1 bottom-1 w-[1px] bg-[#262626] lg:hidden"></span>}
+      {hasBorderBottom && <span className="absolute bottom-0 left-1 right-1 h-2 bg-grey-15 lg:hidden"></span>}
+      {hasBorderRight && <span className="absolute right-[-4%] top-1 bottom-1 w-1 bg-grey-15 lg:hidden"></span>}
     </div>
   );
 
   return (
-    <footer className="w-full bg-[#141414] text-white flex flex-col justify-between h-auto lg:h-425">
+    <footer className="w-full mt-200 bg-grey-08 text-white flex flex-col justify-between h-auto lg:h-425">
 
       {/* القسم العلوي الرئيسي */}
       <div className="w-full flex flex-col lg:flex-row pt-0 px-0 lg:pt-60 lg:px-60 gap-y-50 gap-x-60">
@@ -67,7 +67,7 @@ const Footer = () => {
             <input
               type="text"
               placeholder={brandingData.emailPlaceholder}
-              className="w-full h-52 bg-transparent text-white border border-[#262626] rounded-md pl-40 pr-40 focus:outline-none placeholder:text-14"
+              className="w-full h-52 bg-transparent text-white border border-grey-15 rounded-md pl-40 pr-40 focus:outline-none placeholder:text-14"
             />
             <img src={brandingData.shareIcon} alt="Submit" className="absolute right-20 cursor-pointer" />
           </div>
@@ -102,7 +102,7 @@ const Footer = () => {
       </div>
 
       {/* القسم السفلي */}
-      <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center bg-[#1A1A1A] lg:px-60 p-10 lg:py-20 gap-y-20 lg:gap-y-0 text-14 mt-10 lg:mt-0">
+      <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center bg-grey-10 lg:px-60 p-10 lg:py-20 gap-y-20 lg:gap-y-0 text-14 mt-10 lg:mt-0">
         <div className="flex flex-col lg:flex-row items-center  gap-x-20 text-gray-400 gap-y-2 text-center lg:text-left">
           <p className="hover:text-white ">{footerBottomData.copyright}</p>
           <Link to="#" className="hover:text-white ">
@@ -115,7 +115,7 @@ const Footer = () => {
             <Link
               key={iconIndex}
               to="#"
-              className="bg-[#141414] p-15 rounded-full border border-[#262626] flex items-center justify-center hover:bg-black text-white"
+              className="bg-grey-08 p-10 rounded-full border border-grey-15 flex items-center justify-center hover:bg-black text-white"
             >
               <IconComponent className="w-30 h-30" />
             </Link>
