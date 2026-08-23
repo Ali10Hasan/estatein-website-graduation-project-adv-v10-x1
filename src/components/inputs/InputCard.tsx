@@ -1,7 +1,7 @@
 import type { InputProps } from "../../types/inputType"
 
 
-function InputCard({ label, name, placeholder, type = "text", className, icon, id ,radioPlaceholder }: InputProps) {
+function InputCard({ label, name, placeholder, type = "text", className, icon, id ,radioPlaceholder, onChange, value }: InputProps) {
     if (type === "radio") {
         return (
             <div className="w-full relative px-10">
@@ -34,6 +34,8 @@ function InputCard({ label, name, placeholder, type = "text", className, icon, i
                 name={name}
                 placeholder={placeholder}
                 type={type}
+                value={value}
+                onChange={onChange}
                 className={`rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 text-white bg-grey-10 border border-grey-15 placeholder:text-grey-40 placeholder:text-sm lg:placeholder:text-lg focus:border-white outline-0 ${className ?? ""}`}
             />
         </div>

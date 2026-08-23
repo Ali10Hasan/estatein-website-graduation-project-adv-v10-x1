@@ -10,7 +10,7 @@ const Banner = () => {
         <div
             className="relative py-20 max-[992px]:py-40 flex justify-center items-center w-full bg-grey-10 bg-[url('/assets/imgs/BannerBgSmall.webp')] min-[992px]:bg-[url('/assets/imgs/BannerBG.webp')] bg-size-[100%_100%] bg-center bg-no-repeat text-white font-medium text-18"
         >
-            <p className="relative z-10 w-full text-center max-[992px]:text-left max-[992px]:text-[12px] pl-16 pr-48">
+            <p className="relative z-10 w-full text-center max-[992px]:text-left max-[992px]:text-[12px] pl-16 md:pl-80 pr-48">
                 ✨Discover Your Dream Property with Estatein{" "}
                 <a href="#" className="ml-2 underline cursor-pointer hover:text-purple-60">
                     Learn More
