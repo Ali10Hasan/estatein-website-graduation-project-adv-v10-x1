@@ -5,7 +5,6 @@ import { SliderControls } from "../Slider/SliderControls";
 import Button from "../AtomComponents/Button";
 import type { HeaderProp } from "../../types/sliderType";
 import Stars from "../AtomComponents/Stars";
-import Container from "../Container";
 
 function SliderSection({
   title,
@@ -77,8 +76,7 @@ const actionButton = (
   } as CSSProperties;
 
   return (
-    <Container>
-      <section className="relative w-full 2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
+      <section className="relative">
         <Stars />
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 md:pt-6 lg:pt-10 mb-40 md:mb-60 lg:mb-80">
           <div className="md:max-w-975 min-[1440px]:max-w-1200">
@@ -130,7 +128,6 @@ const actionButton = (
           </div>
         )}
       </section>
-    </Container>
   );
 }
 
