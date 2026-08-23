@@ -17,7 +17,7 @@ const Login = () => {
         setError("");
 
         if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-            localStorage.setItem("isLoggedIn", "true");
+            sessionStorage.setItem("isLoggedIn", "true");
             navigate("/dashboard");
         } else {
             setError("Invalid email or password.");
@@ -112,7 +112,7 @@ const Login = () => {
                         duration: 0.5,
                         delay: 0.2,
                     }}
-                    className="mb-30 flex justify-center"
+                    className="mb-30 flex justify-center mr-30"
                 >
                     <motion.img
                         src="/assets/imgs/EstateinLogo.webp"
@@ -141,14 +141,14 @@ const Login = () => {
                         duration: 0.5,
                         delay: 0.3,
                     }}
-                    className="mb-25 text-center"
+                    className="mb-25 text-center px-10"
                 >
                     <h1 className="text-26 font-semibold text-white">
-                        Dashboard Login
+                        Welcome Back
                     </h1>
 
                     <p className="mt-8 text-14 text-white-90">
-                        Sign in to access the dashboard
+                        Sign in to your Estatein dashboard
                     </p>
                 </motion.div>
 
@@ -214,6 +214,7 @@ const Login = () => {
                     </motion.div>
 
                     {/* Error */}
+                    <div className="px-10">
                     <AnimatePresence>
                         {error && (
                             <motion.p
@@ -233,7 +234,7 @@ const Login = () => {
                                     y: -5,
                                 }}
                                 transition={{
-                                    duration: 0.25,
+                                    duration: 0.3,
                                 }}
                                 className="
                                     overflow-hidden
@@ -251,24 +252,28 @@ const Login = () => {
                             </motion.p>
                         )}
                     </AnimatePresence>
+                    </div>
 
+                    <div className="px-10">
                     {/* Login Button */}
                     <motion.div
                         whileTap={{
-                            scale: 0.98,
+                            scale: 0.97,
                         }}
                     >
                         <Button
                             content="Login"
                             className="
-                                h-50
                                 w-full
                                 rounded-lg
                                 bg-purple-60
                                 text-white
+                                font-semibold
                             "
-                        />
+                            />
                     </motion.div>
+                    </div>
+
                 </motion.form>
             </motion.div>
 
