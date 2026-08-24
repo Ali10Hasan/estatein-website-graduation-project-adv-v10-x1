@@ -1,9 +1,5 @@
 import type { InputProps } from "../../types/inputType"
-<<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
->>>>>>> main
 function InputCard({
     label,
     name,
@@ -23,12 +19,6 @@ function InputCard({
     ariaInvalid,
 }: InputProps) {
 
-    const [isSelected, setIsSelected] = useState(false);
-<<<<<<< HEAD
-=======
->>>>>>> main
-=======
->>>>>>> main
 
     if (type === "radio") {
         return (
@@ -62,21 +52,13 @@ function InputCard({
                 name={name}
                 placeholder={placeholder}
                 type={type}
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> main
                 value={value}
                 onChange={onChange}
                 min={min}
                 max={max}
                 step={step}
                 aria-invalid={ariaInvalid}
-<<<<<<< HEAD
-=======
->>>>>>> main
-=======
->>>>>>> main
+
                 className={`rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 text-white bg-grey-10 border border-grey-15 placeholder:text-grey-40 placeholder:text-sm lg:placeholder:text-lg focus:border-white outline-0 ${className ?? ""}`}
             />
             {error && (
@@ -88,14 +70,5 @@ function InputCard({
     );
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 export default InputCard;
-=======
-export default InputCard
 
->>>>>>> main
-=======
-export default InputCard
-
->>>>>>> main
