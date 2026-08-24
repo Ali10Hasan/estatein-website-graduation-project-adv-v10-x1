@@ -1,6 +1,9 @@
 import type { InputProps } from "../../types/inputType"
+<<<<<<< HEAD
 
 <<<<<<< HEAD
+=======
+>>>>>>> main
 function InputCard({
     label,
     name,
@@ -21,10 +24,12 @@ function InputCard({
 }: InputProps) {
 
     const [isSelected, setIsSelected] = useState(false);
+<<<<<<< HEAD
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 
-function InputCard({ label, name, placeholder, type = "text", className, icon, id ,radioPlaceholder }: InputProps) {
     if (type === "radio") {
         return (
             <div className="w-full relative px-10">
@@ -58,12 +63,18 @@ function InputCard({ label, name, placeholder, type = "text", className, icon, i
                 placeholder={placeholder}
                 type={type}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> main
                 value={value}
                 onChange={onChange}
                 min={min}
                 max={max}
                 step={step}
                 aria-invalid={ariaInvalid}
+<<<<<<< HEAD
+=======
+>>>>>>> main
 =======
 >>>>>>> main
                 className={`rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 text-white bg-grey-10 border border-grey-15 placeholder:text-grey-40 placeholder:text-sm lg:placeholder:text-lg focus:border-white outline-0 ${className ?? ""}`}
@@ -78,7 +89,12 @@ function InputCard({ label, name, placeholder, type = "text", className, icon, i
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export default InputCard;
+=======
+export default InputCard
+
+>>>>>>> main
 =======
 export default InputCard
 
