@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import Stats from '../AtomComponents/Stats';
 import { HERO_DATA } from './data';
-import Button from '../Button';
+import Button from '../AtomComponents/Button';
 
 
 
