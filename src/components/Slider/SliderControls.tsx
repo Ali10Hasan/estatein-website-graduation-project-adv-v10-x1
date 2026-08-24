@@ -14,7 +14,7 @@ export function SliderControls({
 }: SliderControlsProps) {
     return (
         <div className={ fullWidth ? "flex items-center justify-between w-full md:w-auto md:justify-normal md:gap-10"
-                                    : "flex items-center gap-5 lg:gap-20"}>
+                                    : "flex justify-between items-center lg:gap-20"}>
 
             <button
                 onClick={onPrev}
@@ -25,7 +25,7 @@ export function SliderControls({
             </button>
 
             {showNumberBetween && (
-                <div className="md:hidden text-grey-60 text-sm font-medium px-10 ">
+                <div className="md:hidden text-grey-60 text-sm font-medium px-4 ">
                     <span className="text-white font-(--font-urbanist)">{formattedCurrent}</span> of {formattedTotal}
                 </div>
             )}

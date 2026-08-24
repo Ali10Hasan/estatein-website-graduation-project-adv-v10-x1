@@ -1,60 +1,48 @@
 import Search from "./Search"
-import Select from "../inputs/Select"
+import Select from "./Select"
 import { TiLocation } from "react-icons/ti";
 import { IoIosHome } from "react-icons/io";
 import { MdOutlinePriceChange } from "react-icons/md";
 import { IoCubeOutline } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
 import type { JSX } from "react/jsx-runtime";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/store/store";
 export interface SelectionData {
     Icone: JSX.Element;
     FilterText: string;
-    FilterKey: string;
 }
 const SelectionData:SelectionData[]=[
     {
         Icone:<TiLocation/>,
-        FilterText:"Location",
-        FilterKey:"location"
+        FilterText:"Location"
     },
     {
         Icone: <IoIosHome />,
-        FilterText:"Property Type",
-        FilterKey:"propertyType"
+        FilterText:"Property Type"
     },
     {
         Icone: <MdOutlinePriceChange />,
-        FilterText:"Pricing Range",
-        FilterKey:"price"
+        FilterText:"Pricing Range"
     },
     {
         Icone: <IoCubeOutline />,
-        FilterText:"Property Size",
-        FilterKey:"PropertySize"
+        FilterText:"Property Size"
     },
     {
         Icone: <MdDateRange />,
-        FilterText:"Build Year",
-        FilterKey:"BuildYear"
+        FilterText:"Build Year"
     },
 ]
 const FilterSection = () => {
-  const Options=useSelector((state:RootState)=>state.properties.itemsFiltered);
-
   return (
     <div>
         <div className="Search">
         <Search/>
         </div>
-        <div  className="flex w-[85%] md:w-[97%] lg:w-[85%] p-10 mx-auto bg-grey-10 flex-col md:flex-row md:justify-around rounded-[12px]   gap-15 relative top-60 md:bottom-20 md:top-auto" >       
+        <div  className="flex w-[85%] md:w-[97%] p-10 mx-auto bg-grey-10 flex-col md:flex-row md:justify-around rounded-[12px]   gap-15 relative top-60 md:bottom-20 md:top-auto" >       
         {SelectionData.map((item,index)=>{
-            const OptionsUnique:string[]=Array.from(new Set(Options.map((option:any)=>option[item.FilterKey!])));
-            {item.FilterKey==="price" && OptionsUnique.sort((a,b)=>parseInt(a)-parseInt(b))}
             return(
                 <>
-                 <Select Icone={item.Icone} FilterText={item.FilterText} filterKey={item.FilterKey} options={OptionsUnique} />
+                 <Select Icone={item.Icone} FilterText={item.FilterText}/>
                 </>
             )
         })}

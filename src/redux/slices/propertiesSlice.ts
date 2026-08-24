@@ -32,33 +32,14 @@ export const deleteProperty = createAsyncThunk(
     }
 );
 
-interface FiltersState {
-    searchQuery: string;
-    location: string;
-    propertyType: string;
-    price: string;
-    propertySize: string;
-    buildYear: string;
-}
 interface PropertiesState {
     items: IProperty[];
-    itemsFiltered: IProperty[];
-    filters: FiltersState;
     loading: boolean;
     error: string | null;
 }
 
 const initialState: PropertiesState = {
     items: [],
-    itemsFiltered: [],
-    filters:{
-        searchQuery:"",
-        location: "",
-        propertyType: "",
-        price: "",
-        propertySize: "",
-        buildYear: "",
-    },
     loading: true,
     error: null,
 };
@@ -69,40 +50,21 @@ const propertiesSlice = createSlice({
 
     reducers: {
         setProperties: (state, action: PayloadAction<IProperty[]>) => {
-            state.itemsFiltered = action.payload;
+            state.items = action.payload;
             state.loading = false;
             state.error = null;
-            propertiesSlice.caseReducers.ApplyPropertyFiltered(state);
         },
 
         setPropertiesError: (state, action: PayloadAction<string>) => {
             state.loading = false;
             state.error = action.payload;
         },
-
-        updateFilter: (state, action: PayloadAction<{ key: keyof FiltersState; value: string }>) => {
-            state.filters[action.payload.key] = action.payload.value;
-            propertiesSlice.caseReducers.ApplyPropertyFiltered(state);
-        },
-
-        ApplyPropertyFiltered:(state)=>{
-            const { searchQuery, location, propertyType, price, propertySize} = state.filters;
-            state.items=state.itemsFiltered.filter((property)=>{
-                if(location && property.location!==location) return false;
-                if(propertyType && property.propertyType!==propertyType) return false;
-                if(price && property.price.toString()!==price) return false;
-                if(propertySize && property.area?.toString()!==propertySize) return false;
-                if(searchQuery && !property.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-                return true;
-            })
-        }
     },
 });
 
 export const {
     setProperties,
     setPropertiesError,
-    updateFilter,
 } = propertiesSlice.actions;
 
 export default propertiesSlice.reducer;
