@@ -14,7 +14,7 @@ const WhatClientsSaySection = () => {
 
   return (
     <Container>
-      <section className="flex flex-col w-full">
+      <section className="flex flex-col w-full 2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
         <SliderSection
         title="What Our Clients Say"
         desc="Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs."
