@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FiX } from "react-icons/fi";
 
 import type { ITestimonial } from "../../types/testimonialType";
+import InputCard from "../inputs/InputCard";
+import TextareaInput from "../inputs/TextareaInput";
 
 interface TestimonialFormProps {
     testimonial?: ITestimonial;
@@ -11,32 +13,43 @@ interface TestimonialFormProps {
     ) => void;
 }
 
+interface TestimonialFormState {
+    title: string;
+    review: string;
+    rating: string;
+    name: string;
+    location: string;
+    image: string;
+}
+
 const TestimonialForm = ({
     testimonial,
     onClose,
     onSave,
 }: TestimonialFormProps) => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<TestimonialFormState>({
         title: testimonial?.title ?? "",
         review: testimonial?.review ?? "",
-        rating: testimonial?.rating ?? 5,
+        rating: String(testimonial?.rating ?? 5),
         name: testimonial?.name ?? "",
         location: testimonial?.location ?? "",
         image: testimonial?.image ?? "",
     });
+    const [ratingError, setRatingError] = useState<string | null>(null);
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        const { name, value, type } = e.target;
+        const { name, value } = e.target;
 
         setFormData((prev) => ({
             ...prev,
-            [name]:
-                type === "number"
-                    ? Number(value)
-                    : value,
+            [name]: value,
         }));
+
+        if (name === "rating") {
+            setRatingError(null);
+        }
     };
 
     const handleSubmit = (
@@ -44,16 +57,26 @@ const TestimonialForm = ({
     ) => {
         e.preventDefault();
 
+        const rating = Number(formData.rating);
+
+        if (
+            formData.rating.trim() === "" ||
+            !Number.isInteger(rating) ||
+            rating < 1 ||
+            rating > 5
+        ) {
+            setRatingError("Rating is required and must be a whole number between 1 and 5.");
+            return;
+        }
+
         const finalData: Omit<ITestimonial, "id"> = {
             title: formData.title.trim(),
             review: formData.review.trim(),
-            rating: Math.min(Math.max(formData.rating, 1), 5),
+            rating,
             name: formData.name.trim(),
             location: formData.location.trim(),
             image: formData.image.trim(),
         };
-
-        console.log("TESTIMONIAL DATA:", finalData);
 
         onSave(finalData);
     };
@@ -67,7 +90,7 @@ const TestimonialForm = ({
         flex
         items-center
         justify-center
-        bg-black/70
+        bg-smoky-black
         px-20
         py-30
         backdrop-blur-sm
@@ -110,7 +133,7 @@ const TestimonialForm = ({
                     <FiX size={18} />
                 </button>
 
-                <h2 className="text-24 font-semibold text-white">
+                <h2 className="text-2xl font-semibold text-white-99">
                     {testimonial
                         ? "Edit Testimonial"
                         : "Add New Testimonial"}
@@ -120,136 +143,58 @@ const TestimonialForm = ({
                     onSubmit={handleSubmit}
                     className="mt-30 grid grid-cols-1 gap-20 md:grid-cols-2"
                 >
-                    <div className="flex flex-col gap-8 md:col-span-2">
-                        <label className="text-14 text-white-90">
-                            Title
-                        </label>
+                    <InputCard
+                        label="Title"
+                        name="title"
+                        value={formData.title}
+                        onChange={handleChange}
+                        containerClassName="md:col-span-2"
+                    />
 
-                        <input
-                            name="title"
-                            value={formData.title}
-                            onChange={handleChange}
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
+                    <TextareaInput
+                        label="Review"
+                        name="review"
+                        value={formData.review}
+                        onChange={handleChange}
+                        rows={5}
+                        placeholder="Enter the testimonial review"
+                        containerClassName="md:col-span-2 px-10"
+                    />
 
-                    <div className="flex flex-col gap-8 md:col-span-2">
-                        <label className="text-14 text-white-90">
-                            Review
-                        </label>
+                    <InputCard
+                        label="Rating"
+                        type="number"
+                        name="rating"
+                        min={1}
+                        max={5}
+                        step={1}
+                        value={formData.rating}
+                        onChange={handleChange}
+                        ariaInvalid={Boolean(ratingError)}
+                        error={ratingError}
+                    />
 
-                        <textarea
-                            name="review"
-                            value={formData.review}
-                            onChange={handleChange}
-                            rows={5}
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
+                    <InputCard
+                        label="Name"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
 
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Rating
-                        </label>
+                    <InputCard
+                        label="Location"
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
+                    />
 
-                        <input
-                            type="number"
-                            name="rating"
-                            min={1}
-                            max={5}
-                            value={formData.rating}
-                            onChange={handleChange}
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Name
-                        </label>
-
-                        <input
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Location
-                        </label>
-
-                        <input
-                            name="location"
-                            value={formData.location}
-                            onChange={handleChange}
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Image
-                        </label>
-
-                        <input
-                            name="image"
-                            value={formData.image}
-                            onChange={handleChange}
-                            placeholder="/assets/imgs/testimonials/client-1.png"
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
+                    <InputCard
+                        label="Image"
+                        name="image"
+                        value={formData.image}
+                        onChange={handleChange}
+                        placeholder="/assets/imgs/testimonials/client-1.png"
+                    />
 
                     <div className="flex justify-end gap-10 md:col-span-2">
                         <button
@@ -276,7 +221,7 @@ const TestimonialForm = ({
                 px-20
                 py-11
                 font-medium
-                text-white
+                text-white-99
                 hover:bg-purple-65
               "
                         >
