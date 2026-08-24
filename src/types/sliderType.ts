@@ -19,7 +19,7 @@ export interface HeaderProp {
     mobileCards?: number;
     showButton?: boolean;
     buttonContent?: string;
-    buttonHref?: string;
+    buttonClassName?: string;
 }
 export interface SliderProps {
     children: React.ReactNode[];

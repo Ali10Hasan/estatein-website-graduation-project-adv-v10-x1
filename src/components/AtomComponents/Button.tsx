@@ -1,5 +1,4 @@
 import type { ReactNode } from "react"
-import { Link } from "react-router-dom";
 
 interface ButtonProps {
   content: string
@@ -18,30 +17,23 @@ const Button = ({
   href,
   target = "_self",
 }: ButtonProps) => {
-  const baseClassName = `
-    py-14 px-20
-    lg:py-18 lg:px-24
-    rounded-lg lg:rounded-xl
-    cursor-pointer
-    ${className ?? ""} `;
-    
   if (href) {
     return (
-      <Link
-        to={href}
+      <a
+        href={href}
         target={target}
         rel={target === "_blank" ? "noopener noreferrer" : undefined}
-        className={baseClassName}
+        className={className}
         onClick={onClick}
       >
         {icon}
         {content}
-      </Link>
+      </a>
     )
   }
 
   return (
-    <button className={`py-14 px-20 lg:py-18 lg:px-24 rounded-lg lg:rounded-xl cursor-pointer ${className}`} onClick={onClick}>
+    <button className={`py-18 px-24 rounded-xl cursor-pointer ${className}`} onClick={onClick}>
       {icon}
       {content}
     </button>
