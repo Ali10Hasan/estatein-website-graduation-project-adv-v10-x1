@@ -12,6 +12,12 @@ function InputCard({
     radioPlaceholder,
     onChange,
     value,
+    containerClassName,
+    min,
+    max,
+    step,
+    error,
+    ariaInvalid,
 }: InputProps) {
 
     const [isSelected, setIsSelected] = useState(false);
@@ -98,7 +104,7 @@ function InputCard({
     }
 
     return (
-        <div className="flex flex-col w-full relative px-10">
+        <div className={`flex flex-col w-full relative px-10 ${containerClassName ?? ""}`}>
             <label
                 htmlFor={name}
                 className="text-base lg:text-xl font-semibold text-white mb-10 md:mb-14 lg:mb-16 font-urbanist"
@@ -113,8 +119,17 @@ function InputCard({
                 type={type}
                 value={value}
                 onChange={onChange}
+                min={min}
+                max={max}
+                step={step}
+                aria-invalid={ariaInvalid}
                 className={`rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 text-white bg-grey-10 border border-grey-15 placeholder:text-grey-40 placeholder:text-sm lg:placeholder:text-lg focus:border-white outline-0 ${className ?? ""}`}
             />
+            {error && (
+                <p className="mt-6 text-[13px] text-red-400">
+                    {error}
+                </p>
+            )}
         </div>
     );
 }
