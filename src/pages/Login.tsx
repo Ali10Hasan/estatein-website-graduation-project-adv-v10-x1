@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "../components/AtomComponents/Button";
-import InputCard from "../components/inputs/InputCard";
 
 const ADMIN_EMAIL = "estatein@gmail.com";
 const ADMIN_PASSWORD = "estatein123";
@@ -17,7 +16,7 @@ const Login = () => {
         setError("");
 
         if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-            sessionStorage.setItem("isLoggedIn", "true");
+            localStorage.setItem("isLoggedIn", "true");
             navigate("/dashboard");
         } else {
             setError("Invalid email or password.");
@@ -112,7 +111,7 @@ const Login = () => {
                         duration: 0.5,
                         delay: 0.2,
                     }}
-                    className="mb-30 flex justify-center mr-30"
+                    className="mb-30 flex justify-center"
                 >
                     <motion.img
                         src="/assets/imgs/EstateinLogo.webp"
@@ -141,14 +140,14 @@ const Login = () => {
                         duration: 0.5,
                         delay: 0.3,
                     }}
-                    className="mb-25 text-center px-10"
+                    className="mb-25 text-center"
                 >
                     <h1 className="text-26 font-semibold text-white">
-                        Welcome Back
+                        Dashboard Login
                     </h1>
 
                     <p className="mt-8 text-14 text-white-90">
-                        Sign in to your Estatein dashboard
+                        Sign in to access the dashboard
                     </p>
                 </motion.div>
 
@@ -170,51 +169,98 @@ const Login = () => {
                     className="flex flex-col gap-18"
                 >
                     {/* Email */}
+                    <div>
+                        <label
+                            htmlFor="email"
+                            className="
+                                mb-8
+                                block
+                                text-14
+                                font-medium
+                                text-white
+                            "
+                        >
+                            Email
+                        </label>
 
-                    <motion.div
-                        whileFocus={{
-                            scale: 1.02,
-                        }}
-                        transition={{
-                            duration: 0.3,
-                        }}
-                    >
-                        <InputCard
-                            label="Email"
-                            name="email"
+                        <motion.input
+                            id="email"
                             type="email"
-                            placeholder="Enter your email"
                             value={email}
                             onChange={(event) =>
                                 setEmail(event.target.value)
                             }
+                            placeholder="Enter your email"
+                            whileFocus={{
+                                scale: 1.02,
+                            }}
+                            transition={{
+                                duration: 0.3,
+                            }}
+                            className="
+                                w-full
+                                rounded-lg
+                                border
+                                border-grey-15
+                                bg-grey-08
+                                px-15
+                                py-13
+                                text-14
+                                text-white
+                                outline-none
+                                placeholder:text-white-90
+                                focus:border-purple-60
+                            "
                         />
-                    </motion.div>
+                    </div>
 
                     {/* Password */}
+                    <div>
+                        <label
+                            htmlFor="password"
+                            className="
+                                mb-8
+                                block
+                                text-14
+                                font-medium
+                                text-white
+                            "
+                        >
+                            Password
+                        </label>
 
-                    <motion.div
-                        whileFocus={{
-                            scale: 1.02,
-                        }}
-                        transition={{
-                            duration: 0.3,
-                        }}
-                    >
-                        <InputCard
-                            label="Password"
-                            name="password"
+                        <motion.input
+                            id="password"
                             type="password"
-                            placeholder="Enter your password"
                             value={password}
                             onChange={(event) =>
                                 setPassword(event.target.value)
                             }
+                            placeholder="Enter your password"
+                            whileFocus={{
+                                scale: 1.02,
+                            }}
+                            transition={{
+                                duration: 0.3,
+                            }}
+                            className="
+                                w-full
+                                rounded-lg
+                                border
+                                border-grey-15
+                                bg-grey-08
+                                px-15
+                                py-13
+                                text-14
+                                text-white
+                                outline-none
+                                placeholder:text-white-90
+                                focus:border-purple-75
+                            "
                         />
-                    </motion.div>
+                    </div>
 
                     {/* Error */}
-                    <div className="px-10">
                     <AnimatePresence>
                         {error && (
                             <motion.p
@@ -234,7 +280,7 @@ const Login = () => {
                                     y: -5,
                                 }}
                                 transition={{
-                                    duration: 0.3,
+                                    duration: 0.25,
                                 }}
                                 className="
                                     overflow-hidden
@@ -252,28 +298,24 @@ const Login = () => {
                             </motion.p>
                         )}
                     </AnimatePresence>
-                    </div>
 
-                    <div className="px-10">
                     {/* Login Button */}
                     <motion.div
                         whileTap={{
-                            scale: 0.97,
+                            scale: 0.98,
                         }}
                     >
                         <Button
                             content="Login"
                             className="
+                                h-50
                                 w-full
                                 rounded-lg
                                 bg-purple-60
                                 text-white
-                                font-semibold
                             "
-                            />
+                        />
                     </motion.div>
-                    </div>
-
                 </motion.form>
             </motion.div>
 

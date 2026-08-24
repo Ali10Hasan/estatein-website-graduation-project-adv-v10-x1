@@ -36,13 +36,13 @@ const PropertiesList = ({
 
 
     if (error) return <Error message={error} />
-
-
+    console.log("PropertiesList items:", items);
     return (
         <Container>
-            <section>
+            <section className="2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
                 <SkeletonTheme baseColor="#1a1a1a" highlightColor="#2a2a2a">
                     <SliderSection
+                        key={items.length}
                         title={sectionTitle}
                         desc={Sectiondescription}
                         desktopCards={3}

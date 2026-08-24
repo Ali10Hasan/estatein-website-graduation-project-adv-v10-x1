@@ -44,7 +44,7 @@ const valuedClientCards: ClientItem[] = [
 const ValuedClientSection = () => {
     return (
         <Container>
-            <section className="flex flex-col">
+            <section className="flex flex-col w-full 2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
                 <SliderSection title='Our Valued Clients'
                     desc="At Estatein, we have had the privilege of working with a diverse range of clients across various industries. Here are some of the clients we've had the pleasure of serving"
                     buttonClassName='' buttonContent=''

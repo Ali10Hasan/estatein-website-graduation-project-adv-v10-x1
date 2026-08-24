@@ -50,9 +50,10 @@ const Footer = () => {
   );
 
   return (
-    <footer className="w-full text-white flex flex-col justify-between h-auto">
+    <footer className="w-full mt-200 bg-grey-08 text-white flex flex-col justify-between h-auto lg:h-425">
+
       {/* القسم العلوي الرئيسي */}
-      <div className="w-full flex flex-col lg:flex-row max-w-1900 mx-auto px-16 md:px-80 lg:px-160 py-50 md:py-80 lg:py-100 gap-x-60">
+      <div className="w-full flex flex-col lg:flex-row pt-0 px-0 lg:pt-60 lg:px-60 gap-y-50 gap-x-60">
 
         {/* اللوغو وحقل الإدخال */}
         <div className="w-full lg:w-[26%] flex flex-col items-start gap-20 pt-50 px-16 pb-8 lg:pt-0 lg:px-0">
@@ -101,7 +102,7 @@ const Footer = () => {
       </div>
 
       {/* القسم السفلي */}
-      <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center bg-grey-10 max-w-1900 mx-auto px-16 md:px-80 lg:px-160 py-20 md:py-12 lg:py-30">
+      <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center bg-grey-10 lg:px-60 p-10 lg:py-20 gap-y-20 lg:gap-y-0 text-14 mt-10 lg:mt-0">
         <div className="flex flex-col lg:flex-row items-center  gap-x-20 text-gray-400 gap-y-2 text-center lg:text-left">
           <p className="hover:text-white ">{footerBottomData.copyright}</p>
           <Link to="#" className="hover:text-white ">
@@ -109,7 +110,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className="flex gap-x-12 justify-center">
+        <div className="flex gap-x-[12px] justify-center">
           {footerBottomData.socialIcons.map((IconComponent, iconIndex) => (
             <Link
               key={iconIndex}

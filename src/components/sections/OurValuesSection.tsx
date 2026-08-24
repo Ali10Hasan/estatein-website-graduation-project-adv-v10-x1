@@ -35,7 +35,7 @@ const VALUES_DATA: ValueItem[] = [
 export const OurValuesSection = () => {
   return (
     <Container>
-      <section className="flex flex-col">
+      <section className="flex flex-col w-full 2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
         <div className="flex flex-col min-[992px]:flex-row min-[992px]:items-stretch gap-40 min-[768px]:gap-60 min-[992px]:gap-80">
   <div className="min-[992px]:flex-2 flex flex-col justify-center">
     <HeaderSection

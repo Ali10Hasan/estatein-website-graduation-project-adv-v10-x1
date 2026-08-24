@@ -34,7 +34,7 @@ const DashboardLayout = () => {
 
     const currentSection = location.pathname.split("/").pop();
 
-    const isLoggedIn = sessionStorage.getItem("isLoggedIn") === "true";
+    const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
     if (!isLoggedIn) {
         return <Navigate to="/login" replace />;
     } 
