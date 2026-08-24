@@ -2,6 +2,9 @@ import { useState } from "react";
 import { FiX } from "react-icons/fi";
 
 import type { IProperty } from "../../types/propertyType";
+import InputCard from "../inputs/InputCard";
+import TextareaInput from "../inputs/TextareaInput";
+import PropertyImagesField from "./PropertyImagesField";
 
 interface PropertyFormProps {
     property?: IProperty;
@@ -9,38 +12,108 @@ interface PropertyFormProps {
     onSave: (data: Omit<IProperty, "id">) => void;
 }
 
+interface PropertyFormState {
+    title: string;
+    category: string;
+    price: string;
+    propertyType: string;
+    bedrooms: string;
+    bathrooms: string;
+    location: string;
+    area: string;
+    builtYear: string;
+    shortDescription: string;
+    fullDescription: string;
+    features: string;
+    images: string[];
+}
+
+type NumericPropertyField =
+    | "price"
+    | "bedrooms"
+    | "bathrooms"
+    | "area"
+    | "builtYear";
+
+type PropertyFormField = NumericPropertyField | "images";
+
+type PropertyFormErrors = Partial<Record<PropertyFormField, string>>;
+
+const numericPropertyFields = new Set<NumericPropertyField>([
+    "price",
+    "bedrooms",
+    "bathrooms",
+    "area",
+    "builtYear",
+]);
+
+const parseOptionalNumber = (value: string) => {
+    return value.trim() === "" ? undefined : Number(value);
+};
+
+const isSupportedPropertyImageSource = (value: string) => {
+    const source = value.trim();
+
+    if (/^\/assets\/\S+$/.test(source)) {
+        return true;
+    }
+
+    try {
+        return new URL(source).protocol === "https:";
+    } catch {
+        return false;
+    }
+};
+
 const PropertyForm = ({
     property,
     onClose,
     onSave,
 }: PropertyFormProps) => {
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<PropertyFormState>({
         title: property?.title ?? "",
         category: property?.category ?? "",
-        price: property?.price ?? 0,
+        price: property?.price !== undefined ? String(property.price) : "",
         propertyType: property?.propertyType ?? "",
-        bedrooms: property?.bedrooms ?? 0,
-        bathrooms: property?.bathrooms ?? 0,
+        bedrooms: property?.bedrooms !== undefined ? String(property.bedrooms) : "",
+        bathrooms: property?.bathrooms !== undefined ? String(property.bathrooms) : "",
         location: property?.location ?? "",
-        area: property?.area ?? 0,
+        area: property?.area !== undefined ? String(property.area) : "",
+        builtYear: property?.builtYear !== undefined ? String(property.builtYear) : "",
         shortDescription: property?.shortDescription ?? "",
         fullDescription: property?.fullDescription ?? "",
         features: property?.features?.join("\n") ?? "",
-        images: property?.images?.join("\n") ?? "",
+        images: property?.images?.length ? [...property.images] : [""],
     });
+    const [errors, setErrors] = useState<PropertyFormErrors>({});
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
     ) => {
-        console.log("FORM SUBMIT WORKED");
-        const { name, value, type } = e.target;
+        const { name, value } = e.target;
 
         setFormData((prev) => ({
             ...prev,
-            [name]:
-                type === "number"
-                    ? Number(value)
-                    : value,
+            [name]: value,
+        }));
+
+        if (numericPropertyFields.has(name as NumericPropertyField)) {
+            setErrors((prev) => ({
+                ...prev,
+                [name]: undefined,
+            }));
+        }
+    };
+
+    const handleImagesChange = (images: string[]) => {
+        setFormData((prev) => ({
+            ...prev,
+            images,
+        }));
+
+        setErrors((prev) => ({
+            ...prev,
+            images: undefined,
         }));
     };
 
@@ -49,18 +122,73 @@ const PropertyForm = ({
     ) => {
         e.preventDefault();
 
+        const price = Number(formData.price);
+        const bedrooms = parseOptionalNumber(formData.bedrooms);
+        const bathrooms = parseOptionalNumber(formData.bathrooms);
+        const area = parseOptionalNumber(formData.area);
+        const builtYear = parseOptionalNumber(formData.builtYear);
+        const images = formData.images
+            .map((image) => image.trim())
+            .filter(Boolean);
+        const currentYear = new Date().getFullYear();
+        const nextErrors: PropertyFormErrors = {};
+
+        if (formData.price.trim() === "" || !Number.isFinite(price) || price <= 0) {
+            nextErrors.price = "Price is required and must be greater than 0.";
+        }
+
+        if (
+            bedrooms !== undefined &&
+            (!Number.isInteger(bedrooms) || bedrooms < 0)
+        ) {
+            nextErrors.bedrooms = "Bedrooms must be a whole number of 0 or more.";
+        }
+
+        if (
+            bathrooms !== undefined &&
+            (!Number.isInteger(bathrooms) || bathrooms < 0)
+        ) {
+            nextErrors.bathrooms = "Bathrooms must be a whole number of 0 or more.";
+        }
+
+        if (area !== undefined && (!Number.isFinite(area) || area <= 0)) {
+            nextErrors.area = "Area must be greater than 0.";
+        }
+
+        if (
+            builtYear !== undefined &&
+            (!Number.isInteger(builtYear) ||
+                builtYear < 1800 ||
+                builtYear > currentYear)
+        ) {
+            nextErrors.builtYear = `Built year must be between 1800 and ${currentYear}.`;
+        }
+
+        if (images.length === 0) {
+            nextErrors.images = "At least one property image is required.";
+        } else if (images.some((image) => !isSupportedPropertyImageSource(image))) {
+            nextErrors.images = "Each image must use an /assets/ path or an HTTPS URL.";
+        } else if (new Set(images).size !== images.length) {
+            nextErrors.images = "Duplicate image URLs are not allowed.";
+        }
+
+        if (Object.keys(nextErrors).length > 0) {
+            setErrors(nextErrors);
+            return;
+        }
+
         const finalData: Omit<IProperty, "id"> = {
-            title: formData.title,
-            category: formData.category,
-            price: formData.price,
-            propertyType: formData.propertyType,
-            bedrooms: formData.bedrooms,
-            bathrooms: formData.bathrooms,
-            location: formData.location,
-            area: formData.area,
-            shortDescription: formData.shortDescription,
-            fullDescription:
-                formData.fullDescription,
+            title: formData.title.trim(),
+            category: formData.category.trim(),
+            price,
+            propertyType: formData.propertyType.trim() || undefined,
+            bedrooms,
+            bathrooms,
+            location: formData.location.trim() || undefined,
+            area,
+            builtYear,
+            shortDescription: formData.shortDescription.trim(),
+            fullDescription: formData.fullDescription.trim() || undefined,
 
             features: formData.features
                 ? formData.features
@@ -69,21 +197,10 @@ const PropertyForm = ({
                     .filter(Boolean)
                 : undefined,
 
-            images: formData.images
-                .split("\n")
-                .map((image) => image.trim())
-                .filter(Boolean),
+            images,
         };
 
-        const cleanData = Object.fromEntries(
-            Object.entries(finalData).filter(
-                ([, value]) => value !== undefined
-            )
-        );
-
-        console.log("CLEAN DATA:", cleanData);
-
-        onSave(cleanData as Omit<IProperty, "id">);
+        onSave(finalData);
     };
 
     return (
@@ -95,7 +212,7 @@ const PropertyForm = ({
         flex
         items-center
         justify-center
-        bg-black/70
+        bg-smoky-black
         px-20
         py-30
         backdrop-blur-sm
@@ -137,7 +254,7 @@ const PropertyForm = ({
                     <FiX size={18} />
                 </button>
 
-                <h2 className="text-24 font-semibold text-white">
+                <h2 className="text-2xl font-semibold text-white-99">
                     {property ? "Edit Property" : "Add New Property"}
                 </h2>
 
@@ -145,171 +262,131 @@ const PropertyForm = ({
                     onSubmit={handleSubmit}
                     className="mt-30 grid grid-cols-1 gap-20 md:grid-cols-2"
                 >
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Title
-                        </label>
+                    <InputCard
+                        label="Title"
+                        name="title"
+                        value={formData.title}
+                        onChange={handleChange}
+                    />
 
-                        <input
-                            name="title"
-                            value={formData.title}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
+                    <InputCard
+                        label="Category"
+                        name="category"
+                        value={formData.category}
+                        onChange={handleChange}
+                    />
 
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Category
-                        </label>
+                    <InputCard
+                        label="Price"
+                        type="number"
+                        name="price"
+                        min={0.01}
+                        step="any"
+                        value={formData.price}
+                        onChange={handleChange}
+                        ariaInvalid={Boolean(errors.price)}
+                        error={errors.price}
+                    />
 
-                        <input
-                            name="category"
-                            value={formData.category}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
+                    <InputCard
+                        label="Property Type"
+                        name="propertyType"
+                        value={formData.propertyType}
+                        onChange={handleChange}
+                    />
 
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Price
-                        </label>
+                    <InputCard
+                        label="Bedrooms"
+                        type="number"
+                        name="bedrooms"
+                        min={0}
+                        step={1}
+                        value={formData.bedrooms}
+                        onChange={handleChange}
+                        ariaInvalid={Boolean(errors.bedrooms)}
+                        error={errors.bedrooms}
+                    />
 
-                        <input
-                            type="number"
-                            name="price"
-                            value={formData.price}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
+                    <InputCard
+                        label="Bathrooms"
+                        type="number"
+                        name="bathrooms"
+                        min={0}
+                        step={1}
+                        value={formData.bathrooms}
+                        onChange={handleChange}
+                        ariaInvalid={Boolean(errors.bathrooms)}
+                        error={errors.bathrooms}
+                    />
 
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Property Type
-                        </label>
+                    <InputCard
+                        label="Location"
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
+                    />
 
-                        <input
-                            name="propertyType"
-                            value={formData.propertyType}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
+                    <InputCard
+                        label="Area"
+                        type="number"
+                        name="area"
+                        min={0.01}
+                        step="any"
+                        value={formData.area}
+                        onChange={handleChange}
+                        ariaInvalid={Boolean(errors.area)}
+                        error={errors.area}
+                    />
 
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Bedrooms
-                        </label>
+                    <InputCard
+                        label="Built Year"
+                        type="number"
+                        name="builtYear"
+                        min={1800}
+                        max={new Date().getFullYear()}
+                        step={1}
+                        value={formData.builtYear}
+                        onChange={handleChange}
+                        ariaInvalid={Boolean(errors.builtYear)}
+                        error={errors.builtYear}
+                    />
 
-                        <input
-                            type="number"
-                            name="bedrooms"
-                            value={formData.bedrooms}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
+                    <TextareaInput
+                        label="Short Description"
+                        name="shortDescription"
+                        value={formData.shortDescription}
+                        onChange={handleChange}
+                        rows={3}
+                        placeholder="Enter a short description"
+                        containerClassName="md:col-span-2 px-10"
+                    />
 
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Bathrooms
-                        </label>
+                    <TextareaInput
+                        label="Full Description"
+                        name="fullDescription"
+                        value={formData.fullDescription}
+                        onChange={handleChange}
+                        rows={4}
+                        placeholder="Enter the full description"
+                        containerClassName="md:col-span-2 px-10"
+                    />
 
-                        <input
-                            type="number"
-                            name="bathrooms"
-                            value={formData.bathrooms}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
+                    <TextareaInput
+                        label="Features"
+                        name="features"
+                        value={formData.features}
+                        onChange={handleChange}
+                        rows={5}
+                        placeholder="Enter each feature on a new line"
+                        containerClassName="md:col-span-2 px-10"
+                    />
 
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Location
-                        </label>
-
-                        <input
-                            name="location"
-                            value={formData.location}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Area
-                        </label>
-
-                        <input
-                            type="number"
-                            name="area"
-                            value={formData.area}
-                            onChange={handleChange}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8 md:col-span-2">
-                        <label className="text-14 text-white-90">
-                            Short Description
-                        </label>
-
-                        <textarea
-                            name="shortDescription"
-                            value={formData.shortDescription}
-                            onChange={handleChange}
-                            rows={3}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8 md:col-span-2">
-                        <label className="text-14 text-white-90">
-                            Full Description
-                        </label>
-
-                        <textarea
-                            name="fullDescription"
-                            value={formData.fullDescription}
-                            onChange={handleChange}
-                            rows={4}
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8 md:col-span-2">
-                        <label className="text-14 text-white-90">
-                            Features
-                        </label>
-
-                        <textarea
-                            name="features"
-                            value={formData.features}
-                            onChange={handleChange}
-                            rows={5}
-                            placeholder="Enter each feature on a new line"
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8 md:col-span-2">
-                        <label className="text-14 text-white-90">
-                            Images
-                        </label>
-
-                        <textarea
-                            name="images"
-                            value={formData.images}
-                            onChange={handleChange}
-                            rows={5}
-                            placeholder="Enter each image path on a new line"
-                            className="rounded-lg border border-grey-15 bg-grey-08 px-14 py-12 text-white"
-                        />
-                    </div>
+                    <PropertyImagesField
+                        images={formData.images}
+                        onChange={handleImagesChange}
+                        isSourceSupported={isSupportedPropertyImageSource}
+                        error={errors.images}
+                    />
 
                     <div className="flex justify-end gap-10 md:col-span-2">
                         <button

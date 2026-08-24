@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FiX } from "react-icons/fi";
 
 import type { IFaq } from "../../types/faqType";
+import InputCard from "../inputs/InputCard";
+import TextareaInput from "../inputs/TextareaInput";
 
 interface FaqFormProps {
     faq?: IFaq;
@@ -60,7 +62,7 @@ const FaqForm = ({
         flex
         items-center
         justify-center
-        bg-black/70
+        bg-smoky-black
         px-20
         backdrop-blur-sm
       "
@@ -100,7 +102,7 @@ const FaqForm = ({
                     <FiX size={18} />
                 </button>
 
-                <h2 className="text-24 font-semibold text-white">
+                <h2 className="text-2xl font-semibold text-white-99">
                     {faq ? "Edit FAQ" : "Add New FAQ"}
                 </h2>
 
@@ -108,48 +110,22 @@ const FaqForm = ({
                     onSubmit={handleSubmit}
                     className="mt-30 flex flex-col gap-20"
                 >
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Question
-                        </label>
+                    <InputCard
+                        label="Question"
+                        name="question"
+                        value={formData.question}
+                        onChange={handleChange}
+                    />
 
-                        <input
-                            name="question"
-                            value={formData.question}
-                            onChange={handleChange}
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
-
-                    <div className="flex flex-col gap-8">
-                        <label className="text-14 text-white-90">
-                            Answer
-                        </label>
-
-                        <textarea
-                            name="answer"
-                            value={formData.answer}
-                            onChange={handleChange}
-                            rows={5}
-                            className="
-                rounded-lg
-                border
-                border-grey-15
-                bg-grey-08
-                px-14
-                py-12
-                text-white
-              "
-                        />
-                    </div>
+                    <TextareaInput
+                        label="Answer"
+                        name="answer"
+                        value={formData.answer}
+                        onChange={handleChange}
+                        rows={5}
+                        placeholder="Enter the FAQ answer"
+                        containerClassName="px-10"
+                    />
 
                     <div className="flex justify-end gap-10">
                         <button
@@ -176,7 +152,7 @@ const FaqForm = ({
                 px-20
                 py-11
                 font-medium
-                text-white
+                text-white-99
                 hover:bg-purple-65
               "
                         >
