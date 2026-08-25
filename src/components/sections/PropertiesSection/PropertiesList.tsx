@@ -43,6 +43,7 @@ const PropertiesList = ({
             <section>
                 <SkeletonTheme baseColor="#1a1a1a" highlightColor="#2a2a2a">
                     <SliderSection
+                        
                         title={sectionTitle}
                         desc={Sectiondescription}
                         desktopCards={3}
