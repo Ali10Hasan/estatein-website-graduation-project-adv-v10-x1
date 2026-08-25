@@ -1,11 +1,8 @@
 import React from "react";
 
-import { ValueCard } from "../features/about/components/ValueCard";
-
-import Button from "./Button";
-
-import { Container } from "./shared/Container";
-
+import { ValueCard } from "./ValueCard";
+import Button from "./AtomComponents/Button";
+import Container from "./Container";
 import Stars from "./AtomComponents/Stars";
 
 export interface CardItem {
