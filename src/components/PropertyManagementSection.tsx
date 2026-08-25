@@ -1,12 +1,18 @@
 import React from "react";
-import ServicesFeatureSection from "./ServicesFeatureSection";
-import type { CardItem } from "./ServicesFeatureSection";
+
+import ServicesFeatureSection, {
+  type CardItem,
+} from "./ServicesFeatureSection";
+
 const effortlessManagementData: CardItem[] = [
   {
     id: "1",
+
     title: "Tenant Harmony",
+
     description:
       "Our Tenant Management services ensure that your tenants have a smooth and reducing vacancies.",
+
     icon: (
       <svg
         className="w-24 h-24"
@@ -23,11 +29,15 @@ const effortlessManagementData: CardItem[] = [
       </svg>
     ),
   },
+
   {
     id: "2",
+
     title: "Maintenance Ease",
+
     description:
       "Say goodbye to property maintenance headaches. We handle all aspects of property upkeep.",
+
     icon: (
       <svg
         className="w-24 h-24"
@@ -44,11 +54,15 @@ const effortlessManagementData: CardItem[] = [
       </svg>
     ),
   },
+
   {
     id: "3",
+
     title: "Financial Peace of Mind",
+
     description:
       "Managing property finances can be complex. Our financial experts take care of rent collection.",
+
     icon: (
       <svg
         className="w-24 h-24"
@@ -65,11 +79,15 @@ const effortlessManagementData: CardItem[] = [
       </svg>
     ),
   },
+
   {
     id: "4",
+
     title: "Legal Guardian",
+
     description:
       "Stay compliant with property laws and regulations effortlessly.",
+
     icon: (
       <svg
         className="w-24 h-24"
