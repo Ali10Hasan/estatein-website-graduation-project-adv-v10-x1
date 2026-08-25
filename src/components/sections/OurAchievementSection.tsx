@@ -19,7 +19,7 @@ const achievements : OurAchievementProps [] = [
 const OurAchievementSection = () => {
   return (
     <Container>
-    <section className="flex flex-col w-full 2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
+    <section className="flex flex-col">
       <HeaderSection title="Our Achievements" description="Our story is one of continuous growth and evolution. We started as a small team with big dreams, determined to create a real estate platform that transcended the ordinary."/>
       <div className="grid grid-cols-1 lg:grid-cols-3 pt-40 md:pt-60 lg:pt-80 gap-30">
         {achievements.map((achieve , index)=>{
