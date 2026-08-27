@@ -5,9 +5,12 @@ import { ServicesFeatureSection, type CardItem } from "./ServicesFeatureSection"
 const unlockPropertyData: CardItem[] = [
   {
     id: "1",
+
     title: "Valuation Mastery",
+
     description:
       "Discover the true worth of your property with our expert valuation services.",
+
     icon: (
       <svg
         className="w-24 h-24"
@@ -24,11 +27,15 @@ const unlockPropertyData: CardItem[] = [
       </svg>
     ),
   },
+
   {
     id: "2",
+
     title: "Strategic Marketing",
+
     description:
       "Selling a property requires more than just a listing; it demands a strategic marketing approach.",
+
     icon: (
       <svg
         className="w-24 h-24"
@@ -42,6 +49,7 @@ const unlockPropertyData: CardItem[] = [
           strokeWidth={2}
           d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"
         />
+
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -51,11 +59,15 @@ const unlockPropertyData: CardItem[] = [
       </svg>
     ),
   },
+
   {
     id: "3",
+
     title: "Negotiation Wizardry",
+
     description:
       "Negotiating the best deal is an art, and our negotiation experts are masters of it.",
+
     icon: (
       <svg
         className="w-24 h-24"
@@ -72,11 +84,15 @@ const unlockPropertyData: CardItem[] = [
       </svg>
     ),
   },
+
   {
     id: "4",
+
     title: "Closing Success",
+
     description:
       "A successful sale is not complete until the closing. We guide you through the intricate closing process.",
+
     icon: (
       <svg
         className="w-24 h-24"
@@ -95,7 +111,7 @@ const unlockPropertyData: CardItem[] = [
   },
 ];
 
-export const UnlockPropertySection: React.FC = () => {
+export const UnlockPropertySection = () => {
   return (
     <ServicesFeatureSection
       title="Unlock Property Value"
