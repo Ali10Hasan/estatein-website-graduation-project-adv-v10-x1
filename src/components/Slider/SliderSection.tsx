@@ -88,7 +88,7 @@ const actionButton = (
           )}
         </div>
         {showAll ? (
-          <div className="gridgap-20 grid-cols-(--mobile-cols) md:grid-cols-(--tablet-cols)  lg:grid-cols-(--desktop-cols) "style={gridStyle} >
+          <div className="grid gap-20 grid-cols-(--mobile-cols) md:grid-cols-(--tablet-cols)  lg:grid-cols-(--desktop-cols) "style={gridStyle} >
             {children}
           </div>
         ) : (
