@@ -3,9 +3,10 @@ import type { RootState } from "../../redux/store/store";
 
 import SliderSection from "../Slider/SliderSection";
 import FaqCard from "../FaqCard";
-import Loading from "../Loading";
 import Error from "../Error";
 import Container from "../Container";
+import CardSkeleton from "../CardSkeleton";
+import { SkeletonTheme } from "react-loading-skeleton";
 
 /**
  * FaqSection
@@ -38,20 +39,16 @@ const FaqSection = () => {
     (state: RootState) => state.faqs
   );
 
-  if (loading) {
-    return <Loading />;
-  }
-
   if (error) {
     return <Error message={error} />;
   }
 
-  if (faqs.length === 0) {
-    return null;
-  }
-
   return (
-      <Container>
+    <Container>
+      <SkeletonTheme
+        baseColor="#1A1A1A"
+        highlightColor="#262626"
+      >
         <SliderSection
           title="Frequently Asked Questions"
           desc="Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way."
@@ -60,13 +57,17 @@ const FaqSection = () => {
           mobileCards={1}
           showButton
           buttonContent="View All FAQ's"
-          buttonClassName="h-50 rounded-lg border border-grey-15 bg-grey-08 px-20 text-white transition-colors hover:bg-grey-15 cursor-pointer whitespace-nowrap"
         >
-          {faqs.map((faq) => (
-            <FaqCard key={faq.id} faq={faq} />
-          ))}
+          {loading
+            ? Array.from({ length: 3 }).map((_, index) => (
+              <CardSkeleton key={index} variant="faq" />
+            ))
+            : faqs.map((faq) => (
+              <FaqCard key={faq.id} faq={faq} />
+            ))}
         </SliderSection>
-      </Container>
+      </SkeletonTheme>
+    </Container>
   );
 };
 
