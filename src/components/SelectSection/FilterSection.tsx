@@ -11,7 +11,7 @@ import type { RootState } from "../../redux/store/store";
 export interface SelectionData {
     Icone: JSX.Element;
     FilterText: string;
-    FilterKey: string;
+    FilterKey: keyof RootState["properties"]["filters"];
 }
 const SelectionData:SelectionData[]=[
     {
@@ -32,19 +32,19 @@ const SelectionData:SelectionData[]=[
     {
         Icone: <IoCubeOutline />,
         FilterText:"Property Size",
-        FilterKey:"PropertySize"
+        FilterKey:"propertySize"
     },
     {
         Icone: <MdDateRange />,
         FilterText:"Build Year",
-        FilterKey:"BuildYear"
+        FilterKey:"buildYear"
     },
 ]
 const FilterSection = () => {
   const Options=useSelector((state:RootState)=>state.properties.itemsFiltered);
 
   return (
-    <div>
+    <div className="">
         <div className="Search">
         <Search/>
         </div>

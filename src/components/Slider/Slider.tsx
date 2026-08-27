@@ -14,7 +14,7 @@ export default function Slider({
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
-  const [visibleCards, setVisibleCards] = useState(mobileCards);
+  const visibleCardsRef = useRef(mobileCards);
 
   const cardStyle = {
     "--card-w": cardWidth > 0 ? `${cardWidth}px` : "100%",
@@ -25,12 +25,10 @@ export default function Slider({
     const count =
       width >= 1024 ? desktopCards : width >= 768 ? tabletCards : mobileCards;
 
-    setVisibleCards((prev) => {
-      if (prev !== count) {
-        onVisibleCardsChange(count);
-      }
-      return count;
-    });
+if (visibleCardsRef.current !== count) {
+  visibleCardsRef.current = count;
+  onVisibleCardsChange(count);
+}
 
     if (containerRef.current) {
       const containerWidth = containerRef.current.offsetWidth;
@@ -72,4 +70,4 @@ export default function Slider({
       </div>
     </div>
   );
-}
+} 

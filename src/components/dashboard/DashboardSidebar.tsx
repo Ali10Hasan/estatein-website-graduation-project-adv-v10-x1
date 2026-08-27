@@ -23,7 +23,8 @@ const DashboardSidebar = () => {
     ];
 
     const handleLogout = () => {
-        navigate("/login");
+        sessionStorage.removeItem("isLoggedIn");
+        navigate("/login", { replace: true });
     };
 
     return (

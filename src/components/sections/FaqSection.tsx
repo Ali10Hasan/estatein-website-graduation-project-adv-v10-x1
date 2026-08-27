@@ -51,7 +51,7 @@ const FaqSection = () => {
   }
 
   return (
-      <Container className="my-80 md:my-96">
+      <Container>
         <SliderSection
           title="Frequently Asked Questions"
           desc="Find answers to common questions about Estatein's services, property listings, and the real estate process. We're here to provide clarity and assist you every step of the way."

@@ -1,9 +1,9 @@
 import React from "react";
 
-import { ValueCard } from "./ValueCard";
-import Button from "./AtomComponents/Button";
-import Container from "./Container";
-import Stars from "./AtomComponents/Stars";
+import Stars from "../AtomComponents/Stars";
+import Container from "../Container";
+import { ValueCard } from "../ValueCard";
+import Button from "../AtomComponents/Button";
 
 export interface CardItem {
   id: string;

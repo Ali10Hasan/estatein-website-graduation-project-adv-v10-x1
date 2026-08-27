@@ -1,7 +1,7 @@
 import PageHero from "../components/Hero/PageHero";
 import CardAdvantages from "../components/CardAdvantages";
-import { UnlockPropertySection } from "../components/UnlockPropertySection";
-import PropertyManagementSection from "../components/PropertyManagementSection";
+import PropertyManagementSection from "../components/sections/PropertyManagementSection";
+import UnlockPropertySection from "../components/sections/UnlockPropertySection";
 
 interface CardAdvantagesProps {
   Arrow: string;

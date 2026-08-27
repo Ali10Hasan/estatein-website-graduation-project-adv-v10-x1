@@ -67,6 +67,7 @@ const propertiesSlice = createSlice({
     name: "properties",
     initialState,
 
+   
     reducers: {
         setProperties: (state, action: PayloadAction<IProperty[]>) => {
             state.itemsFiltered = action.payload;

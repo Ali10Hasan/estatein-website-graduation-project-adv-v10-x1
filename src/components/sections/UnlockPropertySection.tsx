@@ -1,8 +1,6 @@
 import React from "react";
+import { ServicesFeatureSection, type CardItem } from "./ServicesFeatureSection";
 
-import ServicesFeatureSection from "./ServicesFeatureSection";
-
-import type { CardItem } from "./ServicesFeatureSection";
 
 const unlockPropertyData: CardItem[] = [
   {

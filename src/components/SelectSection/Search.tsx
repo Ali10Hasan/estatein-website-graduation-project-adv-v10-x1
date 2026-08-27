@@ -1,6 +1,6 @@
 import { CiSearch } from "react-icons/ci"
 import { useDispatch } from "react-redux"
-import { updateFilter } from "../../redux/slices/propertiesSlice"
+import { updateFilter} from "../../redux/slices/propertiesSlice"
 
 const Search = () => {
   const dispatch=useDispatch()

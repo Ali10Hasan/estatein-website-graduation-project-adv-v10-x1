@@ -6,7 +6,7 @@ import type { JSX } from "react";
 interface SelectProps {
   Icone: JSX.Element;
   FilterText: string;
-  filterKey: string;
+  filterKey: keyof RootState["properties"]["filters"];
   options: string[]; 
 }
 

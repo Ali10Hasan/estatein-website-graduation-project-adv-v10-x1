@@ -2,8 +2,7 @@ import React from "react";
 
 import ServicesFeatureSection, {
   type CardItem,
-}
-from "./sections/ServicesFeatureSection.tsx";
+} from "./ServicesFeatureSection";
 
 const effortlessManagementData: CardItem[] = [
   {
