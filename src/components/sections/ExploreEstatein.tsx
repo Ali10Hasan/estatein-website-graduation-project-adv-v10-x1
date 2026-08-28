@@ -11,7 +11,7 @@ import HeaderSection from "../HeaderSection";
 function ExploreEstatein() {
   return (
     <Container>
-      <section className=" w-full  p-24 md:p-60 min-[1440px]:p-80 bg-cover bg-no-repeat bg-grey-10 border border-grey-15 rounded-xl " style={{ backgroundImage: "url('/assets/imgs/Explore-Abstract-Design.webp')", }} >
+      <section className=" w-full  p-24 md:p-60 min-[1441px]:p-80 bg-cover bg-no-repeat bg-grey-10 border border-grey-15 rounded-xl " style={{ backgroundImage: "url('/assets/imgs/Explore-Abstract-Design.webp')", }} >
         <div className=" grid grid-cols-2  md:grid-rows-[191.5px_191.5px_220px] grid-rows-[71.5px_71.5px_auto_auto] lg:grid-rows-[236px_236px_280px] md:gap-20 w-full gap-10 ">
           <div className="group overflow-hidden rounded-2xl ">
             <img src={img1} alt="img1" className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
