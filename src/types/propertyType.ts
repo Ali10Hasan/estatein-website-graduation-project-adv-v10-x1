@@ -12,6 +12,7 @@ export interface IProperty {
     bathrooms?: number;
 
     area?: number;
+    builtYear?: number;
 
     shortDescription: string;
     fullDescription?: string;

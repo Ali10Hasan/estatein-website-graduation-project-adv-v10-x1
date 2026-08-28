@@ -1,6 +1,29 @@
-import { addDoc, collection, deleteDoc, doc, onSnapshot, updateDoc } from "firebase/firestore";
+import {
+    addDoc,
+    collection,
+    deleteDoc,
+    deleteField,
+    doc,
+    onSnapshot,
+    updateDoc,
+} from "firebase/firestore";
 
 import { db } from "../config/firebase";
+
+const prepareCreateData = (data: object) => {
+    return Object.fromEntries(
+        Object.entries(data).filter(([, value]) => value !== undefined)
+    );
+};
+
+const prepareUpdateData = (data: object) => {
+    return Object.fromEntries(
+        Object.entries(data).map(([key, value]) => [
+            key,
+            value === undefined ? deleteField() : value,
+        ])
+    );
+};
 
 export const readData = <T>(
     collectionName: string,
@@ -36,9 +59,11 @@ export const addData = async (
     collectionName: string,
     data: object
 ) => {
+    const preparedData = prepareCreateData(data);
+
     const docRef = await addDoc(
         collection(db, collectionName),
-        data
+        preparedData
     );
 
     return docRef.id;
@@ -50,9 +75,10 @@ export const updateData = async (
     data: object
 ) => {
     const docRef = doc(db, collectionName, id);
+    const preparedData = prepareUpdateData(data);
 
     try {
-        await updateDoc(docRef, data);
+        await updateDoc(docRef, preparedData);
     } catch (error) {
         console.error("Error updating document:", error);
         throw error;

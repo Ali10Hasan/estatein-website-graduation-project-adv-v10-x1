@@ -37,7 +37,7 @@ const stepsCards :ExperienceCardProps [] = [
 const ExperienceSection = () => {
   return (
     <Container>
-<section className="flex flex-col w-full 2xl:max-w-1596 mx-auto xl:max-w-7xl lg:max-w-5xl md:max-w-3xl sm:max-w-640 max-w-358 2xl:my-150 xl:my-120 my-80">
+<section className="flex flex-col">
     <HeaderSection 
         title='Navigating the Estatein Experience' 
         description="At Estatein, we've designed a straightforward process to help you find and purchase your dream property with ease. Here's a step-by-step guide to how it all works."

@@ -89,10 +89,25 @@ const PropertiesTable = () => {
                 <tbody>
                     {items.map((property) => {
 
+                        const hasPrice =
+                            Number.isFinite(property.price) &&
+                            property.price > 0;
+
+                        const hasArea =
+                            typeof property.area === "number" &&
+                            Number.isFinite(property.area) &&
+                            property.area > 0;
+
+                        const hasBuiltYear =
+                            typeof property.builtYear === "number" &&
+                            Number.isInteger(property.builtYear) &&
+                            property.builtYear > 0;
+
                         const hasDetails =
                             property.fullDescription ||
                             property.location ||
-                            property.area ||
+                            hasArea ||
+                            hasBuiltYear ||
                             property.features?.length ||
                             property.images.length > 1;
 
@@ -121,7 +136,9 @@ const PropertiesTable = () => {
                                     </td>
 
                                     <td className="px-20 py-20">
-                                        ${property.price.toLocaleString()}
+                                        {hasPrice
+                                            ? `$${property.price.toLocaleString()}`
+                                            : "—"}
                                     </td>
 
                                     <td className="px-20 py-20">
@@ -129,11 +146,11 @@ const PropertiesTable = () => {
                                     </td>
 
                                     <td className="px-20 py-20">
-                                        {property.bedrooms}
+                                        {property.bedrooms ?? "—"}
                                     </td>
 
                                     <td className="px-20 py-20">
-                                        {property.bathrooms}
+                                        {property.bathrooms ?? "—"}
                                     </td>
 
                                     {/* Details */}
@@ -197,7 +214,7 @@ const PropertiesTable = () => {
                                                         </div>
                                                     )}
 
-                                                    {property.area && (
+                                                    {hasArea && (
                                                         <div>
                                                             <p className="text-14 text-grey-60">
                                                                 Area
@@ -205,6 +222,18 @@ const PropertiesTable = () => {
 
                                                             <p className="mt-6 text-white-90">
                                                                 {property.area} Square Feet
+                                                            </p>
+                                                        </div>
+                                                    )}
+
+                                                    {hasBuiltYear && (
+                                                        <div>
+                                                            <p className="text-14 text-grey-60">
+                                                                Built Year
+                                                            </p>
+
+                                                            <p className="mt-6 text-white-90">
+                                                                {property.builtYear}
                                                             </p>
                                                         </div>
                                                     )}
