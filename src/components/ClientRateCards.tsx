@@ -3,7 +3,7 @@ import RatingStars from "./AtomComponents/RatingStars"
 
 const ClientRateCards = ({ title, review, image, rating, name, location }: ITestimonial) => {
   return (
-    <div className="h-full min-h-400 w-full rounded-xl border border-grey-15 p-24 min-[992px]:p-30 flex flex-col justify-start text-white bg-grey-08 hover:bg-grey-15 transition-colors">
+    <div className="h-full min-h-400 w-full rounded-xl border border-grey-15 p-24 min-[992px]:p-30 flex flex-col justify-start text-white bg-grey-08 hover:border-purple-65 hover:bg-grey-15 transition-colors">
       <div>
         <div className="pb-40">
           <RatingStars rating={rating} />
