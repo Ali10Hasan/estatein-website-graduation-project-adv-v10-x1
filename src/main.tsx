@@ -5,7 +5,6 @@ import RootLayout from './pages/RootLayout';
 import Home from './pages/Home';
 import About from './pages/About';
 import Properties from './pages/Properties';
-import PropertyDetails from './pages/PropertyDetails';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
 import { Provider } from 'react-redux';
@@ -17,6 +16,7 @@ import DataListener from './components/DataListener';
 import FaqsTable from './components/dashboard/FaqsTable';
 import TestimonialsTable from './components/dashboard/TestimonialsTable';
 import PropertiesTable from './components/dashboard/PropertiesTable';
+import PropertyContainer from './components/PropertyDetailsPage/PropertyContainer';
 
 
 export const router = createBrowserRouter([
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "property/:id",
-        element: <PropertyDetails />,
+        element: <PropertyContainer />,
       },
       {
         path: "services",
@@ -64,7 +64,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "properties",
-        element:<PropertiesTable />,
+        element: <PropertiesTable />,
       },
       {
         path: "faqs",

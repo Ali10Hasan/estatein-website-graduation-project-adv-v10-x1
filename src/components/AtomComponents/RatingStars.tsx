@@ -17,7 +17,7 @@ const RatingStars = ({ rating }: RatingStarsProps) => {
                 rounded-full
                 p-6
                 lg:p-10" 
-                key={index}><FaStar className="text-[#FFE500] lg:text-2xl text-lg"/></span>
+                key={index}><FaStar className="text-[#FFE500] lg:text-xl text-lg"/></span>
             ))}
         </div>
     );

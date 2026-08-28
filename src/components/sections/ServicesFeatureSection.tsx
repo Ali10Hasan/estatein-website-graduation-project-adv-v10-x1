@@ -7,37 +7,53 @@ import Button from "../AtomComponents/Button";
 
 export interface CardItem {
   id: string;
+
   title: string;
+
   description: string;
+
   icon: React.ReactNode;
 }
 
 interface ServicesFeatureSectionProps {
   title: string;
+
   description: string;
+
   cardsData: CardItem[];
+
   bannerTitle: string;
+
   bannerDescription: string;
+
   buttonText?: string;
 }
 
-export const ServicesFeatureSection: React.FC<ServicesFeatureSectionProps> = ({
+export const ServicesFeatureSection = ({
   title,
+
   description,
+
   cardsData,
+
   bannerTitle,
+
   bannerDescription,
+
   buttonText = "Learn More",
-}) => {
+}: ServicesFeatureSectionProps) => {
   return (
     <section className="bg-grey-08 text-white font-urbanist w-full py-40 md:pt-80 md:pb-50">
       <Container>
         {/* Header Section */}
+
         <div className="mb-30 md:mb-50 relative px-16 sm:px-0">
           <Stars />
+
           <h2 className="text-[28px] sm:text-[38px] md:text-[48px] font-semibold mb-10 md:mb-14 text-white font-urbanist leading-[130%] md:leading-[150%]">
             {title}
           </h2>
+
           <p className="text-grey-60 text-[14px] sm:text-[16px] md:text-[18px] font-urbanist leading-[150%] max-w-[1296px] w-full block">
             {description}
           </p>

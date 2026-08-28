@@ -39,6 +39,45 @@ export const CardSkeleton = ({ variant = "property" }: ICardSkeleton) => {
                         </div>
                     </div>
                 </div>
+
+            )}
+
+            {variant === "review" && (
+                <div className="flex flex-col gap-20">
+
+                    <div className="flex gap-2">
+                        {Array.from({ length: 5 }).map((_, i) => (
+                            <Skeleton key={i} circle width={24} height={24} />
+                        ))}
+                    </div>
+
+                    <div>
+                        <Skeleton height={22} width="60%" className="mb-2" />
+                        <Skeleton count={3} height={16} />
+                    </div>
+
+                    <div className="flex items-center gap-3 mt-4">
+                        <Skeleton circle width={50} height={50} />
+                        <div className="w-full">
+                            <Skeleton height={16} width="40%" className="mb-1" />
+                            <Skeleton height={14} width="60%" />
+                        </div>
+                    </div>
+                </div>
+            )}
+
+
+            {variant === "faq" && (
+                <div className="flex flex-col gap-24 justify-between h-full">
+                    <div>
+                        <Skeleton height={28} width="90%" className="mb-3" />
+                        <Skeleton count={2} height={16} className="mb-6" />
+                    </div>
+
+                    <div>
+                        <Skeleton width={120} height={40} borderRadius={8} />
+                    </div>
+                </div>
             )}
         </div>
     );

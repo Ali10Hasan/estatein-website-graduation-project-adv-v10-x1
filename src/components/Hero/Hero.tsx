@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Stats from '../AtomComponents/Stats';
 import { HERO_DATA } from './data';
 import Button from '../AtomComponents/Button';
+import { TypingText } from '../FramerMotion/Animation';
 
 
 
@@ -14,7 +15,7 @@ const Hero = () => {
                 <div className="text-white 2xl:max-w-920 xl:max-w-690  max-w-[95%] mx-auto xl:mx-0  ">
                     <header className='xl:max-w-610 2xl:max-w-758 '>
                         <h1 className="text-[28px] xl:text-[46px] 2xl:text-[60px] font-semibold leading-[120%]">
-                            {HERO_DATA.title}
+                            <TypingText text={HERO_DATA.title} />
                         </h1>
                         <p className="text-grey-60 font-medium text-[14px] xl:text-[16px] 2xl:text-[18px] mt-16 xl:mt-20 2xl:mt-24">{HERO_DATA.description}</p>
                     </header>
