@@ -1,4 +1,5 @@
 
+import InquiryForm from "../components/PropertyDetailsPage/InquiryForm";
 import PropertyPricing from "../components/PropertyDetailsPage/PricingPropertyDetails/PropertyPricing";
 import PropertyGallery from "../components/PropertyDetailsPage/PropertyGallery";
 import PropertyOverview from "../components/PropertyDetailsPage/PropertyOverview";
@@ -12,9 +13,10 @@ interface PropertyDetailsProps {
 const PropertyDetails = ({ property }: PropertyDetailsProps) => {
     return (
         <>
-            <div className="2xl:max-w-1596 xl:max-w-7xl sm:max-w-[95%] max-w-358 mx-auto flex flex-col text-white">
+            <div className="2xl:max-w-1628 xl:max-w-1296 px-16 mx-auto flex flex-col text-white">
                 <PropertyGallery property={property} />
                 <PropertyOverview property={property} />
+                <InquiryForm />
                 <PropertyPricing property={property} />
             </div>
             <FaqSection />

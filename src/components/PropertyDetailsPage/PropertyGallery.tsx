@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import type { IProperty } from "../../types/propertyType";
 import { StaggerContainer, StaggerItem } from "../FramerMotion/Animation";
+import { FaLocationDot } from "react-icons/fa6";
 
 interface PropertyGalleryProps {
     property: IProperty;
@@ -50,7 +51,11 @@ const PropertyGallery = ({ property }: PropertyGalleryProps) => {
     };
 
     return (
-        <div className="flex flex-col 2xl:gap-50 xl:gap-40 gap-30 2xl:mt-120 xl:mt-80 mt-60 2xl:mb-30 mb-20 max-w-358 sm:max-w-[95%] xl:max-w-7xl 2xl:max-w-1596 mx-auto">
+        /* 
+        <div className="   px-16 xl:px-0   ">
+        
+        */
+        <div className="2xl:mt-120 xl:mt-80 mt-60 2xl:mb-30 mb-20 flex flex-col 2xl:gap-50 xl:gap-40 gap-30 2xl:max-w-1596 xl:max-w-7xl">
             {/* Gallery Heading */}
 
             <div className="flex lg:items-center items-start lg:gap-20 gap-10 flex-col lg:flex-row ">
@@ -58,7 +63,7 @@ const PropertyGallery = ({ property }: PropertyGalleryProps) => {
 
                 <div className="flex justify-between items-center grow gap-20">
                     <div className="flex items-center 2xl:gap-6 gap-4 border border-grey-15 rounded-lg 2xl:p-10 p-8">
-                        <img src="/assets/icons/location.svg" alt="location" className="2xl:w-24 2xl:h-24 w-20 h-20" />
+                        <FaLocationDot className="2xl:w-24 2xl:h-24 w-20 h-20 animate-bounce" />
                         <span className="text-[14px] 2xl:text-[18px] font-medium">{property.location}</span>
                     </div>
 
