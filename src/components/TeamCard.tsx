@@ -11,7 +11,7 @@ export default function TeamCard({
     <div className="group w-full rounded-xl border border-grey-15 p-20 md:p-24 lg:p-30 h-full flex flex-col transition-colors duration-300 hover:border-purple-60">
       <div className="relative">
         <div className="overflow-hidden rounded-10">
-          <img src={image} alt={name} className="w-full rounded-10 object-cover h-full transition-transform duration-500 ease-in-out group-hover:scale-105"  />
+          <img src={image} alt={name} className="w-full rounded-xl object-cover object-top h-268 min-[1200]:h-220 min-[1440]:h-253 transition-transform duration-500 ease-in-out group-hover:scale-105"  />
         </div>
         <button type="button" aria-label="Twitter"className="absolute -bottom-18 lg:-bottom-20 left-1/2 flex h-40 w-60 lg:w-76 lg:h-52 -translate-x-1/2 items-center justify-center rounded-full bg-purple-60 text-white" >
           <FaTwitter className="size-20 lg:size-24 transition-transform duration-600 ease-in-out group-hover:rotate-360"/>

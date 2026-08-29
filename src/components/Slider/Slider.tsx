@@ -11,36 +11,36 @@ export default function Slider({
   mobileCards = 1,
   onVisibleCardsChange,
 }: SliderProps) {
-
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [cardWidth, setCardWidth] = useState(0);
   const visibleCardsRef = useRef(mobileCards);
 
-  const cardStyle = {
-    "--card-w": cardWidth > 0 ? `${cardWidth}px` : "100%",
-  } as CSSProperties;
-
   const recalculate = useCallback(() => {
-    const width = window.innerWidth;
+    const screenWidth = window.innerWidth;
+
     const count =
-      width >= 1024 ? desktopCards : width >= 768 ? tabletCards : mobileCards;
+      screenWidth >= 1024 ? desktopCards
+        : screenWidth >= 768 ? tabletCards : mobileCards;
 
-if (visibleCardsRef.current !== count) {
-  visibleCardsRef.current = count;
-  onVisibleCardsChange(count);
-}
-
-    if (containerRef.current) {
-      const containerWidth = containerRef.current.offsetWidth;
-      const totalGap = gap * (count - 1);
-      setCardWidth((containerWidth - totalGap) / count);
+    if (visibleCardsRef.current !== count) {
+      visibleCardsRef.current = count;
+      onVisibleCardsChange(count);
     }
-  }, [desktopCards, tabletCards, mobileCards, gap, onVisibleCardsChange]);
+
+    if (!containerRef.current) return;
+    const availableWidth = containerRef.current.clientWidth;
+    const totalGap = gap * (count - 1);
+    const width = (availableWidth - totalGap) / count;
+
+    setCardWidth(width);
+  }, [desktopCards, tabletCards, mobileCards, gap, onVisibleCardsChange,]);
 
   useEffect(() => {
     recalculate();
     window.addEventListener("resize", recalculate);
-    return () => window.removeEventListener("resize", recalculate);
+    return () => {
+      window.removeEventListener("resize", recalculate);
+    };
   }, [recalculate]);
 
   const translateX = useMemo(
@@ -53,20 +53,19 @@ if (visibleCardsRef.current !== count) {
     "--tx": `${translateX}px`,
   } as CSSProperties;
 
+  const cardStyle = {
+    width: `${cardWidth}px`,
+  } as CSSProperties;
+
   return (
-    <div ref={containerRef} className="overflow-hidden w-full mb-30 md:mb-40 lg:mb-50">
-      <div
-        className="pt-6 pb-6 flex gap-(--gap) transition-transform duration-500 ease-in-out w-max -translate-x-(--tx)"
-        style={trackStyle}>
+    <div ref={containerRef} className="w-full overflow-hidden mb-30 md:mb-40 lg:mb-50">
+      <div className=" flex gap-(--gap) transition-transform duration-500 ease-in-out w-max pt-6 pb-6 -translate-x-(--tx) " style={trackStyle} >
         {children.map((child, index) => (
-          <div
-            key={index}
-            className="shrink-0 w-(--card-w)"
-            style={cardStyle} >
+          <div key={index} className="shrink-0" style={cardStyle}>
             {child}
           </div>
         ))}
       </div>
     </div>
   );
-} 
+}
