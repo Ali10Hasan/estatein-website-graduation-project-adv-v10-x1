@@ -6,7 +6,7 @@ import CTA from '../components/CTA'
 
 const RootLayout = () => {
     return (
-        <div className='bg-grey-08'>
+        <div className='bg-grey-08 light:bg-white-99'>
             <Banner />
             <Navbar />
             <Outlet />
