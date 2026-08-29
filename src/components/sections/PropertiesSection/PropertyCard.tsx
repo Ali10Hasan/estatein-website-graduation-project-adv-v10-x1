@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import type { IProperty } from "../../../types/propertyType";
 import Button from "../../AtomComponents/Button";
+import { LuBed, LuBath } from "react-icons/lu";
+import { HiMiniHomeModern } from "react-icons/hi2";
 
 interface PropertyCardProps extends IProperty {
     showCategory?: boolean;
@@ -24,7 +26,8 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
         : description.slice(0, maxLength) + '...';
 
     return (
-            <div className="bg-grey-08 border border-grey-15 max-w-358 xl:max-w-413 2xl:max-w-lg p-24 xl:p-30 2xl:p-40 rounded-xl text-white flex flex-col gap-20 xl:gap-24 2xl:gap-30 h-full transition-all duration-300 hover:border-purple-60 group">            <div className="h-210 xl:h-255 2xl:h-318 rounded-[10px] overflow-hidden">
+        <div className="bg-grey-08 border border-grey-15 max-w-full xl:max-w-413 2xl:max-w-lg p-24 xl:p-30 2xl:p-40 rounded-xl text-white flex flex-col gap-20 xl:gap-24 2xl:gap-30 h-full transition-all duration-300 hover:border-purple-60 group">
+            <div className="h-210 xl:h-255 2xl:h-318 rounded-[10px] overflow-hidden">
                 <img
                     src={cardImage}
                     alt={title}
@@ -58,15 +61,15 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
                     {showDetails && bedrooms !== undefined && (
                         <div className="flex flex-wrap gap-6 mb-20 xl:mb-24 2xl:gap-10 2xl:mb-30">
                             <div className="bg-grey-10 border border-grey-15 rounded-[28px] px-14 py-6 xl:py-8 font-medium text-[14px] 2xl:text-[18px] flex items-center gap-4">
-                                <img src="/assets/imgs/properties/bedroomIcon.png" alt="bed" className="2xl:w-24 w-20 " />
+                                <LuBed className="2xl:w-24 w-20 " />
                                 <span>{bedrooms}-Bedroom</span>
                             </div>
                             <div className="bg-grey-10 border border-grey-15 rounded-[28px] px-14 py-6 xl:py-8 font-medium text-[14px] 2xl:text-[18px] flex items-center gap-4">
-                                <img src="/assets/imgs/properties/bathroomIcon.png" alt="bath" className="2xl:w-24 w-20 " />
+                                <LuBath className="2xl:w-24 w-20 " />
                                 <span>{bathrooms}-Bathroom</span>
                             </div>
                             <div className="bg-grey-10 border border-grey-15 rounded-[28px] px-14 py-6 xl:py-8 font-medium text-[14px] 2xl:text-[18px] flex items-center gap-4">
-                                <img src="/assets/imgs/properties/villaIcon.png" alt="type" className="2xl:w-24 w-20 " />
+                                <HiMiniHomeModern className="2xl:w-24 w-20 " />
                                 <span>{propertyType}</span>
                             </div>
                         </div>

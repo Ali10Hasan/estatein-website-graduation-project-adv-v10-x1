@@ -2,6 +2,7 @@ import type { IProperty } from "../../types/propertyType";
 import { StaggerContainer, StaggerItem } from "../FramerMotion/Animation";
 import Feature from "./FeaturesPropertyDetails/Feature";
 import PropertyFeatureCard from "./FeaturesPropertyDetails/PropertyFeatureCard";
+import { LuBed, LuBath, LuRuler } from "react-icons/lu";
 
 interface PropertyOverviewProps {
     property: IProperty;
@@ -16,15 +17,8 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
             value: property.bedrooms
                 ? String(property.bedrooms).padStart(2, "0")
                 : "No Bedrooms",
-
             className: "border-r border-grey-15 pr-10",
-
-            icon: (
-                <img
-                    src="/assets/icons/bedroom.svg"
-                    alt="Bedrooms"
-                />
-            ),
+            icon: <LuBed className="text-grey-60 2xl:text-2xl text-[20px]" />,
         },
 
         {
@@ -32,15 +26,8 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
             value: property.bathrooms
                 ? String(property.bathrooms).padStart(2, "0")
                 : "No Bathrooms",
-
             className: "xl:border-r border-grey-15 pr-10",
-
-            icon: (
-                <img
-                    src="/assets/icons/bathroom.svg"
-                    alt="Bathrooms"
-                />
-            ),
+            icon: <LuBath className="text-grey-60 2xl:text-2xl text-[20px]" />,
         },
 
         {
@@ -49,15 +36,10 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
                 ? `${property.area} Square Feet`
                 : "0 Square Feet",
 
-            className:
-                "col-span-2 xl:col-span-1 border-t border-grey-15 pt-20 xl:pt-0 xl:border-none",
+            className: "col-span-2 xl:col-span-1 border-t border-grey-15 pt-20 xl:pt-0 xl:border-none",
 
-            icon: (
-                <img
-                    src="/assets/icons/area.svg"
-                    alt="Area"
-                />
-            ),
+            icon: <LuRuler className="text-grey-60 2xl:text-2xl text-[20px]" />,
+
         },
     ];
 

@@ -15,6 +15,7 @@ const DashboardSidebar = () => {
             path: "/dashboard/faqs",
             icon: FiHelpCircle,
         },
+        
         {
             label: "Testimonials",
             path: "/dashboard/testimonials",
