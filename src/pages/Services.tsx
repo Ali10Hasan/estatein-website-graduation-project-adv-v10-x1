@@ -2,7 +2,7 @@ import PageHero from "../components/Hero/PageHero";
 import CardAdvantages from "../components/CardAdvantages";
 import PropertyManagementSection from "../components/sections/PropertyManagementSection";
 import UnlockPropertySection from "../components/sections/UnlockPropertySection";
-
+import SmartInvestmentsSection from"../components/sections/SmartInvestmentsSection";
 interface CardAdvantagesProps {
   Arrow: string;
   Icone: string;
@@ -57,6 +57,7 @@ const Services = () => {
 
       <UnlockPropertySection />
       <PropertyManagementSection />
+      <SmartInvestmentsSection />
     </div>
   );
 };
