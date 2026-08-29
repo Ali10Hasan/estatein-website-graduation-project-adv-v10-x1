@@ -56,14 +56,13 @@ if (visibleCardsRef.current !== count) {
   return (
     <div ref={containerRef} className="overflow-hidden w-full mb-30 md:mb-40 lg:mb-50">
       <div
-        className="flex gap-(--gap) transition-transform duration-500 ease-in-out w-max -translate-x-(--tx)"
-        style={trackStyle}  >
+        className="pt-6 pb-6 flex gap-(--gap) transition-transform duration-500 ease-in-out w-max -translate-x-(--tx)"
+        style={trackStyle}>
         {children.map((child, index) => (
           <div
             key={index}
             className="shrink-0 w-(--card-w)"
-            style={cardStyle}
-          >
+            style={cardStyle} >
             {child}
           </div>
         ))}
