@@ -1,5 +1,6 @@
 import Form from "../components/Form/Form"
 import PageHero from "../components/Hero/PageHero"
+import ExploreEstatein from "../components/sections/ExploreEstatein"
 
 
 
@@ -13,6 +14,7 @@ const Contact = () => {
 
             />
             <Form />
+            <ExploreEstatein/>
         </div>
     )
 }
