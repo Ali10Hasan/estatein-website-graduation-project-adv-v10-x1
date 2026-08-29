@@ -6,6 +6,8 @@ import Button from "../AtomComponents/Button";
 import type { HeaderProp } from "../../types/sliderType";
 import Stars from "../AtomComponents/Stars";
 
+
+
 function SliderSection({
   title,
   desc,
@@ -76,12 +78,12 @@ const actionButton = (
   } as CSSProperties;
 
   return (
-      <section className="relative">
-        <Stars />
+    <section className="relative">
+      <Stars/>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 md:pt-6 lg:pt-10 mb-40 md:mb-60 lg:mb-80">
-          <div className="md:max-w-975 min-[1440px]:max-w-1200">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold mb-6 md:mb-10 lg:mb-14 text-white"> {title}</h1>
-            <p className="text-sm md:text-base lg:text-lg min-[1440px]:text-lg text-grey-60 font-medium">{desc}</p>
+          <div className="md:max-w-975 min-[1440px]:max-w-1200 ">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold  mb-6 md:mb-10 lg:mb-14 text-white"> {title} </h1>
+            <p className="text-sm md:text-base lg:text-lg min-[1440px]:text-lg text-grey-60 font-medium "> {desc} </p>
           </div>
           {showButton && (
             <div className="hidden md:block shrink-0">{actionButton} </div>
