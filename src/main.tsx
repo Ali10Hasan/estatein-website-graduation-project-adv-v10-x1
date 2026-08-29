@@ -7,8 +7,8 @@ import About from './pages/About';
 import Properties from './pages/Properties';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
-import { Provider } from 'react-redux';
-import store from './redux/store/store';
+import { Provider, useSelector } from 'react-redux';
+import store, { type RootState } from './redux/store/store';
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom';
 import Login from './pages/Login';
 import DashboardLayout from './pages/DashboardLayout';
@@ -79,11 +79,25 @@ export const router = createBrowserRouter([
 ],
 );
 
+
+const App = () => {
+    const theme = useSelector(
+        (state: RootState) => state.ui.theme
+    );
+
+    return (
+        <div className={theme}>
+            <RouterProvider router={router} />
+        </div>
+    );
+};
+
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Provider store={store}>
       <DataListener />
-      <RouterProvider router={router} />
+      <App />
     </Provider>
   </StrictMode>,
 )
