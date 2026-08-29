@@ -3,12 +3,12 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const PropertyDetailsSkeleton = () => {
     return (
-        <div className="2xl:max-w-1596 xl:max-w-7xl sm:max-w-[95%] max-w-358 mx-auto flex flex-col text-white">
+        <div className="2xl:max-w-1596 xl:max-w-7xl max-w-[95%] mx-auto flex flex-col text-white">
 
             {/* Gallery Heading Skeleton */}
             <div className="flex flex-col 2xl:gap-50 xl:gap-40 gap-30 2xl:mt-120 mb-20 2xl:mb-30 xl:mt-80">
                 <div className="flex justify-between items-start md:items-center">
-                    <div className="flex gap-20 py-10 items-center">
+                    <div className="flex gap-20 py-10 items-center xl:flex-row flex-col">
                         <Skeleton width={250} height={35} baseColor="#1a1a1a" highlightColor="#2a2a2a" />
                         <Skeleton width={120} height={40} baseColor="#1a1a1a" highlightColor="#2a2a2a" className="hidden sm:block" />
                     </div>
@@ -30,7 +30,14 @@ const PropertyDetailsSkeleton = () => {
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
                         <Skeleton height={400} baseColor="#1a1a1a" highlightColor="#2a2a2a" borderRadius={12} />
-                        <Skeleton height={400} baseColor="#1a1a1a" highlightColor="#2a2a2a" borderRadius={12} className="hidden lg:block" />
+                        <div className="hidden lg:block">
+                            <Skeleton
+                                height={400}
+                                baseColor="#1a1a1a"
+                                highlightColor="#2a2a2a"
+                                borderRadius={12}
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
