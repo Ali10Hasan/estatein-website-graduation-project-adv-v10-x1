@@ -26,14 +26,14 @@ const DataTable = <T,>({
     emptyMessage = "No data found."
 }: DataTableProps<T>) => {
     return (
-        <div className="w-full overflow-x-auto rounded-xl border border-grey-15">
+        <div className="w-full overflow-x-auto rounded-xl border border-grey-15 light:border-white-90">
 
             <table className="w-full min-w-800  border-collapse">
 
                 {/* Header */}
 
-                <thead>
-                    <tr className="border-b border-grey-15 text-left">
+                <thead className="bg-grey-10 light:bg-white-95">
+                    <tr className="border-b border-grey-15 light:border-white-90 text-left">
 
                         {columns.map((column) => (
                             <th
@@ -43,7 +43,7 @@ const DataTable = <T,>({
                                     py-18
                                     text-14
                                     font-medium
-                                    text-white-90
+                                    text-white-90 light:text-grey-20
                                     ${column.className ?? ""}
                                 `}
                             >
@@ -63,10 +63,10 @@ const DataTable = <T,>({
                             key={getRowKey(item)}
                             className="
                                 border-b
-                                border-grey-15
+                                border-grey-15 light:border-white-90
                                 last:border-b-0
                                 transition-colors
-                                hover:bg-grey-08
+                                hover:bg-grey-08 light:hover:bg-white-99
                             "
                         >
 
@@ -89,7 +89,7 @@ const DataTable = <T,>({
 
                             <td
                                 colSpan={columns.length}
-                                className="px-20 py-60 text-center text-16 text-white-90"
+                                className="px-20 py-60 text-center text-16 text-white-90 light:text-grey-20"
                             >
                                 {emptyMessage}
                             </td>

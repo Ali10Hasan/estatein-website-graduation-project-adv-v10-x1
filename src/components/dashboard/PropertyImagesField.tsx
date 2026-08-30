@@ -78,10 +78,10 @@ const PropertyImagesField = ({
     return (
         <div className="flex flex-col gap-16 px-10 md:col-span-2">
             <div>
-                <h3 className="text-base font-semibold text-white-99">
+                <h3 className="text-base font-semibold text-white-99 light:text-grey-08">
                     Property Images
                 </h3>
-                <p className="mt-6 text-sm text-grey-60">
+                <p className="mt-6 text-sm text-grey-60 light:text-grey-40">
                     Add a local /assets/ path or an HTTPS image URL. The first
                     image is used as the cover image.
                 </p>
@@ -96,7 +96,7 @@ const PropertyImagesField = ({
                     return (
                         <div
                             key={index}
-                            className="rounded-lg border border-grey-15 bg-grey-08 p-16"
+                            className="rounded-lg border border-grey-15 light:border-white-90 bg-grey-08 light:bg-white-99 p-16"
                         >
                             <div className="flex flex-col gap-14 lg:flex-row lg:items-end">
                                 <InputCard
@@ -114,7 +114,7 @@ const PropertyImagesField = ({
                                         type="button"
                                         onClick={() => moveImage(index, index - 1)}
                                         disabled={index === 0}
-                                        className="rounded-lg border border-grey-15 px-24 py-20 text-sm text-white-90 transition-colors hover:bg-grey-15 disabled:cursor-not-allowed disabled:opacity-40"
+                                        className="rounded-lg border border-grey-15 light:border-white-90 px-24 py-20 text-sm text-white-90 light:text-grey-20 transition-colors hover:bg-grey-15 light:hover:bg-white-90 disabled:cursor-not-allowed disabled:opacity-40"
                                     >
                                         <MdMoveUp className="text-2xl"/>
                                     </button>
@@ -123,7 +123,7 @@ const PropertyImagesField = ({
                                         type="button"
                                         onClick={() => moveImage(index, index + 1)}
                                         disabled={index === images.length - 1}
-                                        className="rounded-lg border border-grey-15 px-24 py-20 text-sm text-white-90 transition-colors hover:bg-grey-15 disabled:cursor-not-allowed disabled:opacity-40"
+                                        className="rounded-lg border border-grey-15 light:border-white-90 px-24 py-20 text-sm text-white-90 light:text-grey-20 transition-colors hover:bg-grey-15 light:hover:bg-white-90 disabled:cursor-not-allowed disabled:opacity-40"
                                     >
                                         <MdMoveDown className="text-2xl"/>
                                     </button>
@@ -131,7 +131,7 @@ const PropertyImagesField = ({
                                     <button
                                         type="button"
                                         onClick={() => removeImage(index)}
-                                        className="rounded-lg border border-grey-15 px-24 py-20 text-sm text-white-90 transition-colors hover:bg-grey-15"
+                                        className="rounded-lg border border-grey-15 light:border-white-90 px-24 py-20 text-sm text-white-90 light:text-grey-20 transition-colors hover:bg-grey-15 light:hover:bg-white-90"
                                     >
                                         <FcRemoveImage className="text-2xl"/>
                                     </button>
@@ -139,7 +139,7 @@ const PropertyImagesField = ({
                             </div>
 
                             {index === 0 && (
-                                <span className="mt-12 ms-10 inline-flex rounded-full bg-purple-60 px-10 py-5 text-sm font-medium text-white-99">
+                                <span className="mt-12 ms-10 inline-flex rounded-full bg-purple-60 px-10 py-5 text-sm font-medium text-white-99 light:text-grey-08">
                                     Cover Image
                                 </span>
                             )}
@@ -164,7 +164,7 @@ const PropertyImagesField = ({
                                             referrerPolicy="no-referrer"
                                             onLoad={() => markSourceAsLoaded(source)}
                                             onError={() => markSourceAsFailed(source)}
-                                            className="ms-10 h-140 w-full rounded-lg border border-grey-15 object-cover sm:w-220"
+                                            className="ms-10 h-140 w-full rounded-lg border border-grey-15 light:border-white-90 object-cover sm:w-220"
                                         />
                                     )}
                                 </div>

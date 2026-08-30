@@ -33,7 +33,7 @@ const Login = () => {
                 items-center
                 justify-center
                 overflow-hidden
-                bg-grey-08
+                bg-grey-08 light:bg-white-99
                 px-20
             "
         >
@@ -92,8 +92,8 @@ const Login = () => {
                     max-w-450
                     rounded-2xl
                     border
-                    border-grey-15
-                    bg-grey-10
+                    border-grey-15 light:border-white-90
+                    bg-grey-10 light:bg-white-95
                     p-30
                     shadow-2xl
                 "
@@ -143,11 +143,11 @@ const Login = () => {
                     }}
                     className="mb-25 text-center px-10"
                 >
-                    <h1 className="text-26 font-semibold text-white">
+                    <h1 className="text-26 font-semibold text-white light:text-grey-08">
                         Welcome Back
                     </h1>
 
-                    <p className="mt-8 text-14 text-white-90">
+                    <p className="mt-8 text-14 text-white-90 light:text-grey-20">
                         Sign in to your Estatein dashboard
                     </p>
                 </motion.div>
@@ -293,7 +293,7 @@ const Login = () => {
                     absolute
                     bottom-20
                     text-12
-                    text-white-90
+                    text-white-90 light:text-grey-20
                 "
             >
                 © Estatein. All rights reserved.

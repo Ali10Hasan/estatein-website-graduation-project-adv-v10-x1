@@ -30,7 +30,7 @@ const DashboardSidebar = () => {
 
     return (
         <aside
-            className="flex h-auto w-260 shrink-0 flex-col border-r border-grey-15 px-16 py-35"
+            className="light:bg-white-99 flex h-auto w-260 shrink-0 flex-col border-r border-grey-15 light:border-white-90 px-16 py-35"
         >
 
             {/* Logo */}
@@ -72,7 +72,7 @@ const DashboardSidebar = () => {
                                 ${
                                     isActive
                                         ? "bg-purple-60 text-white"
-                                        : "text-white-90 hover:bg-grey-15 hover:text-white"
+                                        : "text-white-90 light:text-grey-20 hover:bg-grey-15 light:hover:bg-white-90 hover:text-white light:hover:text-grey-08"
                                 }
                                 `
                             }
@@ -107,10 +107,10 @@ const DashboardSidebar = () => {
                     py-12
                     text-15
                     font-medium
-                    text-white-90
+                    text-white-90 light:text-grey-20
                     transition-colors
-                    hover:bg-grey-15
-                    hover:text-white
+                    hover:bg-grey-15 light:hover:bg-white-90
+                    hover:text-white light:hover:text-grey-08
                 "
             >
                 <FiLogOut size={19} />

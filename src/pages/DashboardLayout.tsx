@@ -79,7 +79,7 @@ const DashboardLayout = () => {
     };
 
     return (
-        <div className="flex min-h-screen bg-grey-08">
+        <div className="flex min-h-screen bg-grey-08 light:bg-white-99">
             <DashboardSidebar />
             <main className="min-w-0 flex-1 p-30">
                 <DashboardHeader
