@@ -1,19 +1,7 @@
 import type { IFaq } from "../types/faqType";
+import Button from "./AtomComponents/Button";
 
-interface FaqCardProps {
-  faq: IFaq;
-}
-
-/**
- * FaqCard
- * -------
- * Presentational card for a single FAQ entry.
- * Renders the question, its answer, and a "Read More" action.
- * Pure/stateless — all data is passed in via props (Single Responsibility).
- *
- * @param {FaqCardProps} props - contains the `faq` item to render.
- */
-const FaqCard = ({ faq }: FaqCardProps) => {
+const FaqCard = ({ id, question, answer }: IFaq) => {
   return (
     <div className="Faq-Card flex h-full flex-col justify-between gap-20 rounded-xl border border-grey-15 light:border-white-90 bg-grey-08 light:bg-white-99 p-30 md:p-40">
       <div className="Faq-Content flex flex-col gap-16">
