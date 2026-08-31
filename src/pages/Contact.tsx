@@ -10,7 +10,6 @@ const Contact = () => {
                 className="2xl:h-450 xl:h-345 h-257"
 
             />
-
               <Form/>
 
               <Location/>

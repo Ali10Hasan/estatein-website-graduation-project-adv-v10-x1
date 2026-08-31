@@ -31,21 +31,21 @@ const Footer = () => {
 
   const renderColumn = (column: ColumnData , hasBorderBottom = false, hasBorderRight = false) => (
     <div className={`w-full md:w-auto flex flex-col gap-y-23 pb-20 relative md:pb-0 md:mb-0`}>
-      <h3 className="text-16 md:text-14 lg:text-[20px] font-semibold text-grey-60">
+      <h3 className="text-16 md:text-14 lg:text-[20px] font-semibold text-grey-60 light:text-grey-40 ">
         {column.header}
       </h3>
       <ul className="text-14 md:text-16 flex flex-col gap-y-10">
         {column.links.map((link, linkIndex) => (
           <li key={linkIndex}>
-            <Link to="#" className="text-white">
+            <Link to="#" className="text-white light:text-grey-08">
               {link}
             </Link>
           </li>
         ))}
       </ul>
 
-      {hasBorderBottom && <span className="absolute bottom-0 left-1 right-1 h-2 bg-grey-15 lg:hidden"></span>}
-      {hasBorderRight && <span className="absolute right-[-4%] top-1 bottom-1 w-1 bg-grey-15 lg:hidden"></span>}
+      {hasBorderBottom && <span className="absolute bottom-0 left-1 right-1 h-2 bg-grey-15 light:bg-white-90 lg:hidden"></span>}
+      {hasBorderRight && <span className="absolute right-[-4%] top-1 bottom-1 w-1 bg-grey-15 light:bg-white-90 lg:hidden"></span>}
     </div>
   );
 
@@ -56,9 +56,8 @@ const Footer = () => {
 
         {/* اللوغو وحقل الإدخال */}
         <div className="w-full lg:w-[26%] flex flex-col items-start gap-20 pt-50 px-16 pb-8 lg:pt-0 lg:px-0">
-          <div className="flex items-center gap-x-10">
-            <img src={brandingData.logoIcon} alt="Estatein logo" />
-            <h2 className="text-xl font-bold">{brandingData.logoText}</h2>
+          <div className="flex items-center light:fill-black gap-x-10">
+            <img src={brandingData.logoIcon}  />
           </div>
 
           <div className="Email-Container flex items-center w-full relative">
@@ -66,7 +65,7 @@ const Footer = () => {
             <input
               type="text"
               placeholder={brandingData.emailPlaceholder}
-              className="w-full h-52 bg-transparent text-white border border-grey-15 rounded-md pl-40 pr-40 focus:outline-none placeholder:text-14"
+              className="w-full h-52 bg-transparent text-white light:text-grey-08 border border-grey-15 light:border-white-90 rounded-md pl-40 pr-40 focus:outline-none placeholder:text-14"
             />
             <img src={brandingData.shareIcon} alt="Submit" className="absolute right-20 cursor-pointer" />
           </div>
@@ -101,10 +100,10 @@ const Footer = () => {
       </div>
 
       {/* القسم السفلي */}
-      <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center bg-grey-10 max-w-1900 mx-auto px-16 md:px-80 lg:px-160 py-20 md:py-12 lg:py-30">
-        <div className="flex flex-col lg:flex-row items-center  gap-x-20 text-gray-400 gap-y-2 text-center lg:text-left">
-          <p className="hover:text-white ">{footerBottomData.copyright}</p>
-          <Link to="#" className="hover:text-white ">
+      <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-center bg-grey-10 light:bg-white-95 max-w-1900 mx-auto px-16 md:px-80 lg:px-160 py-20 md:py-12 lg:py-30">
+        <div className="flex flex-col lg:flex-row items-center  gap-x-20 text-gray-400 light:text-grey-20 gap-y-2 text-center lg:text-left">
+          <p className="hover:text-white light:hover:text-grey-40">{footerBottomData.copyright}</p>
+          <Link to="#" className="hover:text-white light:hover:text-grey-08">
             {footerBottomData.legalLinks}
           </Link>
         </div>
@@ -114,7 +113,7 @@ const Footer = () => {
             <Link
               key={iconIndex}
               to="#"
-              className="bg-grey-08 p-10 rounded-full border border-grey-15 flex items-center justify-center hover:bg-black text-white"
+              className="bg-grey-08 light:bg-white-99 p-10 rounded-full border border-grey-15 light:border-white-90 flex items-center justify-center hover:bg-black light:hover:bg-white text-white light:text-grey-08"
             >
               <IconComponent className="w-30 h-30" />
             </Link>

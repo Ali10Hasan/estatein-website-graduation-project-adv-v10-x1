@@ -15,7 +15,7 @@ const CardAdvantages = ({ Arrow, Icone, advantage }: CardAdvatagesProps) => {
             <div className="Icone-Container w-48 h-48 sm:w-60 sm:h-60">
                 <img src={Icone} alt="icon" />
             </div>
-            <div className="Advantage-Container text-[#ffffff] text-14 md:text-[18px] font-[600] text-center w-[100%] ">
+            <div className="Advantage-Container text-[#ffffff] light:text-grey-08 text-14 md:text-[18px] font-[600] text-center w-[100%] ">
                 <p>{advantage}</p>
             </div>
         </div>

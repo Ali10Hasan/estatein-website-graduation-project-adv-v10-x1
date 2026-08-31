@@ -6,7 +6,7 @@ import type { JSX } from "react";
 interface SelectProps {
   Icone: JSX.Element;
   FilterText: string;
-  filterKey: keyof RootState["properties"]["filters"];
+  filterKey: string;
   options: string[]; 
 }
 
@@ -26,12 +26,9 @@ const Select = ({ Icone, FilterText, filterKey, options }: SelectProps) => {
         <select 
           className="w-full bg-transparent text-white light:text-grey-08 text-lg md:text-[12px] lg:text-[16px] outline-none border-none appearance-none cursor-pointer"
           value={selectedValue}
-       
           onChange={(e) => dispatch(updateFilter({ key: filterKey as any, value: e.target.value }))}
         >
           <option value="" disabled hidden>{FilterText}</option>
-          
-         
           <option value="" className="bg-grey-10 light:bg-white-95 text-grey-40 light:text-grey-20">All {FilterText}s</option>
 
           {options.map((optionValue, idx) => (
@@ -39,8 +36,7 @@ const Select = ({ Icone, FilterText, filterKey, options }: SelectProps) => {
               {optionValue}
             </option>
           ))}
-        </select>
-        
+        </select>    
         <div className="absolute h-30 w-30 md:w-20 md:h-20 lg:w-30 lg:h-30 bg-grey-20 light:bg-grey-30 rounded-[50%] md:top-2 lg:top-auto right-0 md:right-1 lg:right-1 flex items-center justify-center text-grey-40 light:text-grey-20 pointer-events-none">
           <IoIosArrowDown />
         </div>

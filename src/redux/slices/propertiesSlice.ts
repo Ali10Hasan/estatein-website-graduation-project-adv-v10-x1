@@ -37,8 +37,8 @@ interface FiltersState {
     location: string;
     propertyType: string;
     price: string;
-    propertySize: string;
-    buildYear: string;
+    area: string;
+    builtYear: string;
 }
 interface PropertiesState {
     items: IProperty[];
@@ -56,8 +56,8 @@ const initialState: PropertiesState = {
         location: "",
         propertyType: "",
         price: "",
-        propertySize: "",
-        buildYear: "",
+        area: "",
+        builtYear: "",
     },
     loading: true,
     error: null,
@@ -87,12 +87,13 @@ const propertiesSlice = createSlice({
         },
 
         ApplyPropertyFiltered:(state)=>{
-            const { searchQuery, location, propertyType, price, propertySize} = state.filters;
+            const { searchQuery, location, propertyType, price, area, builtYear} = state.filters;
             state.items=state.itemsFiltered.filter((property)=>{
                 if(location && property.location!==location) return false;
                 if(propertyType && property.propertyType!==propertyType) return false;
                 if(price && property.price.toString()!==price) return false;
-                if(propertySize && property.area?.toString()!==propertySize) return false;
+                if(area && property.area?.toString()!==area) return false;
+                if(builtYear && property.builtYear!==Number(builtYear)) return false;
                 if(searchQuery && !property.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
                 return true;
             })
