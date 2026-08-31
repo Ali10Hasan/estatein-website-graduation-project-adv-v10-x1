@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin } from "lucide-react";
 import Stars from "../AtomComponents/Stars";
 import Container from "../Container";
+import { MdEmail } from "react-icons/md";
+import { FaPhoneAlt } from "react-icons/fa";
+import { TiLocation } from "react-icons/ti";
 
 type OfficeCategory = "regional" | "international";
 type FilterOption = "all" | OfficeCategory;
@@ -128,15 +130,15 @@ const Location = () => {
 
                         <div className="flex flex-wrap gap-8">
                             <span className="flex items-center gap-6 rounded-full border border-grey-15 bg-grey-10 px-12 py-6 text-white text-xs">
-                                <Mail size={13} className="shrink-0" />
+                                <MdEmail size={13} className="shrink-0" />
                                 {office.email}
                             </span>
                             <span className="flex items-center gap-6 rounded-full border border-grey-15 bg-grey-10 px-12 py-6 text-white text-xs">
-                                <Phone size={13} className="shrink-0" />
+                                <FaPhoneAlt size={13} className="shrink-0" />
                                 {office.phone}
                             </span>
                             <span className="flex items-center gap-6 rounded-full border border-grey-15 bg-grey-10 px-12 py-6 text-white text-xs">
-                                <MapPin size={13} className="shrink-0" />
+                                <TiLocation size={13} className="shrink-0" />
                                 {office.location}
                             </span>
                         </div>
