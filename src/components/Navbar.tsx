@@ -24,7 +24,7 @@ const Navbar = () => {
     <nav className="bg-grey-10 light:bg-white-97">
       <div className="w-full max-w-1900 mx-auto px-16 md:px-40 lg:px-60 relative flex justify-between items-center py-20 font-medium text-18 text-white light:text-grey-10">
         <img src="assets/imgs/EstateinLogo.webp" className="w-94 h-28 light:hidden" alt="Estatein_Logo" />
-        <img src="assets/imgs/logolight.webp" className="w-100 h-50 hidden light:block" alt="Estatein_Logo" />
+        <img src="assets/imgs/logolight.webp" className="w-94 h-28 hidden light:block" alt="Estatein_Logo" />
         <ul className="flex justify-center items-center gap-20 max-[992px]:hidden">        
           {navLinks.map((link) => (
             <NavLink 

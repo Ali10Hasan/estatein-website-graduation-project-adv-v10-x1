@@ -24,7 +24,7 @@ function InputCard({
     if (type === "radio") {
         return (
             <div className="w-full relative px-10">
-                <p className="text-base lg:text-xl font-semibold text-white mb-10 md:mb-14 lg:mb-16 font-urbanist">
+                <p className="text-base lg:text-xl font-semibold text-white light:text-grey-08 mb-10 md:mb-14 lg:mb-16 font-urbanist">
                     {label}
                 </p>
 
@@ -40,10 +40,10 @@ function InputCard({
                         onChange={() => setIsSelected(true)}
                     />
 
-                    <div className="w-full rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 bg-grey-10 border border-grey-15 flex items-center justify-between">
+                    <div className="w-full rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 bg-grey-10 light:bg-white-95 border border-grey-15 light:border-white-90 flex items-center justify-between">
 
                         <div className="flex items-center gap-6 lg:gap-12">
-                            <span className="text-white text-xl lg:text-2xl">
+                            <span className="text-white light:text-grey-08 text-xl lg:text-2xl">
                                 {icon}
                             </span>
 
@@ -53,10 +53,10 @@ function InputCard({
                                     placeholder="Enter your email"
                                     autoFocus
                                     onClick={(e) => e.stopPropagation()}
-                                    className="bg-transparent outline-none text-white text-sm lg:text-lg font-semibold font-urbanist placeholder:text-grey-40 w-full"
+                                    className="bg-transparent outline-none text-white light:text-grey-08 text-sm lg:text-lg font-semibold font-urbanist placeholder:text-grey-40 light:placeholder:text-grey-20 w-full"
                                 />
                             ) : (
-                                <span className="text-sm lg:text-lg font-semibold text-grey-40 font-urbanist">
+                                <span className="text-sm lg:text-lg font-semibold text-grey-40 light:text-grey-20 font-urbanist">
                                     {radioPlaceholder}
                                 </span>
                             )}
@@ -85,15 +85,15 @@ function InputCard({
                         className="peer sr-only"
                     />
 
-                    <span className="w-24 h-24 rounded-sm border border-grey-15 bg-grey-10 shrink-0 peer-checked:bg-purple-60 peer-checked:border-purple-60" />
+                    <span className="w-24 h-24 rounded-sm border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 shrink-0 peer-checked:bg-purple-60 peer-checked:border-purple-60 light:peer-checked:bg-purple-60 light:peer-checked:border-purple-60" />
 
-                    <p className="text-sm md:text-base lg:text-lg font-medium text-grey-60 font-urbanist">
+                    <p className="text-sm md:text-base lg:text-lg font-medium text-grey-60 light:text-grey-40 font-urbanist">
                         I agree with{" "}
-                        <span className="underline decoration-grey-60">
+                        <span className="underline decoration-grey-60 light:decoration-grey-40">
                             Terms of Use
                         </span>{" "}
                         and{" "}
-                        <span className="underline decoration-grey-60">
+                        <span className="underline decoration-grey-60 light:decoration-grey-40">
                             Privacy Policy
                         </span>
                     </p>
@@ -106,7 +106,7 @@ function InputCard({
         <div className={`flex flex-col w-full relative px-10 ${containerClassName ?? ""}`}>
             <label
                 htmlFor={name}
-                className="text-base lg:text-xl font-semibold text-white mb-10 md:mb-14 lg:mb-16 font-urbanist"
+                className="text-base lg:text-xl font-semibold text-white light:text-grey-08 mb-10 md:mb-14 lg:mb-16 font-urbanist"
             >
                 {label}
             </label>
@@ -123,7 +123,7 @@ function InputCard({
                 max={max}
                 step={step}
                 aria-invalid={ariaInvalid}
-                className={`rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 text-white bg-grey-10 border border-grey-15 placeholder:text-grey-40 placeholder:text-sm lg:placeholder:text-lg focus:border-white outline-0 ${className ?? ""}`}
+                className={`rounded-md lg:rounded-lg px-20 py-16 lg:px-24 lg:py-20 text-white light:text-grey-08 bg-grey-10 light:bg-white-95 border border-grey-15 light:border-white-90 placeholder:text-grey-40 light:placeholder:text-grey-20 placeholder:text-sm lg:placeholder:text-lg focus:border-white light:focus:border-grey-08 outline-0 ${className ?? ""}`}
             />
             {error && (
                 <p className="mt-6 text-[13px] text-red-400">
