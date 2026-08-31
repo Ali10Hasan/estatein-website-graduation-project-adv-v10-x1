@@ -1,7 +1,14 @@
 import Form from "../components/Form/Form"
-import Location from "../components/Location/Location"
+
 import PageHero from "../components/Hero/PageHero"
 import ExploreEstatein from "../components/sections/ExploreEstatein"
+
+
+
+
+import Location from "../components/Location/Location"
+
+
 const Contact = () => {
     return (
         <div>
@@ -11,9 +18,15 @@ const Contact = () => {
                 className="2xl:h-450 xl:h-345 h-257"
 
             />
+
             <Form />
-            <Location />
-            <ExploreEstatein />
+                   <Location/>
+            <ExploreEstatein/>
+
+  
+
+       
+
         </div>
     )
 }
