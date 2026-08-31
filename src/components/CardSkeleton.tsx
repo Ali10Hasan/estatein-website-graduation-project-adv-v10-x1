@@ -7,7 +7,7 @@ interface ICardSkeleton {
 
 export const CardSkeleton = ({ variant = "property" }: ICardSkeleton) => {
     return (
-        <div className="bg-grey-08 border border-grey-15 max-w-358 xl:max-w-413 2xl:max-w-lg p-24 xl:p-30 2xl:p-40 rounded-xl flex flex-col justify-between h-full">
+        <div className="bg-grey-08 light:bg-white-99 border border-grey-15 light:border-white-90 max-w-358 xl:max-w-413 2xl:max-w-lg p-24 xl:p-30 2xl:p-40 rounded-xl flex flex-col justify-between h-full">
             {variant === "property" && (
                 <div className="flex flex-col gap-20 xl:gap-24 2xl:gap-30 h-full">
                     <div className="h-210 xl:h-255 2xl:h-318 rounded-[10px] overflow-hidden">

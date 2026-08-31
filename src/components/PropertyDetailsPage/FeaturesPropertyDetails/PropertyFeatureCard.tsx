@@ -11,7 +11,7 @@ const PropertyFeatureCard = ({ icon, label, value, className = "" }: FeatureCard
             <span className=" ">{icon}</span>
             <span className="font-medium text-[14px] 2xl:text-[18px]">{label}</span>
         </span>
-        <span className="text-[18px] xl:text-[20px] 2xl:text-2xl font-semibold text-white">
+        <span className="text-[18px] xl:text-[20px] 2xl:text-2xl font-semibold text-white light:text-grey-08">
             {value}
         </span>
 

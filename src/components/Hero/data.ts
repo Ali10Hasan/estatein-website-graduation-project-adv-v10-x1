@@ -4,8 +4,9 @@ export interface IHero {
 }
 
 export interface IStats {
-    value: string;
+    value: number;
     desc: string;
+    suffix: string
 }
 
 export interface IAboutHero {
@@ -30,15 +31,18 @@ export const HERO_DATA: IHero = {
 
 export const STATS_DATA: IStats[] = [
     {
-        value: "200+",
+        value: 200,
+        suffix: "+",
         desc: "Happy Customers",
     },
     {
-        value: "10k+",
+        value: 10,
         desc: "Properties For Clients",
+        suffix: "K+"
     },
     {
-        value: "16+",
+        value: 16,
         desc: "Years of Experience",
+        suffix: "+"
     },
 ];

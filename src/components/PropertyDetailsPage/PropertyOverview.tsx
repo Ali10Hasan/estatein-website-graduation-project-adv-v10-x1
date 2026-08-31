@@ -17,7 +17,7 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
             value: property.bedrooms
                 ? String(property.bedrooms).padStart(2, "0")
                 : "No Bedrooms",
-            className: "border-r border-grey-15 pr-10",
+            className: "border-r border-grey-15 light:border-white-90 pr-10",
             icon: <LuBed className="text-grey-60 2xl:text-2xl text-[20px]" />,
         },
 
@@ -26,7 +26,7 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
             value: property.bathrooms
                 ? String(property.bathrooms).padStart(2, "0")
                 : "No Bathrooms",
-            className: "xl:border-r border-grey-15 pr-10",
+            className: "xl:border-r border-grey-15 light:border-white-90 pr-10",
             icon: <LuBath className="text-grey-60 2xl:text-2xl text-[20px]" />,
         },
 
@@ -36,7 +36,7 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
                 ? `${property.area} Square Feet`
                 : "0 Square Feet",
 
-            className: "col-span-2 xl:col-span-1 border-t border-grey-15 pt-20 xl:pt-0 xl:border-none",
+            className: "col-span-2 xl:col-span-1 border-t border-grey-15 light:border-white-90 pt-20 xl:pt-0 xl:border-none",
 
             icon: <LuRuler className="text-grey-60 2xl:text-2xl text-[20px]" />,
 
@@ -50,7 +50,7 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
                 Left
              */}
 
-            <div className="border border-grey-15 2xl:p-50 xl:p-40 p-20 rounded-[10px] h-fit 2xl:rounded-xl flex flex-col gap-20 xl:gap-40 2xl:gap-50">
+            <div className="border border-grey-15 light:border-white-90 2xl:p-50 xl:p-40 p-20 rounded-[10px] h-fit 2xl:rounded-xl flex flex-col gap-20 xl:gap-40 2xl:gap-50">
 
                 {/* Description */}
 
@@ -67,7 +67,7 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
                 {/* Property Stats */}
 
                 <StaggerContainer
-                    className="border-t border-grey-15 2xl:pt-20 xl:pt-16 pt-20 grid grid-cols-2 xl:grid-cols-3 2xl:gap-40 xl:gap-20 gap-40"
+                    className="border-t border-grey-15 light:border-white-90 2xl:pt-20 xl:pt-16 pt-20 grid grid-cols-2 xl:grid-cols-3 2xl:gap-40 xl:gap-20 gap-40"
                 >
                     {featuresList.map((featureItem) => (
                         <StaggerItem
@@ -88,7 +88,7 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
                 Right
              */}
 
-            <div className="border border-grey-15 2xl:p-50 xl:p-40 p-20 rounded-xl">
+            <div className="border border-grey-15 light:border-white-90 2xl:p-50 xl:p-40 p-20 rounded-xl">
 
                 <h2 className="text-[18px] xl:text-[20px] 2xl:text-[24px] font-semibold mb-20 xl:mb-40 2xl:mb-50">
                     Key Features and Amenities
@@ -103,7 +103,7 @@ const PropertyOverview = ({ property }: PropertyOverviewProps) => {
                         ))}
                     </StaggerContainer>
                 ) : (
-                    <p className="text-grey-20 uppercase text-[16px] font-bold xl:text-[28px]">
+                    <p className="text-grey-20 light:text-grey-08 uppercase text-[16px] font-bold xl:text-[28px]">
                         No Features Available .....
                     </p>
                 )}

@@ -126,7 +126,7 @@ const InquiryForm = () => {
                         </span>
                     </label>
 
-                    <button type="submit" className="bg-purple-60 py-14 2xl:py-18 md:max-w-250 w-full  rounded-lg text-white">
+                    <button type="submit" className="bg-purple-60 py-14 2xl:py-18 md:max-w-250 w-full  rounded-lg text-white light:text-grey-08">
                         Send Your Message
                     </button>
                 </div>

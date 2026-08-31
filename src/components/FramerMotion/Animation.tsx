@@ -1,199 +1,189 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-/* =========================================================
-    Shared Motion Configuration
-========================================================= */
-
-const VIEWPORT = {
-    once: true,
-    amount: 0.2,
-};
-
-const DEFAULT_EASE = "easeOut" as const;
-
-const DEFAULT_TRANSITION = {
-    duration: 0.6,
-    ease: DEFAULT_EASE,
-};
-
-/* =========================================================
-    Fade Up
-========================================================= */
-
-const fadeUpVariants = {
-    hidden: {
-        opacity: 0,
-        y: 30,
-    },
-
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: DEFAULT_TRANSITION,
-    },
-};
-
-interface FadeUpProps {
+interface BaseProps {
     children: ReactNode;
     className?: string;
     delay?: number;
+    duration?: number;
+    once?: boolean;
 }
 
-export const FadeUp = ({
+/* Fade Up */
+export const FadeUp = ({ children, className = "", delay = 0, duration = 0.6, once = true, }: BaseProps) => (
+    <motion.div className={className} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once }} transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}>
+        {children}
+    </motion.div>
+);
+
+/* Fade Left */
+export const FadeLeft = ({
     children,
     className = "",
     delay = 0,
-}: FadeUpProps) => {
-    return (
-        <motion.div
-            variants={fadeUpVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            transition={{
-                ...DEFAULT_TRANSITION,
-                delay,
-            }}
-            className={className}
-        >
-            {children}
-        </motion.div>
-    );
-};
+    duration = 0.6,
+    once = true,
+}: BaseProps) => (
+    <motion.div
+        className={className}
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once }}
+        transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+        {children}
+    </motion.div>
+);
 
-/* =========================================================
-    Stagger Container
-========================================================= */
+/* Fade Right */
+export const FadeRight = ({
+    children,
+    className = "",
+    delay = 0,
+    duration = 0.6,
+    once = true,
+}: BaseProps) => (
+    <motion.div
+        className={className}
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once }}
+        transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+        {children}
+    </motion.div>
+);
 
-const staggerContainerVariants = {
-    hidden: {
-        opacity: 1,
-    },
+/* Scale In */
+export const ScaleIn = ({
+    children,
+    className = "",
+    delay = 0,
+    duration = 0.7,
+    once = true,
+}: BaseProps) => (
+    <motion.div
+        className={className}
+        initial={{ opacity: 0, scale: 0.92 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once }}
+        transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+        {children}
+    </motion.div>
+);
 
-    visible: {
-        opacity: 1,
-
-        transition: {
-            staggerChildren: 0.12,
-            delayChildren: 0.15,
-        },
-    },
-};
-
-interface StaggerContainerProps {
+/* Stagger Container */
+interface StaggerProps {
     children: ReactNode;
     className?: string;
+    stagger?: number;
+    delay?: number;
+    once?: boolean;
 }
 
 export const StaggerContainer = ({
     children,
     className = "",
-}: StaggerContainerProps) => {
-    return (
-        <motion.div
-            variants={staggerContainerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            className={className}
-        >
-            {children}
-        </motion.div>
-    );
-};
-
-/* =========================================================
-    Stagger Item
-========================================================= */
-
-const staggerItemVariants = {
-    hidden: {
-        opacity: 0,
-        y: 20,
-    },
-
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.45,
-            ease: DEFAULT_EASE,
-        },
-    },
-};
-
-interface StaggerItemProps {
-    children: ReactNode;
-    className?: string;
-}
+    stagger = 0.12,
+    delay = 0,
+    once = true,
+}: StaggerProps) => (
+    <motion.div
+        className={className}
+        variants={{
+            hidden: {},
+            visible: {
+                transition: {
+                    staggerChildren: stagger,
+                    delayChildren: delay,
+                },
+            },
+        }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once }}
+    >
+        {children}
+    </motion.div>
+);
 
 export const StaggerItem = ({
     children,
     className = "",
-}: StaggerItemProps) => {
-    return (
-        <motion.div
-            variants={staggerItemVariants}
-            className={className}
-        >
-            {children}
-        </motion.div>
-    );
-};
+}: {
+    children: ReactNode;
+    className?: string;
+}) => (
+    <motion.div
+        className={className}
+        variants={{
+            hidden: { opacity: 0, y: 30 },
+            visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                    duration: 0.55,
+                    ease: [0.22, 1, 0.36, 1],
+                },
+            },
+        }}
+    >
+        {children}
+    </motion.div>
+);
 
-/* =========================================================
-    Typing Text
-========================================================= */
 
-const typingContainerVariants = {
-    hidden: {},
-
-    visible: {
-        transition: {
-            staggerChildren: 0.03,
-        },
-    },
-};
-
-const typingLetterVariants = {
-    hidden: {
-        opacity: 0,
-        y: 8,
-    },
-
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: {
-            duration: 0.2,
-            ease: DEFAULT_EASE,
-        },
-    },
-};
-
-interface TypingTextProps {
+/* Typing Text */
+interface TypingProps {
     text: string;
+    className?: string;
 }
 
-export const TypingText = ({
-    text,
-}: TypingTextProps) => {
-    return (
-        <motion.span
-            variants={typingContainerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-        >
-            {text.split("").map((char, index) => (
-                <motion.span
-                    key={`${char}-${index}`}
-                    variants={typingLetterVariants}
-                >
-                    {char}
-                </motion.span>
-            ))}
-        </motion.span>
-    );
-};
+export const TypingText = ({ text, className = "" }: TypingProps) => (
+    <motion.span
+        className={className}
+        variants={{
+            hidden: {},
+            visible: {
+                transition: {
+                    staggerChildren: 0.035,
+                },
+            },
+        }}
+        initial="hidden"
+        animate="visible"
+    >
+        {text.split("").map((char, i) => (
+            <motion.span
+                key={i}
+                variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1 },
+                }}
+            >
+                {char}
+            </motion.span>
+        ))}
+    </motion.span>
+);
+
+/* Welcome Fade */
+export const WelcomeFade = ({
+    children,
+    className = "",
+    delay = 0,
+}: BaseProps) => (
+    <motion.div
+        className={className}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+            duration: 0.7,
+            delay,
+            ease: [0.22, 1, 0.36, 1],
+        }}
+    >
+        {children}
+    </motion.div>
+);

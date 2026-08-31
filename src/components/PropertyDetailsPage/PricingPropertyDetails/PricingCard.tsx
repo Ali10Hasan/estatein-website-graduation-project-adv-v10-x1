@@ -17,14 +17,14 @@ interface PricingCardProps {
 
 export const PricingCard = ({ title, rows, onLearnMore }: PricingCardProps) => {
     return (
-        <div className="border border-grey-15 bg-grey-08 2xl:p-50 xl:p-40 p-20 rounded-xl flex flex-col xl:gap-30 gap-20">
+        <div className="border border-grey-15 light:border-white-90 bg-grey-08 light:bg-white-99 2xl:p-50 xl:p-40 p-20 rounded-xl flex flex-col xl:gap-30 gap-20">
             {/* Header */}
 
-            <div className="flex justify-between items-center border-b border-grey-15 2xl:pb-40 pb-20 xl:pb-30 ">
-                <h3 className="2xl:text-[24px] text-[18px] font-semibold text-white">{title}</h3>
+            <div className="flex justify-between items-center border-b border-grey-15 light:border-white-90 2xl:pb-40 pb-20 xl:pb-30 ">
+                <h3 className="2xl:text-[24px] text-[18px] font-semibold text-white light:text-grey-08">{title}</h3>
                 <button
                     onClick={onLearnMore}
-                    className="2xl:text-[18px] text-[14px] font-medium 2xl:px-24 2xl:py-18 xl:px-24 xl:py-18 px-20 py-14  bg-grey-10 border border-grey-15 rounded-lg text-white hover:bg-purple-60 transition-colors">
+                    className="2xl:text-[18px] text-[14px] font-medium 2xl:px-24 2xl:py-18 xl:px-24 xl:py-18 px-20 py-14 light:bg-white-97  bg-grey-10 border border-grey-15 light:border-white-90 rounded-lg text-white light:text-grey-08 hover:bg-purple-60 transition-colors">
                     Learn More
                 </button>
             </div>
@@ -35,7 +35,7 @@ export const PricingCard = ({ title, rows, onLearnMore }: PricingCardProps) => {
                     <StaggerItem key={rowIndex}>
                         <div
 
-                            className={`grid gap-20 xl:pb-30 pb-20 border-b border-grey-15 last:border-none last:pb-0 ${row.length === 1 ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"
+                            className={`grid gap-20 xl:pb-30 pb-20 border-b border-grey-15 light:border-white-90 last:border-none last:pb-0 ${row.length === 1 ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"
                                 }`}
                         >
                             {row.map((item, itemIndex) => (
@@ -45,9 +45,9 @@ export const PricingCard = ({ title, rows, onLearnMore }: PricingCardProps) => {
                                 >
                                     <span className="2xl:text-[18px] text-[14px] text-grey-60 block 2xl:mb-16 mb-10">{item.label}</span>
                                     <div className="flex items-center 2xl:gap-16 gap-12">
-                                        <span className="2xl:text-[24px] text-[18px] font-semibold text-white">{item.value}</span>
+                                        <span className="2xl:text-[24px] text-[18px] font-semibold text-white light:text-grey-08">{item.value}</span>
                                         {item.badge && (
-                                            <span className="2xl:text-[18px] text-[14px] font-medium bg-grey-10 2xl:px-14 2xl:py-8 px-12 py-6 xl:rounded-full rounded-md text-grey-60 border border-grey-15">
+                                            <span className="2xl:text-[18px] text-[14px] font-medium bg-grey-10 light:bg-white-97 2xl:px-14 2xl:py-8 px-12 py-6 xl:rounded-full rounded-md text-grey-60 border border-grey-15 light:border-white-90">
                                                 {item.badge}
                                             </span>
                                         )}

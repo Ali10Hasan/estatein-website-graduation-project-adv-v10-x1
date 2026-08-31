@@ -3,7 +3,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 const PropertyDetailsSkeleton = () => {
     return (
-        <div className="2xl:max-w-1596 xl:max-w-7xl max-w-[95%] mx-auto flex flex-col text-white">
+        <div className="2xl:max-w-1596 xl:max-w-7xl max-w-[95%] mx-auto flex flex-col text-white light:text-grey-08">
 
             {/* Gallery Heading Skeleton */}
             <div className="flex flex-col 2xl:gap-50 xl:gap-40 gap-30 2xl:mt-120 mb-20 2xl:mb-30 xl:mt-80">
@@ -19,8 +19,8 @@ const PropertyDetailsSkeleton = () => {
                 </div>
 
                 {/*Gallery  Skeleton */}
-                <div className="2xl:p-50 xl:p-40 p-20 bg-grey-10 border border-grey-15 rounded-xl flex flex-col 2xl:gap-30 gap-20">
-                    <div className="bg-grey-08 p-10 2xl:p-20 flex justify-between items-center rounded-xl border border-grey-15">
+                <div className="2xl:p-50 xl:p-40 p-20 bg-grey-10 light:bg-white-97 border border-grey-15 light:border-white-90 rounded-xl flex flex-col 2xl:gap-30 gap-20">
+                    <div className="bg-grey-08 light:bg-white-99 p-10 2xl:p-20 flex justify-between items-center rounded-xl border border-grey-15 light:border-white-90">
                         <div className="flex items-center gap-20 overflow-hidden w-full">
                             {[1, 2, 3, 4, 5, 6].map((_, i) => (
                                 <Skeleton key={i} width={120} height={80} baseColor="#1a1a1a" highlightColor="#2a2a2a" borderRadius={8} />
@@ -44,17 +44,17 @@ const PropertyDetailsSkeleton = () => {
 
             {/*  Overview Section Skeleton */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-30 mb-80 xl:mb-120 2xl:mb-150">
-                <div className="bg-grey-08 border border-grey-15 2xl:p-50 xl:p-40 p-20 rounded-xl flex flex-col gap-4">
+                <div className="bg-grey-08 light:bg-white-99 border border-grey-15 light:border-white-90 2xl:p-50 xl:p-40 p-20 rounded-xl flex flex-col gap-4">
                     <Skeleton width={150} height={25} baseColor="#1a1a1a" highlightColor="#2a2a2a" />
                     <Skeleton count={3} baseColor="#1a1a1a" highlightColor="#2a2a2a" />
-                    <div className="grid xl:grid-cols-3 grid-cols-2 gap-4 pt-4 border-t border-grey-15 mt-4">
+                    <div className="grid xl:grid-cols-3 grid-cols-2 gap-4 pt-4 border-t border-grey-15 light:border-white-90 mt-4">
                         <Skeleton height={50} baseColor="#1a1a1a" highlightColor="#2a2a2a" />
                         <Skeleton height={50} baseColor="#1a1a1a" highlightColor="#2a2a2a" />
                         <Skeleton height={50} baseColor="#1a1a1a" highlightColor="#2a2a2a" />
                     </div>
                 </div>
 
-                <div className="border border-grey-15 2xl:p-50 xl:p-40 p-20 rounded-xl bg-grey-08 flex flex-col gap-4">
+                <div className="border border-grey-15 light:border-white-90 2xl:p-50 xl:p-40 p-20 rounded-xl bg-grey-08 light:bg-white-99 flex flex-col gap-4">
                     <Skeleton width={220} height={25} baseColor="#1a1a1a" highlightColor="#2a2a2a" style={{ marginBottom: '16px' }} />
                     {[1, 2, 3, 4].map((_, i) => (
                         <Skeleton key={i} height={50} baseColor="#1a1a1a" highlightColor="#2a2a2a" borderRadius={12} />

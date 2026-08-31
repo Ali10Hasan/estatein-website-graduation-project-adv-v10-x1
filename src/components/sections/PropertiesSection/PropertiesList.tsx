@@ -13,7 +13,8 @@ interface PropertiesListProps {
     sectionTitle: string
     Sectiondescription: string,
     showButton: boolean,
-    buttonContent: string
+    buttonContent: string,
+    className?: string
 }
 
 const PropertiesList = ({
@@ -22,7 +23,8 @@ const PropertiesList = ({
     sectionTitle,
     Sectiondescription,
     showButton,
-    buttonContent
+    buttonContent,
+    className
 }: PropertiesListProps) => {
     const { items, loading, error } = useSelector((state: RootState) => state.properties);
 
@@ -31,8 +33,10 @@ const PropertiesList = ({
     console.log("PropertiesList items:", items); // Debugging line
     return (
         <Container>
-            <section>
-                <SkeletonTheme baseColor="#1a1a1a" highlightColor="#2a2a2a">
+            <section className={`${className}`}>
+                <SkeletonTheme
+                    baseColor="#703BF7 "
+                    highlightColor="#A685FA">
                     <SliderSection
                         title={sectionTitle}
                         desc={Sectiondescription}
