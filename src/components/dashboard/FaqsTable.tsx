@@ -34,7 +34,7 @@ const FaqsTable = () => {
         {
             header: "Question",
             render: (faq: (typeof faqs)[number]) => (
-                <p className="text-14 font-medium leading-22 text-white">
+                <p className="text-14 font-medium leading-22 text-white light:text-grey-08">
                     {faq.question}
                 </p>
             ),
@@ -43,7 +43,7 @@ const FaqsTable = () => {
         {
             header: "Answer",
             render: (faq: (typeof faqs)[number]) => (
-                <p className="text-14 leading-22 text-white-90">
+                <p className="text-14 leading-22 text-white-90 light:text-grey-20">
                     {faq.answer}
                 </p>
             ),

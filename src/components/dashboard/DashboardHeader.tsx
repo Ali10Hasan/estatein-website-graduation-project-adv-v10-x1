@@ -7,7 +7,7 @@ interface DashboardHeaderProps {
 const DashboardHeader = ({ onAddNew }: DashboardHeaderProps) => {
     return (
         <div className="flex items-center justify-between mb-30">
-            <h1 className="text-white text-3xl font-semibold">
+            <h1 className="text-white light:text-grey-08 text-3xl font-semibold">
                 Dashboard
             </h1>
 

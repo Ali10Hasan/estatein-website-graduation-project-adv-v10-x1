@@ -54,8 +54,8 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                         justify-center
                         rounded-lg
                         border
-                        border-grey-15
-                        bg-grey-10
+                        border-grey-15 light:border-white-90
+                        bg-grey-10 light:bg-white-95
                         text-purple-75
                         transition-all
                         duration-200
@@ -81,8 +81,8 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                         justify-center
                         rounded-lg
                         border
-                        border-grey-15
-                        bg-grey-10
+                        border-grey-15 light:border-white-90
+                        bg-grey-10 light:bg-white-95
                         text-red-800
                         transition-all
                         duration-200
@@ -108,7 +108,7 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                         flex
                         items-center
                         justify-center
-                        bg-black/70
+                        bg-black/70 light:bg-white/70
                         px-20
                         backdrop-blur-sm
                     "
@@ -131,8 +131,8 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                             overflow-hidden
                             rounded-lg
                             border
-                            border-grey-15
-                            bg-grey-10
+                            border-grey-15 light:border-white-90
+                            bg-grey-10 light:bg-white-95
                             p-30
                             shadow-2xl
                         "
@@ -177,10 +177,10 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                                 items-center
                                 justify-center
                                 rounded-full
-                                text-white-90
+                                text-white-90 light:text-grey-20
                                 transition-all
-                                hover:bg-grey-15
-                                hover:text-white
+                                hover:bg-grey-15 light:hover:bg-white-90
+                                hover:text-white light:hover:text-grey-08
                                 disabled:cursor-not-allowed
                             "
                             aria-label="Close"
@@ -217,7 +217,7 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                                 className="
                                     text-22
                                     font-semibold
-                                    text-white
+                                    text-white light:text-grey-08
                                 "
                             >
                                 Delete item?
@@ -230,7 +230,7 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                                     max-w-350
                                     text-14
                                     leading-22
-                                    text-white-90
+                                    text-white-90 light:text-grey-20
                                 "
                             >
                                 Are you sure you want to delete
@@ -265,17 +265,17 @@ const ActionButtons = ({ id, onEdit, onDelete }: ActionButtonsProps) => {
                                     cursor-pointer
                                     rounded-lg
                                     border
-                                    border-grey-15
-                                    bg-grey-10
+                                    border-grey-15 light:border-white-90
+                                    bg-grey-10 light:bg-white-95
                                     px-20
                                     py-11
                                     text-14
                                     font-medium
-                                    text-white-90
+                                    text-white-90 light:text-grey-20
                                     transition-all
                                     duration-200
-                                    hover:bg-grey-15
-                                    hover:text-white
+                                    hover:bg-grey-15 light:hover:bg-white-90
+                                    hover:text-white light:hover:text-grey-08
                                     disabled:cursor-not-allowed
                                 "
                             >

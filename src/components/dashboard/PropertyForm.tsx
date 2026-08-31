@@ -212,7 +212,7 @@ const PropertyForm = ({
         flex
         items-center
         justify-center
-        bg-smoky-black
+        bg-smoky-black light:bg-white-90
         px-20
         py-30
         backdrop-blur-sm
@@ -228,8 +228,8 @@ const PropertyForm = ({
           overflow-y-auto
           rounded-xl
           border
-          border-grey-15
-          bg-grey-10
+          border-grey-15 light:border-white-90
+          bg-grey-10 light:bg-white-95
           p-30
         "
                 onClick={(e) => e.stopPropagation()}
@@ -247,14 +247,14 @@ const PropertyForm = ({
             items-center
             justify-center
             rounded-full
-            text-white-90
-            hover:bg-grey-15
+            text-white-90 light:text-grey-20
+            hover:bg-grey-15 light:hover:bg-white-90
           "
                 >
                     <FiX size={18} />
                 </button>
 
-                <h2 className="text-2xl font-semibold text-white-99">
+                <h2 className="text-2xl font-semibold text-white-99 light:text-grey-08">
                     {property ? "Edit Property" : "Add New Property"}
                 </h2>
 
@@ -395,11 +395,11 @@ const PropertyForm = ({
                             className="
                 rounded-lg
                 border
-                border-grey-15
+                border-grey-15 light:border-white-90
                 px-20
                 py-11
-                text-white-90
-                hover:bg-grey-15
+                text-white-90 light:text-grey-20
+                hover:bg-grey-15 light:hover:bg-white-90
               "
                         >
                             Cancel

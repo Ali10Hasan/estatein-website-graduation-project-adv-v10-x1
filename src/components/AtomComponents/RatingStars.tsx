@@ -11,9 +11,9 @@ const RatingStars = ({ rating }: RatingStarsProps) => {
                 <span className="flex 
                 items-center 
                 justify-center
-                bg-grey-10
+                bg-grey-10 light:bg-white-95
                 border 
-                border-grey-15 
+                border-grey-15 light:border-white-90
                 rounded-full
                 p-6
                 lg:p-10" 

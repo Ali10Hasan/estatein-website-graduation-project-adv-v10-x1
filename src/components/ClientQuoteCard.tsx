@@ -6,11 +6,11 @@ interface ClientQuoteCardProps {
 
 export const ClientQuoteCard: React.FC<ClientQuoteCardProps> = ({ quote }) => {
   return (
-    <div className="bg-[#141414] border border-[#262626] rounded-[12px] p-[30px] flex flex-col gap-[14px] w-full h-full justify-center">
-      <span className="text-[#999999] text-sm xl:text-[18px] font-medium leading-[150%]">
+    <div className="bg-grey-08 light:bg-white-99 border border-grey-15 light:border-white-90 rounded-xl p-30 flex flex-col gap-14 w-full h-full justify-center">
+      <span className="text-grey-60 light:text-grey-40 text-sm xl:text-[18px] font-medium leading-[150%]">
         What They Said 🤗
       </span>
-      <p className="text-white text-sm xl:text-[18px] font-medium leading-[150%]">
+      <p className="text-white light:text-grey-08 text-sm xl:text-[18px] font-medium leading-[150%]">
         {quote}
       </p>
     </div>

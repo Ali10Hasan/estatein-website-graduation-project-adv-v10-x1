@@ -43,44 +43,44 @@ const PropertiesTable = () => {
     }
 
     return (
-        <div className="w-full overflow-x-auto border border-grey-15 rounded-xl">
-            <table className="w-full text-left text-white">
+        <div className="w-full overflow-x-auto border border-grey-15 light:border-white-90 rounded-xl">
+            <table className="w-full text-left text-white light:text-grey-08">
 
-                <thead className="bg-grey-10">
+                <thead className="bg-grey-10 light:bg-white-95">
                     <tr>
-                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90 light:text-grey-20">
                             Image
                         </th>
 
-                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90 light:text-grey-20">
                             Title
                         </th>
 
-                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90 light:text-grey-20">
                             Category
                         </th>
 
-                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90 light:text-grey-20">
                             Price
                         </th>
 
-                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90 light:text-grey-20">
                             Type
                         </th>
 
-                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90 light:text-grey-20">
                             Bedrooms
                         </th>
 
-                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-start text-14 font-medium text-white-90 light:text-grey-20">
                             Bathrooms
                         </th>
 
-                        <th className="px-20 py-18 text-center text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-center text-14 font-medium text-white-90 light:text-grey-20">
                             Details
                         </th>
 
-                        <th className="px-20 py-18 text-center text-14 font-medium text-white-90">
+                        <th className="px-20 py-18 text-center text-14 font-medium text-white-90 light:text-grey-20">
                             Actions
                         </th>
                     </tr>
@@ -117,7 +117,7 @@ const PropertiesTable = () => {
                             <Fragment key={property.id}>
 
                                 {/* Main Row */}
-                                <tr className="border-t border-grey-15">
+                                <tr className="border-t border-grey-15 light:border-white-90">
 
                                     <td className="px-20 py-20">
                                         <img
@@ -166,14 +166,14 @@ const PropertiesTable = () => {
                                                             : property.id
                                                     )
                                                 }
-                                                className="px-14 py-8 rounded-lg border border-grey-15 text-white-90 hover:bg-grey-15 transition-colors cursor-pointer"
+                                                className="px-14 py-8 rounded-lg border border-grey-15 light:border-white-90 text-white-90 light:text-grey-20 hover:bg-grey-15 light:hover:bg-white-90 transition-colors cursor-pointer"
                                             >
                                                 {isExpanded
                                                     ? "Hide Details"
                                                     : "View Details"}
                                             </button>
                                         ) : (
-                                            <span className="text-grey-60 text-14">
+                                            <span className="text-grey-60 light:text-grey-40 text-14">
                                                 Basic
                                             </span>
                                         )}
@@ -191,7 +191,7 @@ const PropertiesTable = () => {
 
                                 {/* Expanded Details Row */}
                                 {isExpanded && (
-                                    <tr className="border-t border-grey-15 bg-grey-10">
+                                    <tr className="border-t border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95">
 
                                         <td
                                             colSpan={9}
@@ -204,11 +204,11 @@ const PropertiesTable = () => {
 
                                                     {property.location && (
                                                         <div>
-                                                            <p className="text-14 text-grey-60">
+                                                            <p className="text-14 text-grey-60 light:text-grey-40">
                                                                 Location
                                                             </p>
 
-                                                            <p className="mt-6 text-white-90">
+                                                            <p className="mt-6 text-white-90 light:text-grey-20">
                                                                 {property.location}
                                                             </p>
                                                         </div>
@@ -216,11 +216,11 @@ const PropertiesTable = () => {
 
                                                     {hasArea && (
                                                         <div>
-                                                            <p className="text-14 text-grey-60">
+                                                            <p className="text-14 text-grey-60 light:text-grey-40">
                                                                 Area
                                                             </p>
 
-                                                            <p className="mt-6 text-white-90">
+                                                            <p className="mt-6 text-white-90 light:text-grey-20">
                                                                 {property.area} Square Feet
                                                             </p>
                                                         </div>
@@ -228,11 +228,11 @@ const PropertiesTable = () => {
 
                                                     {hasBuiltYear && (
                                                         <div>
-                                                            <p className="text-14 text-grey-60">
+                                                            <p className="text-14 text-grey-60 light:text-grey-40">
                                                                 Built Year
                                                             </p>
 
-                                                            <p className="mt-6 text-white-90">
+                                                            <p className="mt-6 text-white-90 light:text-grey-20">
                                                                 {property.builtYear}
                                                             </p>
                                                         </div>
@@ -243,11 +243,11 @@ const PropertiesTable = () => {
                                                 {/* Full Description */}
                                                 {property.fullDescription && (
                                                     <div>
-                                                        <p className="text-14 text-grey-60">
+                                                        <p className="text-14 text-grey-60 light:text-grey-40">
                                                             Full Description
                                                         </p>
 
-                                                        <p className="mt-6 text-white-90">
+                                                        <p className="mt-6 text-white-90 light:text-grey-20">
                                                             {property.fullDescription}
                                                         </p>
                                                     </div>
@@ -257,7 +257,7 @@ const PropertiesTable = () => {
                                                 {property.features &&
                                                     property.features.length > 0 && (
                                                         <div>
-                                                            <p className="text-14 text-grey-60">
+                                                            <p className="text-14 text-grey-60 light:text-grey-40">
                                                                 Features
                                                             </p>
 
@@ -266,7 +266,7 @@ const PropertiesTable = () => {
                                                                     (feature, index) => (
                                                                         <li
                                                                             key={index}
-                                                                            className="text-white-90"
+                                                                            className="text-white-90 light:text-grey-20"
                                                                         >
                                                                             • {feature}
                                                                         </li>
@@ -280,7 +280,7 @@ const PropertiesTable = () => {
                                                 {property.images.length > 1 && (
                                                     <div>
 
-                                                        <p className="text-14 text-grey-60">
+                                                        <p className="text-14 text-grey-60 light:text-grey-40">
                                                             Property Images
                                                         </p>
 

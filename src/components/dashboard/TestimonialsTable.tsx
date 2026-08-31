@@ -59,7 +59,7 @@ const TestimonialsTable = () => {
                         <p className="
                             text-15
                             font-medium
-                            text-white
+                            text-white light:text-grey-08
                         ">
                             {testimonial.name}
                         </p>
@@ -68,7 +68,7 @@ const TestimonialsTable = () => {
                             mt-4
                             truncate
                             text-13
-                            text-white-90
+                            text-white-90 light:text-grey-20
                         ">
                             {testimonial.location}
                         </p>
@@ -88,7 +88,7 @@ const TestimonialsTable = () => {
                     max-w-400
                     text-14
                     leading-22
-                    text-white-90
+                    text-white-90 light:text-grey-20
                 ">
                     {testimonial.review}
                 </p>
