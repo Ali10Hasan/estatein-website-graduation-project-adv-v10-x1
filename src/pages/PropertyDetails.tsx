@@ -1,6 +1,6 @@
 
-import Form from "../components/Form/Form";
 import InquiryForm from "../components/PropertyDetailsPage/InquiryForm";
+import Form from "../components/Form/Form";
 import PropertyPricing from "../components/PropertyDetailsPage/PricingPropertyDetails/PropertyPricing";
 import PropertyGallery from "../components/PropertyDetailsPage/PropertyGallery";
 import PropertyOverview from "../components/PropertyDetailsPage/PropertyOverview";

@@ -28,7 +28,7 @@ const PropertiesList = ({
 
     if (error) return <Error message={error} />
 
-
+    console.log("PropertiesList items:", items); // Debugging line
     return (
         <Container>
             <section>
