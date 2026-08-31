@@ -15,7 +15,7 @@ const CTA = ({
   onButtonClick,
 }: CTAProps) => {
   return (
-    <section className="CTA-Section relative isolate w-full overflow-hidden border-t border-b border-grey-15 bg-grey-08 px-16 py-40 min-[992px]:px-80 min-[992px]:py-60 min-[1440px]:px-162">
+    <section className="CTA-Section relative isolate w-full overflow-hidden border-t border-b border-grey-15 light:border-white-90 bg-grey-08 light:bg-white-99 px-16 py-40 min-[992px]:px-80 min-[992px]:py-60 min-[1440px]:px-162">
       <DecorativeBlob
         className="bottom-0 right-0 w-220 min-[992px]:bottom-0 min-[992px]:right-0 min-[992px]:top-auto min-[992px]:block min-[992px]:w-480 lg:w-2xl"
       />
@@ -24,11 +24,11 @@ const CTA = ({
       />
 
       <div className="CTA-Content relative z-10 flex flex-col items-start gap-20 min-[992px]:flex-row min-[992px]:items-center min-[992px]:justify-between min-[992px]:gap-40">
-        <div className="flex-1 min-[992px]:max-w-[70%] min-[1440px]:max-w-900">
-          <h2 className=" text-3xl font-semibold text-white min-[992px]:text-4xl">
+        <div className="flex-1 min-[992px]:max-w-[70%] min-[1440px]:max-w-900 light:bg-white-99/95 light:backdrop-blur-sm light:rounded-xl light:p-16 light:-m-16">
+          <h2 className=" text-3xl font-semibold text-white light:text-grey-10 min-[992px]:text-4xl">
             {title}
           </h2>
-          <p className="text-sm font-medium text-grey-60 min-[992px]:text-base min-[1440px]:text-lg">
+          <p className="text-sm font-medium text-grey-60 light:text-grey-40 min-[992px]:text-base min-[1440px]:text-lg">
             {description}
           </p>
         </div>

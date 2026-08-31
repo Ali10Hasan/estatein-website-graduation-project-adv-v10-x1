@@ -1,14 +1,6 @@
 import Form from "../components/Form/Form"
-<<<<<<< HEAD
-import PageHero from "../components/Hero/PageHero"
-import ExploreEstatein from "../components/sections/ExploreEstatein"
-
-
-
-=======
 import Location from "../components/Location/Location"
 import PageHero from "../components/Hero/PageHero"
->>>>>>> 4cca5c0 (let make it happenا)
 const Contact = () => {
     return (
         <div>
@@ -18,14 +10,10 @@ const Contact = () => {
                 className="2xl:h-450 xl:h-345 h-257"
 
             />
-<<<<<<< HEAD
-            <Form />
-            <ExploreEstatein/>
-=======
+
               <Form/>
 
               <Location/>
->>>>>>> 4cca5c0 (let make it happenا)
         </div>
     )
 }

@@ -7,7 +7,7 @@ const DecorativeBlob = ({ className }: DecorativeBlobProps) => {
       src="/assets/imgs/CtaAbstractDesign.webp"
       alt=""
       aria-hidden="true"
-      className={`pointer-events-none absolute -z-10 select-none ${className}`}
+      className={`pointer-events-none absolute -z-10 select-none mix-blend-screen light:mix-blend-multiply light:opacity-60 ${className}`}
     />
   );
 };

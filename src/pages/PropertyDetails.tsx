@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 
-import InquiryForm from "../components/PropertyDetailsPage/InquiryForm";
-=======
 import Form from "../components/Form/Form";
->>>>>>> 4cca5c0 (let make it happenا)
+import InquiryForm from "../components/PropertyDetailsPage/InquiryForm";
 import PropertyPricing from "../components/PropertyDetailsPage/PricingPropertyDetails/PropertyPricing";
 import PropertyGallery from "../components/PropertyDetailsPage/PropertyGallery";
 import PropertyOverview from "../components/PropertyDetailsPage/PropertyOverview";
