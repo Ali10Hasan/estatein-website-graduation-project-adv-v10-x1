@@ -16,9 +16,9 @@ const WhatClientsSaySection = () => {
     <Container>
       <section className="flex flex-col w-full">
         <SkeletonTheme
-          baseColor="#1A1A1A"
-          highlightColor="#262626"
-        >
+          baseColor="#703BF7 "
+          highlightColor="#A685FA">
+
           <SliderSection
             title="What Our Clients Say"
             desc="Read the success stories and heartfelt testimonials from our valued clients. Discover why they chose Estatein for their real estate needs."
@@ -37,7 +37,7 @@ const WhatClientsSaySection = () => {
           </SliderSection>
         </SkeletonTheme>
       </section>
-    </Container>
+    </Container >
   )
 }
 

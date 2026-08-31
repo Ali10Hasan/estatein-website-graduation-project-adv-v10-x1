@@ -8,9 +8,9 @@ interface LearnMoreProps {
 const LearnMore = ({ selectedCard, onClose }: LearnMoreProps) => {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-20">
-            <div className="bg-grey-08 border border-grey-15 rounded-3xl w-full max-w-2xl p-30 xl:p-40 flex flex-col gap-24 relative shadow-2xl">
+            <div className="bg-grey-08 light:bg-white-99 border border-grey-15 light:border-white-90 rounded-3xl w-full max-w-2xl p-30 xl:p-40 flex flex-col gap-24 relative shadow-2xl">
 
-                <div className="flex justify-between items-center pb-30 border-b border-grey-15">
+                <div className="flex justify-between items-center pb-30 border-b border-grey-15 light:border-white-90">
                     <div className="flex flex-col gap-5">
                         <span className="text-[14px] uppercase text-purple-60 font-semibold">Information Guide</span>
                         <h3 className="text-xl xl:text-[30px] font-semibold">
@@ -19,7 +19,7 @@ const LearnMore = ({ selectedCard, onClose }: LearnMoreProps) => {
                     </div>
                     <button
                         onClick={onClose}
-                        className="w-50 h-50 rounded-full bg-grey-10 border border-grey-15 flex items-center justify-center text-grey-60 hover:text-white hover:bg-grey-15 transition-all duration-200"
+                        className="w-50 h-50 rounded-full bg-grey-10 light:bg-white-97 border border-grey-15 light:border-white-90 flex items-center justify-center text-grey-60 hover:text-white light:text-grey-08 hover:bg-grey-15 light:hover:light:bg-white-90 transition-all duration-200"
                     >
                         <IoClose className="w-30 h-30" />
                     </button>
@@ -40,7 +40,7 @@ const LearnMore = ({ selectedCard, onClose }: LearnMoreProps) => {
                     )}
                 </div>
 
-                <div className="flex justify-center pt-30 border-t border-grey-15">
+                <div className="flex justify-center pt-30 border-t border-grey-15 light:border-white-90">
                     <button
                         onClick={onClose}
                         className="w-full py-30 bg-purple-60 hover:bg-purple-70 font-medium rounded-xl transition-all duration-200 "

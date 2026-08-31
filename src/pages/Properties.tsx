@@ -15,7 +15,8 @@ const Properties = () => {
                 sectionTitle={"Discover a World of Possibilities"}
                 Sectiondescription="Our portfolio of properties is as diverse as your dreams. Explore the following categories to find the perfect property that resonates with your vision of home"
                 showButton={false}
-                buttonContent={""} />
+                buttonContent={""}
+                className="2xl:mt-153 xl:mt-103 mt-150" />
 
         </div>
     )

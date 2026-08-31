@@ -20,8 +20,8 @@ const PropertyPricing = ({ property }: PropertyPricingProps) => {
 
             <div className="flex flex-col 2xl:gap-50 xl:gap-40 gap-30 2xl:mb-150 xl:mb-120 mb-80 mt-40 xl:mt-60 2xl:mt-80">
                 {/* Note */}
-                <div className="bg-grey-10 border border-grey-15 2xl:px-50 2xl:py-30 xl:px-40 xl:py-20 py-24 px-20 2xl:rounded-xl rounded-lg flex flex-col xl:flex-row xl:items-center gap-10 xl:gap-16 2xl:gap-20 ">
-                    <span className="font-semibold text-[18px] xl:text-[20px] 2xl:text-[24px] xl:pr-16 xl:border-r xl:border-grey-15 border-b border-b-grey-15 xl:border-b-0 pb-10 xl:pb-0">Note</span>
+                <div className="bg-grey-10 light:bg-white-97 border border-grey-15 light:border-white-90 2xl:px-50 2xl:py-30 xl:px-40 xl:py-20 py-24 px-20 2xl:rounded-xl rounded-lg flex flex-col xl:flex-row xl:items-center gap-10 xl:gap-16 2xl:gap-20 ">
+                    <span className="font-semibold text-[18px] xl:text-[20px] 2xl:text-[24px] xl:pr-16 xl:border-r xl:border-grey-15 light:border-white-90 border-b border-b-grey-15 xl:border-b-0 pb-10 xl:pb-0">Note</span>
                     <p className="text-[14px] 2xl:text-[18px] text-grey-60">
                         The figures provided above are estimates and may vary depending on the property, location, and individual circumstances.
                     </p>
@@ -44,14 +44,14 @@ const PropertyPricing = ({ property }: PropertyPricingProps) => {
                                         label: "Property Transfer Tax",
                                         value: `$${pricing.transferTax.toLocaleString()}`,
                                         badge: "Based on the sale price and local regulations",
-                                        className: "border-b border-grey-15 pb-20 sm:pb-0 sm:border-none"
+                                        className: "border-b border-grey-15 light:border-white-90 pb-20 sm:pb-0 sm:border-none"
 
                                     },
                                     {
                                         label: "Legal Fees",
                                         value: `$${pricing.legalFees.toLocaleString()}`,
                                         badge: "Approximate cost for legal services, including title transfer",
-                                        className: "sm:border-l border-grey-15 sm:pl-20"
+                                        className: "sm:border-l border-grey-15 light:border-white-90 light:border-white-90 sm:pl-20"
                                     }
                                 ],
                                 [
@@ -59,15 +59,14 @@ const PropertyPricing = ({ property }: PropertyPricingProps) => {
                                         label: "Home Inspection",
                                         value: `$${pricing.homeInspection.toLocaleString()}`,
                                         badge: "Recommended for due diligence",
-                                        // className: "border-b border-grey-15 pb-20 sm:pb-0 sm:border-none",
-                                        className: "border-b border-grey-15 pb-20 sm:pb-0 sm:border-none"
+                                        className: "border-b border-grey-15 light:border-white-90 pb-20 sm:pb-0 sm:border-none"
 
                                     },
                                     {
                                         label: "Property Insurance",
                                         value: `$${pricing.propertyInsuranceAnnual.toLocaleString()}`,
                                         badge: "Annual cost for comprehensive property insurance",
-                                        className: "sm:border-l border-grey-15 sm:pl-20"
+                                        className: "sm:border-l border-grey-15 light:border-white-90 sm:pl-20"
                                     }
                                 ],
                                 [
@@ -111,14 +110,14 @@ const PropertyPricing = ({ property }: PropertyPricingProps) => {
                                     {
                                         label: "Listing Price",
                                         value: `$${pricing.listingPrice.toLocaleString()}`,
-                                        className: "border-b border-grey-15 pb-20 sm:pb-0 sm:border-none"
+                                        className: "border-b border-grey-15 light:border-white-90 pb-20 sm:pb-0 sm:border-none"
 
                                     },
                                     {
                                         label: "Additional Fees",
                                         value: `$${pricing.additionalFees.toLocaleString()}`,
                                         badge: "Property transfer tax, legal fees, inspection, insurance",
-                                        className: "sm:border-l border-grey-15 sm:pl-20"
+                                        className: "sm:border-l border-grey-15 light:border-white-90 sm:pl-20"
 
                                     }
                                 ],
@@ -127,14 +126,14 @@ const PropertyPricing = ({ property }: PropertyPricingProps) => {
                                         label: "Down Payment",
                                         value: `$${pricing.downPayment.toLocaleString()}`,
                                         badge: "20%",
-                                        className: "border-b border-grey-15 pb-20 sm:pb-0 sm:border-none"
+                                        className: "border-b border-grey-15 light:border-white-90 pb-20 sm:pb-0 sm:border-none"
 
                                     },
                                     {
                                         label: "Mortgage Amount",
                                         value: `$${pricing.mortgageAmount.toLocaleString()}`,
                                         badge: "If applicable",
-                                        className: "sm:border-l border-grey-15 sm:pl-20"
+                                        className: "sm:border-l border-grey-15 light:border-white-90 sm:pl-20"
 
                                     }
                                 ]
@@ -151,13 +150,13 @@ const PropertyPricing = ({ property }: PropertyPricingProps) => {
                                     {
                                         label: "Property Taxes",
                                         value: `$${pricing.monthlyPropertyTax.toLocaleString()}`,
-                                        className: "border-b border-grey-15 pb-20 sm:pb-0 sm:border-none"
+                                        className: "border-b border-grey-15 light:border-white-90 pb-20 sm:pb-0 sm:border-none"
 
                                     },
                                     {
                                         label: "Homeowners' Association Fee",
                                         value: `$${pricing.hoaFee.toLocaleString()}`,
-                                        className: "sm:border-l border-grey-15 sm:pl-20"
+                                        className: "sm:border-l border-grey-15 light:border-white-90 sm:pl-20"
 
                                     }
                                 ],
@@ -166,14 +165,14 @@ const PropertyPricing = ({ property }: PropertyPricingProps) => {
                                         label: "Mortgage Payment",
                                         value: "Varies based on terms and interest rate",
                                         // className: "pb-20 border-b border-grey-15 sm:border-none"
-                                        className: "border-b border-grey-15 pb-20 sm:pb-0 sm:border-none"
+                                        className: "border-b border-grey-15 light:border-white-90 pb-20 sm:pb-0 sm:border-none"
 
                                     },
                                     {
                                         label: "Property Insurance",
                                         value: `$${pricing.monthlyPropertyInsurance.toLocaleString()}`,
                                         badge: "Approximate monthly cost",
-                                        className: "sm:border-l border-grey-15 sm:pl-20"
+                                        className: "sm:border-l border-grey-15 light:border-white-90 sm:pl-20"
 
                                     }
                                 ]

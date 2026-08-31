@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import type { IProperty } from "../../types/propertyType";
 import { StaggerContainer, StaggerItem } from "../FramerMotion/Animation";
 import { FaLocationDot } from "react-icons/fa6";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 interface PropertyGalleryProps {
     property: IProperty;
@@ -51,10 +52,6 @@ const PropertyGallery = ({ property }: PropertyGalleryProps) => {
     };
 
     return (
-        /* 
-        <div className="   px-16 xl:px-0   ">
-        
-        */
         <div className="2xl:mt-120 xl:mt-80 mt-60 2xl:mb-30 mb-20 flex flex-col 2xl:gap-50 xl:gap-40 gap-30 2xl:max-w-1596 xl:max-w-7xl">
             {/* Gallery Heading */}
 
@@ -62,25 +59,25 @@ const PropertyGallery = ({ property }: PropertyGalleryProps) => {
                 <h1 className="text-[20px] xl:text-2xl 2xl:text-3xl font-semibold ">{property.title}</h1>
 
                 <div className="flex justify-between items-center grow gap-20">
-                    <div className="flex items-center 2xl:gap-6 gap-4 border border-grey-15 rounded-lg 2xl:p-10 p-8">
+                    <div className="flex items-center 2xl:gap-6 gap-4 border border-grey-15 light:border-white-90 rounded-lg 2xl:p-10 p-8">
                         <FaLocationDot className="2xl:w-24 2xl:h-24 w-20 h-20 animate-bounce" />
                         <span className="text-[14px] 2xl:text-[18px] font-medium">{property.location}</span>
                     </div>
 
                     <div className="flex lg:block gap-4 items-center">
                         <span className="text-[14px] text-grey-60 font-medium block lg:mb-2">Price</span>
-                        <span className="text-[18px] xl:text-[20px] 2xl:text-[24px] font-semibold text-white">${property.price.toLocaleString()}</span>
+                        <span className="text-[18px] xl:text-[20px] 2xl:text-[24px] font-semibold text-white light:text-grey-08">${property.price.toLocaleString()}</span>
                     </div>
                 </div>
             </div>
 
             {/* Gallery Container */}
-            <div className="bg-grey-10 border border-grey-15 rounded-xl flex flex-col gap-20 2xl:gap-30 p-20 xl:p-40 2xl:p-50 ">
+            <div className="bg-grey-10 light:bg-white-97 border border-grey-15 light:border-white-90 rounded-xl flex flex-col gap-20 2xl:gap-30 p-20 xl:p-40 2xl:p-50 ">
 
                 {/* Thumbnails */}
-                <div className="bg-grey-08 border border-grey-15 p-10 2xl:p-20 rounded-xl overflow-hidden order-2 lg:order-1">
+                <div className="bg-grey-08 light:bg-white-99 border border-grey-15 light:border-white-90 p-10 2xl:p-20 rounded-xl overflow-hidden order-2 lg:order-1">
                     <StaggerContainer
-                        className="flex items-center gap-10 scrollbar-none scroll-smooth justify-between"
+                        className="flex items-center gap-10 scrollbar-none scroll-smooth justify-center 2xl:gap-20"
                     >
                         {images.map((img, index) => (
                             <StaggerItem
@@ -123,13 +120,13 @@ const PropertyGallery = ({ property }: PropertyGalleryProps) => {
 
                 {/* Control Bar */}
                 {images.length > 1 && (
-                    <div className="bg-grey-08 mx-auto p-8 2xl:p-10 rounded-[100px] 2xl:h-78 xl:h-60 order-3">
+                    <div className="bg-grey-08 light:bg-white-99 mx-auto p-8 2xl:p-10 rounded-[100px] 2xl:h-78 xl:h-60 order-3">
                         <div className="flex gap-10">
                             <button
                                 onClick={handlePrev}
-                                className="2xl:w-58 2xl:h-58 w-44 h-44 rounded-full bg-grey-10 border border-grey-15 flex items-center justify-center hover:bg-purple-60 transition-colors "
+                                className="2xl:w-58 2xl:h-58 w-44 h-44 rounded-full bg-grey-10 light:bg-white-97 border border-grey-15 light:border-white-90 flex items-center justify-center hover:bg-purple-60 transition-colors "
                             >
-                                <img src="/assets/icons/left-arrow.svg" alt="left-arrow" />
+                                <FaArrowLeft className={`${currentImageIndex === images.length ? "" : "text-grey-50"}`} />
                             </button>
 
                             <div className="flex items-center gap-8">
@@ -139,7 +136,7 @@ const PropertyGallery = ({ property }: PropertyGalleryProps) => {
                                         onClick={() => handleSelectImage(index)}
                                         className={`cursor-pointer h-3 w-12 2xl:w-20 2xl:h-5 rounded-[60px] transition-all ${currentImageIndex === index
                                             ? "bg-purple-60 scale-y-150"
-                                            : "w-12 bg-grey-15"
+                                            : "w-12 bg-grey-15 light:bg-white-90"
                                             }`}
                                     />
                                 ))}
@@ -147,9 +144,9 @@ const PropertyGallery = ({ property }: PropertyGalleryProps) => {
 
                             <button
                                 onClick={handleNext}
-                                className="2xl:w-58 2xl:h-58 w-44 h-44 rounded-full bg-grey-10 border border-grey-15 flex items-center justify-center hover:bg-purple-60 transition-colors "
+                                className="2xl:w-58 2xl:h-58 w-44 h-44 rounded-full bg-grey-10 light:bg-white-97 border border-grey-15 light:border-white-90 flex items-center justify-center hover:bg-purple-60 transition-colors "
                             >
-                                <img src="/assets/icons/right-arrow.svg" alt="right-arrow" />
+                                <FaArrowRight className={`${currentImageIndex === images.length ? "text-grey-50" : ""}`} />
                             </button>
                         </div>
                     </div>
