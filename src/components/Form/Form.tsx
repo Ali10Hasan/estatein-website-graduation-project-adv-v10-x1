@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Phone, Mail } from "lucide-react";
+import { FaPhoneAlt } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 import Stars from "../AtomComponents/Stars";
 import Button from "../AtomComponents/Button";
 
@@ -179,7 +180,7 @@ const Form = ({
                                                 contactMethod === "phone" ? "border-purple-60" : "border-grey-15"
                                             }`}
                                         >
-                                            <Phone size={18} className="text-grey-40 shrink-0" />
+                                            <FaPhoneAlt size={18} className="text-grey-40 shrink-0" />
                                             <input
                                                 type="tel"
                                                 placeholder="Enter Your Number"
@@ -200,7 +201,7 @@ const Form = ({
                                                 contactMethod === "email" ? "border-purple-60" : "border-grey-15"
                                             }`}
                                         >
-                                            <Mail size={18} className="text-grey-40 shrink-0" />
+                                            <MdEmail size={18} className="text-grey-40 shrink-0" />
                                             <input
                                                 type="email"
                                                 placeholder="Enter Your Email"
