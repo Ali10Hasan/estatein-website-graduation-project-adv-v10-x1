@@ -40,7 +40,13 @@ const DashboardSidebar = () => {
                 <img
                     src="/assets/imgs/EstateinLogo.webp"
                     alt="Estatein"
-                    className="h-48 w-114 object-contain"
+                    className="h-48 w-114 object-contain light:hidden"
+                />
+
+                <img
+                    src="/assets/imgs/logolight.webp"
+                    alt="Estatein"
+                    className="hidden h-48 w-114 object-contain light:block"
                 />
 
             </div>

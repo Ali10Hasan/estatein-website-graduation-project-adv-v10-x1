@@ -117,7 +117,18 @@ const Login = () => {
                     <motion.img
                         src="/assets/imgs/EstateinLogo.webp"
                         alt="Estatein"
-                        className="h-35 w-auto object-contain"
+                        className="h-35 w-auto object-contain light:hidden"
+                        whileHover={{
+                            scale: 1.05,
+                        }}
+                        transition={{
+                            duration: 0.3,
+                        }}
+                    />
+                    <motion.img
+                        src="/assets/imgs/logolight.webp"
+                        alt="Estatein"
+                        className="hidden h-45 w-auto object-contain light:block"
                         whileHover={{
                             scale: 1.05,
                         }}

@@ -62,7 +62,7 @@ const FaqForm = ({
         flex
         items-center
         justify-center
-        bg-smoky-black light:bg-white-90
+        bg-smoky-black light:bg-white-90/70
         px-20
         backdrop-blur-sm
       "
