@@ -8,7 +8,7 @@ export default function TeamCard({
   role,
 }: TeamCardProps) {
   return (
-    <div className="group w-full rounded-xl border border-grey-15 p-20 md:p-24 lg:p-30 h-full flex flex-col transition-colors duration-300 hover:border-purple-60">
+    <div className="group w-full rounded-xl border border-grey-15 light:border-white-95 p-20 md:p-24 lg:p-30 h-full flex flex-col transition-colors duration-300 hover:bg-grey-15 hover:border-purple-60 light:hover:bg-purple-90">
       <div className="relative">
         <div className="overflow-hidden rounded-10">
           <img src={image} alt={name} className="w-full rounded-xl object-cover object-top h-268 min-[1200]:h-220 min-[1440]:h-253 transition-transform duration-500 ease-in-out group-hover:scale-105"  />
@@ -18,8 +18,8 @@ export default function TeamCard({
         </button>
       </div>
       <div className="mt-40 md:mt-50 mb-16 md:mb-20 lg:mb-24 text-center flex flex-col flex-1">
-        <h3 className="font-urbanist text-xl lg:text-2xl font-semibold leading-24 text-white">  {name} </h3>
-        <p className="mt-2 md:mt-4 lg:mt-6 font-urbanist text-sm lg:text-lg font-medium leading-24 text-grey-60">  {role} </p>
+        <h3 className="font-urbanist text-xl lg:text-2xl font-semibold leading-24 text-white light:text-grey-08">  {name} </h3>
+        <p className="mt-2 md:mt-4 lg:mt-6 font-urbanist text-sm lg:text-lg font-medium leading-24 text-grey-60 light:text-grey-40">  {role} </p>
       </div>
       <TeamButton />
     </div>
