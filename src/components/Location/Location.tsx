@@ -73,17 +73,17 @@ const Location = () => {
 
     return (
         <Container className="flex flex-col gap-[80px]">
-          
+
             <div className="flex flex-col gap-10">
-                <div className="flex items-center gap-6 text-grey-40">
+                <div className="flex items-center gap-6 text-grey-40 light:text-grey-20">
                     <Stars />
                 </div>
 
-                <h2 className="text-white text-2xl xs:text-3xl lg:text-4xl font-semibold font-urbanist">
+                <h2 className="text-white light:text-grey-08 text-2xl xs:text-3xl lg:text-4xl font-semibold font-urbanist">
                     Discover Our Office Locations
                 </h2>
 
-                <p className="text-grey-40 text-xs max-w-full lg:max-w-[850px]">
+                <p className="text-grey-40 light:text-grey-20 text-xs max-w-full lg:max-w-[850px]">
                     Estatein is here to serve you across multiple locations. Whether
                     you're looking to meet our team, discuss real estate opportunities,
                     or simply drop by for a chat, we have offices conveniently located
@@ -99,8 +99,8 @@ const Location = () => {
                             onClick={() => setActiveFilter(option.value)}
                             className={`rounded-lg px-16 py-8 text-sm font-medium transition ${
                                 activeFilter === option.value
-                                    ? "bg-white text-black"
-                                    : "bg-grey-10 text-grey-40 border border-grey-15 hover:text-white"
+                                    ? "bg-white text-black light:bg-grey-08 light:text-white-95"
+                                    : "bg-grey-10 light:bg-white-95 text-grey-40 light:text-grey-20 border border-grey-15 light:border-white-90 hover:text-white light:hover:text-grey-08"
                             }`}
                         >
                             {option.label}
@@ -109,35 +109,35 @@ const Location = () => {
                 </div>
             </div>
 
-          
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
                 {filteredOffices.map((office) => (
                     <div
                         key={office.id}
-                        className="flex flex-col gap-10 rounded-2xl border border-grey-15 p-20 md:p-24"
+                        className="flex flex-col gap-10 rounded-2xl border border-grey-15 light:border-white-90 p-20 md:p-24"
                     >
-                        <span className="text-grey-40 text-xs font-medium">
+                        <span className="text-grey-40 light:text-grey-20 text-xs font-medium">
                             {office.label}
                         </span>
 
-                        <h3 className="text-white font-semibold font-urbanist text-lg md:text-xl">
+                        <h3 className="text-white light:text-grey-08 font-semibold font-urbanist text-lg md:text-xl">
                             {office.address}
                         </h3>
 
-                        <p className="text-grey-40 leading-relaxed text-xs md:text-sm">
+                        <p className="text-grey-40 light:text-grey-20 leading-relaxed text-xs md:text-sm">
                             {office.description}
                         </p>
 
                         <div className="flex flex-wrap gap-8">
-                            <span className="flex items-center gap-6 rounded-full border border-grey-15 bg-grey-10 px-12 py-6 text-white text-xs">
+                            <span className="flex items-center gap-6 rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 px-12 py-6 text-white light:text-grey-08 text-xs">
                                 <MdEmail size={13} className="shrink-0" />
                                 {office.email}
                             </span>
-                            <span className="flex items-center gap-6 rounded-full border border-grey-15 bg-grey-10 px-12 py-6 text-white text-xs">
+                            <span className="flex items-center gap-6 rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 px-12 py-6 text-white light:text-grey-08 text-xs">
                                 <FaPhoneAlt size={13} className="shrink-0" />
                                 {office.phone}
                             </span>
-                            <span className="flex items-center gap-6 rounded-full border border-grey-15 bg-grey-10 px-12 py-6 text-white text-xs">
+                            <span className="flex items-center gap-6 rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 px-12 py-6 text-white light:text-grey-08 text-xs">
                                 <TiLocation size={13} className="shrink-0" />
                                 {office.location}
                             </span>

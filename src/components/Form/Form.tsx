@@ -3,65 +3,31 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import Stars from "../AtomComponents/Stars";
 import Button from "../AtomComponents/Button";
-
+import InputCard from "../inputs/InputCard";
+import TextareaInput from "../inputs/TextareaInput";
 type SelectProps = React.SelectHTMLAttributes<HTMLSelectElement> & {
     FilterText: string;
     options: { label: string; value: string }[];
 };
 
 const Select = ({ FilterText, options, className = "", ...props }: SelectProps) => (
-    <label className="flex flex-col gap-10 text-white">
+    <label className="flex flex-col gap-10 text-white light:text-grey-08">
         <span className="text-sm font-medium">{FilterText}</span>
         <select
             {...props}
-            className={`w-full rounded-lg border border-grey-15 bg-grey-10 px-20 py-16 text-white outline-none ${className}`}
+            className={`w-full rounded-lg border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 px-20 py-16 text-white light:text-grey-08 outline-none ${className}`}
         >
-            <option value="" disabled>
+            <option value="" disabled className="bg-grey-10 light:bg-white-95">
                 {FilterText}
             </option>
             {options.map((option) => (
-                <option key={option.value} value={option.value}>
+                <option key={option.value} value={option.value} className="bg-grey-10 light:bg-white-95">
                     {option.label}
                 </option>
             ))}
         </select>
     </label>
 );
-
-const TextareaInput = ({ label, className = "", ...props }: React.TextareaHTMLAttributes<HTMLTextAreaElement> & { label: string }) => (
-    <label className="flex flex-col gap-10 text-white">
-        <span className="text-sm font-medium">{label}</span>
-        <textarea
-            {...props}
-            className={`min-h-[140px] w-full resize-y rounded-lg border border-grey-15 bg-grey-10 px-20 py-16 text-white placeholder:text-grey-40 outline-none ${className}`}
-        />
-    </label>
-);
-
-type InputCardProps = React.InputHTMLAttributes<HTMLInputElement> & {
-    label?: string;
-};
-
-const InputCard = ({ label, className = "", ...props }: InputCardProps) => {
-    if (props.type === "checkbox") {
-        return (
-            <input
-                {...props}
-                className={`h-16 w-16 accent-purple-60 ${className}`}
-            />
-        );
-    }
-
-    return (
-        <label className="flex flex-col gap-10 text-white">
-            {label && <span className="text-sm font-medium">{label}</span>}
-            <input
-                {...props}
-                className={`w-full rounded-lg border border-grey-15 bg-grey-10 px-20 py-16 text-white placeholder:text-grey-40 outline-none ${className}`}
-            />
-        </label>
-    );
-};
 
 type FormProps = {
     title?: string;
@@ -75,50 +41,60 @@ const Form = ({
     showPropertyFields = false,
 }: FormProps) => {
     const [message, setMessage] = useState("");
-    const [agreed, setAgreed] = useState(false);
     const [contactMethod, setContactMethod] = useState<"phone" | "email">("phone");
+    const [errors, setErrors] = useState<Record<string, string>>({});
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!agreed) return;
+        const form = e.currentTarget;
+        const data = new FormData(form);
+        const newErrors: Record<string, string> = {};
+
+        const requiredFields: { name: string; label: string }[] = [
+            { name: "firstName", label: "First Name is required" },
+            { name: "lastName", label: "Last Name is required" },
+            { name: "email", label: "Email is required" },
+            { name: "phone", label: "Phone Number is required" },
+        ];
+
+        requiredFields.forEach(({ name, label }) => {
+            if (!data.get(name)) newErrors[name] = label;
+        });
+
+        if (!data.get("agreeTerms")) {
+            newErrors.agreeTerms = "You must agree to the Terms of Use and Privacy Policy";
+        }
+
+        setErrors(newErrors);
+        if (Object.keys(newErrors).length > 0) return;
+
+        console.log("Form submitted:", Object.fromEntries(data.entries()));
     };
+
     return (
         <div className="mx-auto my-60 max-w-[1597px] px-16 lg:px-0">
-            <div className="flex flex-col gap-[50px] rounded-2xl border border-grey-15 p-[100px]">
+            <div className="flex flex-col gap-[50px] rounded-2xl border border-grey-15 light:border-white-90 p-[100px]">
                 <div className="relative">
-                    <div className="flex items-center gap-6 mb-10 text-grey-40">
+                    <div className="flex items-center gap-6 mb-10 text-grey-40 light:text-grey-20">
                         <Stars />
                     </div>
-                    <h2 className="text-white text-3xl lg:text-5xl font-semibold font-urbanist mb-14">
+                    <h2 className="text-white light:text-grey-08 text-3xl lg:text-5xl font-semibold font-urbanist mb-14">
                         {title}
                     </h2>
-                    <p className="text-grey-40 text-sm lg:text-lg max-w-[700px]">
+                    <p className="text-grey-40 light:text-grey-20 text-sm lg:text-lg max-w-[700px]">
                         {subtitle}
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="border border-grey-15 rounded-2xl p-20 md:p-30 lg:p-40">
-                {showPropertyFields ? (
-                 <div className="flex flex-col gap-16 lg:gap-30">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-30">
-                 <InputCard label="First Name" name="firstName" placeholder="Enter First Name" required />
-                  <InputCard label="Last Name" name="lastName" placeholder="Enter Last Name" required />
-                  <InputCard
-                       label="Email"
-                       name="email"
-                      type="email"
-                      placeholder="Enter your Email"
-                          required
-                                />
-                                <InputCard
-                                    label="Phone"
-                                    name="phone"
-                                    type="tel"
-                                    placeholder="Enter Phone Number"
-                                    required
-                                />
+                <form onSubmit={handleSubmit} className="border border-grey-15 light:border-white-90 rounded-2xl p-20 md:p-30 lg:p-40">
+                    {showPropertyFields ? (
+                        <div className="flex flex-col gap-16 lg:gap-30">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-30">
+                                <InputCard label="First Name" name="firstName" placeholder="Enter First Name" error={errors.firstName} />
+                                <InputCard label="Last Name" name="lastName" placeholder="Enter Last Name" error={errors.lastName} />
+                                <InputCard label="Email" name="email" type="email" placeholder="Enter your Email" error={errors.email} />
+                                <InputCard label="Phone" name="phone" type="tel" placeholder="Enter Phone Number" error={errors.phone} />
                             </div>
-
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 lg:gap-30">
                                 <Select
@@ -160,6 +136,7 @@ const Form = ({
                                     ]}
                                 />
                             </div>
+
                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-30">
                                 <Select
                                     FilterText="Budget"
@@ -172,24 +149,26 @@ const Form = ({
                                     ]}
                                 />
 
-                                <div className="lg:col-span-2 flex flex-col gap-10 text-white">
+                                <div className="lg:col-span-2 flex flex-col gap-10 text-white light:text-grey-08">
                                     <span className="text-sm font-medium">Preferred Contact Method</span>
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                                         <label
-                                            className={`flex items-center gap-10 rounded-lg border bg-grey-10 px-20 py-16 cursor-pointer transition ${
-                                                contactMethod === "phone" ? "border-purple-60" : "border-grey-15"
+                                            className={`flex items-center gap-10 rounded-lg border px-20 py-16 cursor-pointer transition bg-grey-10 light:bg-white-95 ${
+                                                contactMethod === "phone" ? "border-purple-60" : "border-grey-15 light:border-white-90"
                                             }`}
                                         >
-                                            <FaPhoneAlt size={18} className="text-grey-40 shrink-0" />
+                                            <FaPhoneAlt size={18} className="text-grey-40 light:text-grey-20 shrink-0" />
                                             <input
                                                 type="tel"
+                                                name="preferredPhone"
                                                 placeholder="Enter Your Number"
                                                 disabled={contactMethod !== "phone"}
-                                                className="flex-1 bg-transparent outline-none placeholder:text-grey-40 disabled:opacity-50"
+                                                className="flex-1 bg-transparent outline-none text-white light:text-grey-08 placeholder:text-grey-40 light:placeholder:text-grey-20 disabled:opacity-50"
                                             />
                                             <input
                                                 type="radio"
                                                 name="contactMethod"
+                                                value="phone"
                                                 checked={contactMethod === "phone"}
                                                 onChange={() => setContactMethod("phone")}
                                                 className="w-16 h-16 accent-purple-60"
@@ -197,20 +176,22 @@ const Form = ({
                                         </label>
 
                                         <label
-                                            className={`flex items-center gap-10 rounded-lg border bg-grey-10 px-20 py-16 cursor-pointer transition ${
-                                                contactMethod === "email" ? "border-purple-60" : "border-grey-15"
+                                            className={`flex items-center gap-10 rounded-lg border px-20 py-16 cursor-pointer transition bg-grey-10 light:bg-white-95 ${
+                                                contactMethod === "email" ? "border-purple-60" : "border-grey-15 light:border-white-90"
                                             }`}
                                         >
-                                            <MdEmail size={18} className="text-grey-40 shrink-0" />
+                                            <MdEmail size={18} className="text-grey-40 light:text-grey-20 shrink-0" />
                                             <input
                                                 type="email"
+                                                name="preferredEmail"
                                                 placeholder="Enter Your Email"
                                                 disabled={contactMethod !== "email"}
-                                                className="flex-1 bg-transparent outline-none placeholder:text-grey-40 disabled:opacity-50"
+                                                className="flex-1 bg-transparent outline-none text-white light:text-grey-08 placeholder:text-grey-40 light:placeholder:text-grey-20 disabled:opacity-50"
                                             />
                                             <input
                                                 type="radio"
                                                 name="contactMethod"
+                                                value="email"
                                                 checked={contactMethod === "email"}
                                                 onChange={() => setContactMethod("email")}
                                                 className="w-16 h-16 accent-purple-60"
@@ -219,34 +200,22 @@ const Form = ({
                                     </div>
                                 </div>
                             </div>
+
                             <TextareaInput
                                 label="Message"
                                 name="message"
                                 value={message}
-                                placeholder="Enter your Message here..."
                                 onChange={(e) => setMessage(e.target.value)}
+                                placeholder="Enter your Message here..."
+                                error={errors.message}
                             />
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 lg:gap-30">
-                            <InputCard label="First Name" name="firstName" placeholder="Enter First Name" required />
-                            <InputCard label="Last Name" name="lastName" placeholder="Enter Last Name" required />
-
-                            <InputCard
-                                label="Email"
-                                name="email"
-                                type="email"
-                                placeholder="Enter your Email"
-                                required
-                            />
-
-                            <InputCard
-                                label="Phone Number"
-                                name="phone"
-                                type="tel"
-                                placeholder="Enter Phone Number"
-                                required
-                            />
+                            <InputCard label="First Name" name="firstName" placeholder="Enter First Name" error={errors.firstName} />
+                            <InputCard label="Last Name" name="lastName" placeholder="Enter Last Name" error={errors.lastName} />
+                            <InputCard label="Email" name="email" type="email" placeholder="Enter your Email" error={errors.email} />
+                            <InputCard label="Phone Number" name="phone" type="tel" placeholder="Enter Phone Number" error={errors.phone} />
 
                             <Select
                                 FilterText="Inquiry Type"
@@ -275,28 +244,21 @@ const Form = ({
                                     label="Message"
                                     name="message"
                                     value={message}
-                                    placeholder="Enter your message here..."
                                     onChange={(e) => setMessage(e.target.value)}
-                                    className=""
+                                    placeholder="Enter your message here..."
+                                    error={errors.message}
                                 />
                             </div>
                         </div>
                     )}
 
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-16 mt-30 lg:mt-40 px-10">
-                        <label className="flex items-center gap-10 text-grey-40 text-sm cursor-pointer">
-                       <InputCard
-                       type="checkbox"
-                       id=""
-                       name=""
-                       
-                       />
-                            <span>
-                                I agree with{" "}
-                                <a href="#" className="underline text-white">Terms of Use</a> and{" "}
-                                <a href="#" className="underline text-white">Privacy Policy</a>
-                            </span>
-                        </label>
+                        <div className="flex flex-col gap-6">
+                            <InputCard type="checkbox" id="agreeTerms" name="agreeTerms" />
+                            {errors.agreeTerms && (
+                                <p className="text-[13px] text-red-400">{errors.agreeTerms}</p>
+                            )}
+                        </div>
                         <Button
                             content="Send Your Message"
                             className="bg-purple-60 hover:opacity-90 transition text-white font-semibold w-full md:w-auto"
