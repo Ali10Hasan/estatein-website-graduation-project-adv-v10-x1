@@ -13,7 +13,7 @@ const getInitialTheme = (): "light" | "dark" => {
 };
 
 const initialState: UIState = {
-    theme: "dark",
+    theme: getInitialTheme(),
 };
 
 const uiSlice = createSlice({
