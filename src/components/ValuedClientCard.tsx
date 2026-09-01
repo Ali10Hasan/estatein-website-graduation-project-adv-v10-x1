@@ -13,7 +13,7 @@ const ValuedClientCard = ({
   websiteUrl = '',
 }: ClientItem) => {
   return (
-    <div className="w-full h-full rounded-xl bg-grey-08 light:bg-white-99 border border-grey-15 light:border-white-90 ring-grey-09 light:ring-white-99 rounded-12 p-16 min-[992px]:p-50 flex flex-col justify-between gap-24 hover:border-purple-60/40 transition-colors shadow-[0px_0px_0px_6px_#191919]">
+    <div className="w-full h-full rounded-xl bg-grey-08 light:bg-white-99 border border-grey-15 light:border-white-90 ring-grey-09 light:ring-white-99 rounded-12 p-16 min-[992px]:p-50 flex flex-col justify-between gap-24 hover:border-purple-60/40 transition-colors shadow-[0px_0px_0px_6px_#191919] light:shadow-[0px_0px_0px_6px_#F4F0FE]">
       <div className="flex flex-col min-[992px]:flex-row min-[992px]:items-center justify-between gap-16 min-[992px]:gap-24 w-full">
         <div className="flex flex-col gap-6">
           <span className="text-grey-60 light:text-grey-40 text-14 min-[992px]:text-16 font-medium">
