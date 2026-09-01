@@ -89,10 +89,10 @@ const propertiesSlice = createSlice({
         ApplyPropertyFiltered:(state)=>{
             const { searchQuery, location, propertyType, price, area, builtYear} = state.filters;
             state.items=state.itemsFiltered.filter((property)=>{
-                if(location && property.location!==location) return false;
-                if(propertyType && property.propertyType!==propertyType) return false;
+                if(location && property.location?.toLowerCase()!==location) return false;
+                if(propertyType && property.propertyType?.toLowerCase()!==propertyType) return false;
                 if(price && property.price.toString()!==price) return false;
-                if(area && property.area?.toString()!==area) return false;
+                if(area && property.area?.toString().toLowerCase()!==area) return false;
                 if(builtYear && property.builtYear!==Number(builtYear)) return false;
                 if(searchQuery && !property.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
                 return true;
