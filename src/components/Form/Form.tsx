@@ -73,7 +73,7 @@ const Form = ({
 
     return (
         <div className="mx-auto my-60 max-w-[1597px] px-16 lg:px-0">
-            <div className="flex flex-col gap-[50px] rounded-2xl border border-grey-15 light:border-white-90 p-[100px]">
+           <div className="flex flex-col gap-[30px] lg:gap-[50px] rounded-2xl border border-grey-15 light:border-white-90 px-16 py-30 sm:px-30 sm:py-40 md:px-50 md:py-60 lg:p-[100px]">
                 <div className="relative">
                     <div className="flex items-center gap-6 mb-10 text-grey-40 light:text-grey-20">
                         <Stars />
