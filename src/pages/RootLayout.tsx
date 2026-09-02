@@ -23,8 +23,11 @@ const RootLayout = () => {
 
     return (
         <div className='bg-grey-08 light:bg-white-99'>
-            <Banner />
-            <Navbar />
+            <div className="sticky top-0 z-100">
+                <Banner />
+                <Navbar />
+            </div>
+
             <Outlet />
             <CTA />
             <Footer />

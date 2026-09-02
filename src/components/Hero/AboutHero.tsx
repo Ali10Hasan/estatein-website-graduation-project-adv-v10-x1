@@ -1,7 +1,8 @@
 import Stars from "../AtomComponents/Stars";
 import Stats from "../AtomComponents/Stats";
-import { TypingText } from "../FramerMotion/Animation";
+import { FadeRight, FadeUp, TypingText } from "../FramerMotion/Animation";
 import type { IAboutHero } from "./data";
+import { motion } from "framer-motion"
 
 const AboutHero = ({ title, description, img }: IAboutHero) => {
     return (
@@ -13,27 +14,33 @@ const AboutHero = ({ title, description, img }: IAboutHero) => {
                         <h1 className="text-[28px] sm:text-[38px] xl:text-[48px] font-semibold leading-[150%] mb-8 xl:mb-10 2xl:mb-14">
                             <TypingText text={title} />
                         </h1>
-                        <p className="text-grey-60 font-medium text-sm xl:text-base 2xl:text-lg">
-                            {description}
-                        </p>
+                        <FadeUp delay={0.9} duration={0.7}>
+                            <p className="text-grey-60 font-medium text-sm xl:text-base 2xl:text-lg">
+                                {description}
+                            </p>
+                        </FadeUp>
                     </header>
-
-                    <Stats />
+                    <motion.div initial={{ opacity: 0, y: 30, }} animate={{ opacity: 1, y: 0, }} transition={{ duration: 0.8, delay: 1.5, ease: [0.22, 1, 0.36, 1], }} >
+                        <Stats />
+                    </motion.div>
                 </div>
             </div>
+            <FadeRight delay={0.3} duration={0.9}>
 
-            <div
-                className="w-full h-full border border-grey-15 light:border-white-90 rounded-xl bg-cover bg-center bg-no-repeat max-w-358 sm:max-w-[80%] lg:max-w-full"
-                style={{
-                    backgroundImage: "url(/assets/imgs/heros/HeroAbstract.webp)",
-                }}
-            >
-                <img
-                    src={img}
-                    alt="Modern luxury residential building"
-                    className="w-full h-full xl:max-w-920 object-cover rounded-2xl"
-                />
-            </div>
+                <div
+                    className="w-full h-full border border-grey-15 light:border-white-90 rounded-xl bg-cover bg-center bg-no-repeat max-w-358 sm:max-w-[80%] lg:max-w-full"
+                    style={{
+                        backgroundImage: "url(/assets/imgs/heros/HeroAbstract.webp)",
+                    }}
+                >
+                    <img
+                        src={img}
+                        alt="Modern luxury residential building"
+                        className="w-full h-full xl:max-w-920 object-cover rounded-2xl"
+                    />
+                </div>
+            </FadeRight>
+
         </section>
     );
 };

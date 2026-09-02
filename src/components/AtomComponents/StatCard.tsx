@@ -12,7 +12,7 @@ const StatCard = ({ value, desc, suffix }: IStats) => {
                     to={value}
                     separator=","
                     direction="up"
-                    duration={1}
+                    duration={3}
                     delay={0}
                 />
                 {suffix}
