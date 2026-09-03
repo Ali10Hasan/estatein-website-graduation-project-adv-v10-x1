@@ -48,8 +48,6 @@ export const ServicesFeatureSection = ({
   return (
     <section className="bg-grey-08 light:bg-white-99 text-white light:text-grey-08 font-urbanist w-full py-40 md:pt-80 md:pb-50">
       <Container>
-        {/* Header Section */}
-
         <div className="mb-30 md:mb-50 relative px-16 sm:px-0">
           <Stars />
 
@@ -66,7 +64,7 @@ export const ServicesFeatureSection = ({
           {cardsData.map((item) => (
             <div
               key={item.id}
-              className="border border-grey-15 light:border-white-90 rounded-10 md:rounded-12 overflow-hidden bg-grey-08 light:bg-white-99 transition-all duration-300 hover:border-purple-60 hover:shadow-lg p-16 md:p-24 [&_div:first-child]:gap-16"
+              className="border border-grey-15 light:border-white-90 rounded-10 md:rounded-12 overflow-hidden bg-grey-08 light:bg-white-99 transition-all duration-300 hover:border-purple-60 hover:shadow-lg p-16 md:p-24 [&_div:first-child]:gap-16 [&_img]:border-none [&_img]:p-0 [&_svg]:border-none [&_svg]:p-0 [&_*]:border-none"
             >
               <ValueCard
                 id={item.id}
