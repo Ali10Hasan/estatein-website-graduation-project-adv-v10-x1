@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar'
 import CTA from '../components/CTA'
 import { useState } from 'react'
 import WelcomeScreen from '../components/WelcomeScreen'
+import ScrollToTop from "../components/AtomComponents/ScrollToTop";
 
 const RootLayout = () => {
 
@@ -31,6 +32,7 @@ const RootLayout = () => {
             <Outlet />
             <CTA />
             <Footer />
+            <ScrollToTop />
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store/store";
-
 import SliderSection from "../Slider/SliderSection";
 import FaqCard from "../FaqCard";
 import Error from "../Error";
@@ -18,8 +17,8 @@ const FaqSection = () => {
   }
 
   return (
-    <div className="px-80 max-[992px]:px-16">
-      <Container className="my-80 md:my-96">
+    <div>
+      <Container>
         <SkeletonTheme
           baseColor="#1A1A1A"
           highlightColor="#262626"
