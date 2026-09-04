@@ -30,7 +30,7 @@ const ValuedClientCard = ({
   className='w-full min-[992px]:w-auto py-18 px-24 bg-grey-15 light:bg-white-90 rounded-xl border border-grey-15 light:border-white-90 text-white light:text-grey-08 shrink-0'
 />
       </div>
-      <div className="grid grid-cols-[1fr_auto_1fr] gap-x-24 gap-y-8 py-16 border-y border-grey-15 light:border-white-90">
+      <div className="grid grid-cols-[1fr_auto_1fr] gap-x-24 gap-y-8 py-16 ">
         <div className="flex items-center gap-6">
           <BsGrid className="w-20 h-20 text-grey-60 light:text-grey-40" />
           <span className="text-grey-60 light:text-grey-40 text-12 min-[992px]:text-14 font-medium">
