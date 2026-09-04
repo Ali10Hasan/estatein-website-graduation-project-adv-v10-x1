@@ -7,13 +7,13 @@ interface SelectProps {
   Icone: JSX.Element;
   FilterText: string;
   filterKey: string;
-  options: string[]; 
+  options: string[];
 }
 
 const Select = ({ Icone, FilterText, filterKey, options }: SelectProps) => {
   const dispatch = useDispatch();
-  
-  
+
+
   const selectedValue = useSelector((state: RootState) => state.properties.filters[filterKey]);
 
   return (
@@ -21,9 +21,9 @@ const Select = ({ Icone, FilterText, filterKey, options }: SelectProps) => {
       <div className="icone text-[30px] md:text-[25px] lg:text-[30px] text-grey-20 light:text-grey-08">
         {Icone}
       </div>
-   
+
       <div className="relative w-full flex">
-        <select 
+        <select
           className="w-full bg-transparent text-white light:text-grey-08 text-lg md:text-[12px] lg:text-[16px] outline-none border-none appearance-none cursor-pointer"
           value={selectedValue}
           onChange={(e) => dispatch(updateFilter({ key: filterKey as any, value: e.target.value }))}
@@ -36,7 +36,7 @@ const Select = ({ Icone, FilterText, filterKey, options }: SelectProps) => {
               {optionValue}
             </option>
           ))}
-        </select>    
+        </select>
         <div className="absolute h-30 w-30 md:w-20 md:h-20 lg:w-30 lg:h-30 bg-grey-10 light:bg-white-95 rounded-[50%] md:top-2 lg:top-auto right-0 md:right-1 lg:right-1 flex items-center justify-center text-grey-50 light:text-grey-08 pointer-events-none">
           <IoIosArrowDown />
         </div>
