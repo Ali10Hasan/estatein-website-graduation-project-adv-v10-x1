@@ -47,7 +47,6 @@ const ValuedClientSection = () => {
             <section className="flex flex-col">
                 <SliderSection title='Our Valued Clients'
                     desc="At Estatein, we have had the privilege of working with a diverse range of clients across various industries. Here are some of the clients we've had the pleasure of serving"
-                    buttonClassName='' buttonContent=''
                     desktopCards={2} mobileCards={1} tabletCards={2} showButton={false} >
                     {valuedClientCards.map((card, index) => {
                         return (

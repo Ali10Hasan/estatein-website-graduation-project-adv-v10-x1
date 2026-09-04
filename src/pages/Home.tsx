@@ -3,7 +3,6 @@ import FaqSection from "../components/sections/FaqSection";
 import PropertiesList from "../components/sections/PropertiesSection/PropertiesList";
 import SiteAdvantage from "../components/sections/SiteAdvantage";
 import WhatClientsSaySection from "../components/sections/WhatClientsSaySection";
-import Form from "../components/Form/Form";
 
 const Home = () => {
 
