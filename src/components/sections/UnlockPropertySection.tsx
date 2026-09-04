@@ -13,7 +13,7 @@ const unlockPropertyData: CardItem[] = [
       <img
         src="/assets/icons/Valuation.svg"
         alt="Valuation Mastery"
-        className="w-[82px] h-[82px] object-contain"
+        className="w-82 h-82 object-contain"
       />
     ),
   },
@@ -26,7 +26,7 @@ const unlockPropertyData: CardItem[] = [
       <img
         src="/assets/icons/Strategici.svg"
         alt="Strategic Marketing"
-        className="w-[82px] h-[82px] object-contain"
+        className="w-82 h-82 object-contain"
       />
     ),
   },
@@ -39,7 +39,7 @@ const unlockPropertyData: CardItem[] = [
       <img
         src="/assets/icons/Strategic.svg"
         alt="Negotiation Wizardry"
-        className="w-[82px] h-[82px] object-contain"
+        className="w-82 h-82 object-contain"
       />
     ),
   },
@@ -52,7 +52,7 @@ const unlockPropertyData: CardItem[] = [
       <img
         src="/assets/icons/Closing.svg"
         alt="Closing Success"
-        className="w-[82px] h-[82px] object-contain"
+        className="w-82 h-82 object-contain"
       />
     ),
   },
