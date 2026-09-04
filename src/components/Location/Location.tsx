@@ -99,14 +99,14 @@ const Location = () => {
                             onClick={() => setActiveFilter(option.value)}
                             className={`rounded-lg px-16 py-8 text-sm font-medium transition ${
                                 activeFilter === option.value
-                                    ? "bg-white text-black light:bg-grey-08 light:text-white-95"
+                                    ? "bg-white text-black light:bg-purple-60 light:text-white-95"
                                     : "bg-grey-10 light:bg-white-95 text-grey-40 light:text-grey-20 border border-grey-15 light:border-white-90 hover:text-white light:hover:text-grey-08"
                             }`}
                         >
                             {option.label}
                         </button>
                     ))}
-                </div>
+                </div> 
             </div>
 
 
