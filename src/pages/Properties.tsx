@@ -18,11 +18,11 @@ const Properties = () => {
                 buttonContent={""}
                 className="2xl:mt-153 xl:mt-103 mt-150"
             />
-            <Form
-                title="Find Your Perfect Property"
-                subtitle="Tell us more about what you're looking for and we'll help you find it."
-                showPropertyFields={true}
-            />
+        <Form
+            title="Let's Make it Happen"
+            subtitle="Ready to take the first step toward your dream property? Fill out the form below and our real estate wizards will work their magic to find your perfect match. Don't wait, let's embark on this exciting journey together."
+            showPropertyFields
+        />
         </div>
     )
 }

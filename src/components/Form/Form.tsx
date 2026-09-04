@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { TiLocation } from "react-icons/ti";
@@ -11,7 +10,6 @@ import Button from "../AtomComponents/Button";
 import InputCard from "../inputs/InputCard";
 import TextareaInput from "../inputs/TextareaInput";
 import Select from "../inputs/Select";
-import type { RootState } from "../../redux/store/store";
 import type { JSX } from "react";
 
 type FormProps = {
@@ -19,15 +17,30 @@ type FormProps = {
     subtitle?: string;
     showPropertyFields?: boolean;
 };
+
+type FormSelectValues = {
+    preferredLocation: string;
+    propertyType: string;
+    bathrooms: string;
+    bedrooms: string;
+    budget: string;
+    inquiryType: string;
+    hearAboutUs: string;
+};
+
 const FormSelect = ({
     Icone,
     FilterText,
-    filterKey,
+    name,
+    value,
+    onChange,
     options,
 }: {
     Icone: JSX.Element;
     FilterText: string;
-    filterKey: string;
+    name: keyof FormSelectValues;
+    value: string;
+    onChange: (value: string) => void;
     options: string[];
 }) => {
     return (
@@ -66,7 +79,9 @@ const FormSelect = ({
                 <Select
                     Icone={Icone}
                     FilterText={FilterText}
-                    filterKey={filterKey}
+                    name={name}
+                    value={value}
+                    onChange={onChange}
                     options={options}
                 />
             </div>
@@ -84,13 +99,22 @@ const Form = ({
         "phone"
     );
     const [errors, setErrors] = useState<Record<string, string>>({});
-    const filters = useSelector(
-        (state: RootState) => state.properties.filters
-    );
-    const additionalFilters = filters as unknown as Record<
-        "bathrooms" | "bedrooms" | "hearAboutUs",
-        string | undefined
-    >;
+    const [selectValues, setSelectValues] = useState<FormSelectValues>({
+        preferredLocation: "",
+        propertyType: "",
+        bathrooms: "",
+        bedrooms: "",
+        budget: "",
+        inquiryType: "",
+        hearAboutUs: "",
+    });
+
+    const updateSelectValue = (name: keyof FormSelectValues, value: string) => {
+        setSelectValues((previousValues) => ({
+            ...previousValues,
+            [name]: value,
+        }));
+    };
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -134,45 +158,6 @@ const Form = ({
         if (Object.keys(newErrors).length > 0) {
             return;
         }
-        if (showPropertyFields) {
-            data.set(
-                "preferredLocation",
-                filters.location || ""
-            );
-
-            data.set(
-                "propertyType",
-                filters.propertyType || ""
-            );
-
-            data.set(
-                "bathrooms",
-                additionalFilters.bathrooms || ""
-            );
-
-            data.set(
-                "bedrooms",
-                additionalFilters.bedrooms || ""
-            );
-
-            data.set(
-                "budget",
-                filters.price || ""
-            );
-        } else {
-            data.set(
-                "inquiryType",
-                (filters as typeof filters & {
-                    inquiryType?: string;
-                }).inquiryType || ""
-            );
-
-            data.set(
-                "hearAboutUs",
-                additionalFilters.hearAboutUs || ""
-            );
-        }
-
         data.set("message", message);
         data.set("contactMethod", contactMethod);
 
@@ -242,7 +227,9 @@ const Form = ({
                                 <FormSelect
                                     Icone={<TiLocation />}
                                     FilterText="Preferred Location"
-                                    filterKey="location"
+                                    name="preferredLocation"
+                                    value={selectValues.preferredLocation}
+                                    onChange={(value) => updateSelectValue("preferredLocation", value)}
                                     options={[
                                         "New York",
                                         "Los Angeles",
@@ -252,7 +239,9 @@ const Form = ({
                                 <FormSelect
                                     Icone={<IoIosHome />}
                                     FilterText="Property Type"
-                                    filterKey="propertyType"
+                                    name="propertyType"
+                                    value={selectValues.propertyType}
+                                    onChange={(value) => updateSelectValue("propertyType", value)}
                                     options={[
                                         "Apartment",
                                         "Villa",
@@ -262,7 +251,9 @@ const Form = ({
                                 <FormSelect
                                     Icone={<IoCubeOutline />}
                                     FilterText="No. of Bathrooms"
-                                    filterKey="bathrooms"
+                                    name="bathrooms"
+                                    value={selectValues.bathrooms}
+                                    onChange={(value) => updateSelectValue("bathrooms", value)}
                                     options={[
                                         "1",
                                         "2",
@@ -273,7 +264,9 @@ const Form = ({
                                 <FormSelect
                                     Icone={<IoCubeOutline />}
                                     FilterText="No. of Bedrooms"
-                                    filterKey="bedrooms"
+                                    name="bedrooms"
+                                    value={selectValues.bedrooms}
+                                    onChange={(value) => updateSelectValue("bedrooms", value)}
                                     options={[
                                         "1",
                                         "2",
@@ -287,7 +280,9 @@ const Form = ({
                                 <FormSelect
                                     Icone={<MdOutlinePriceChange />}
                                     FilterText="Budget"
-                                    filterKey="price"
+                                    name="budget"
+                                    value={selectValues.budget}
+                                    onChange={(value) => updateSelectValue("budget", value)}
                                     options={[
                                         "$100k - $200k",
                                         "$200k - $500k",
@@ -422,7 +417,9 @@ const Form = ({
                             <FormSelect
                                 Icone={<IoIosHome />}
                                 FilterText="Inquiry Type"
-                                filterKey="inquiryType"
+                                name="inquiryType"
+                                value={selectValues.inquiryType}
+                                onChange={(value) => updateSelectValue("inquiryType", value)}
                                 options={[
                                     "Buying",
                                     "Selling",
@@ -433,7 +430,9 @@ const Form = ({
                             <FormSelect
                                 Icone={<IoIosHome />}
                                 FilterText="How Did You Hear About Us?"
-                                filterKey="hearAboutUs"
+                                name="hearAboutUs"
+                                value={selectValues.hearAboutUs}
+                                onChange={(value) => updateSelectValue("hearAboutUs", value)}
                                 options={[
                                     "Social Media",
                                     "Friend / Referral",

@@ -96,7 +96,9 @@ const InquiryForm = () => {
                 <Select
                     Icone={<TiLocation />}
                     FilterText={"Seaside Serenity Villa, Malibu, California"}
-                    filterKey={"searchQuery"}
+                    name="property"
+                    value={form.property}
+                    onChange={(value) => updateField("property", value)}
                     options={[
                         "Option 1",
                         "Option 2",

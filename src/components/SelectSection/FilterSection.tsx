@@ -6,8 +6,9 @@ import { MdOutlinePriceChange } from "react-icons/md";
 import { IoCubeOutline } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
 import type { JSX } from "react/jsx-runtime";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { RootState } from "../../redux/store/store";
+import { updateFilter } from "../../redux/slices/propertiesSlice";
 export interface SelectionData {
     Icone: JSX.Element;
     FilterText: string;
@@ -41,7 +42,9 @@ const SelectionData:SelectionData[]=[
     },
 ]
 const FilterSection = () => {
+  const dispatch = useDispatch();
   const Options=useSelector((state:RootState)=>state.properties.itemsFiltered);
+  const filters=useSelector((state:RootState)=>state.properties.filters);
 
   return (
     <div className="">
@@ -61,7 +64,15 @@ const FilterSection = () => {
             }
 
             return(
-                 <Select key={item.FilterKey} Icone={item.Icone} FilterText={item.FilterText} filterKey={item.FilterKey} options={OptionsUnique} />
+                 <Select
+                    key={item.FilterKey}
+                    Icone={item.Icone}
+                    FilterText={item.FilterText}
+                    name={item.FilterKey}
+                    value={filters[item.FilterKey]}
+                    onChange={(value) => dispatch(updateFilter({ key: item.FilterKey, value }))}
+                    options={OptionsUnique}
+                 />
             )
         })}
         </div>
