@@ -83,7 +83,7 @@ export const PropertyCard = ({ images, title, shortDescription, category, bedroo
                         <span className="font-semibold text-[18px] xl:text-[20px] 2xl:text-[24px]">${price}
                         </span>
                     </div>
-                    <Button onClick={() => navigate(`/property/${id}`)} className="bg-purple-60 hover:bg-purple-60/50 text-white light:text-grey-08 font-medium text-[14px] 2xl:text-[18px] py-14 px-32 xl:px-44 2xl:px-52 2xl:py-18 rounded-lg 2xl:rounded-[10px] transition-all duration-300" content={"View Property Details"} />
+                    <Button onClick={() => navigate(`/property/${id}`)} className="bg-purple-60 hover:bg-purple-60/50 text-white font-medium text-[14px] 2xl:text-[18px] py-14 px-32 xl:px-44 2xl:px-52 2xl:py-18 rounded-lg 2xl:rounded-[10px] transition-all duration-300" content={"View Property Details"} />
 
                 </div>
             </div>
