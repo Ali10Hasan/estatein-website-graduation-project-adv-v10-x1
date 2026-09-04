@@ -6,36 +6,58 @@ import Stars from "../AtomComponents/Stars";
 import Button from "../AtomComponents/Button";
 import type { ValueItem } from "../../types/ValueCards";
 
-import { FaChartSimple, FaFire, FaLightbulb, FaSun } from "react-icons/fa6";
-
 const INVESTMENT_SERVICES_DATA: ValueItem[] = [
   {
     id: "1",
     title: "Market Insight",
     description:
       "Stay ahead of market trends with our expert Market Analysis. We provide in-depth insights into real estate market conditions.",
-    icon: <FaChartSimple className="text-purple-75" />,
+    icon: (
+      <img
+        src="/assets/icons/Valuation.svg"
+        alt="Market Insight"
+        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+      />
+    ),
   },
   {
     id: "2",
     title: "ROI Assessment",
     description:
       "Make investment decisions with confidence. Our ROI Assessment services evaluate the potential returns on your investments.",
-    icon: <FaFire className="text-purple-75" />,
+    icon: (
+      <img
+        src="/assets/icons/rqi.svg"
+        alt="ROI Assessment"
+        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+      />
+    ),
   },
   {
     id: "3",
     title: "Customized Strategies",
     description:
       "Every investor is unique, and so are their goals. We develop Customized Investment Strategies tailored to your specific needs.",
-    icon: <FaLightbulb className="text-purple-75" />,
+    icon: (
+      <img
+        src="/assets/icons/Customized.svg"
+        alt="Customized Strategies"
+        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+      />
+    ),
   },
   {
     id: "4",
     title: "Diversification Mastery",
     description:
       "Diversify your real estate portfolio effectively. Our experts guide you in spreading your investments across various property types and locations.",
-    icon: <FaSun className="text-purple-75" />,
+    icon: (
+      <img
+        src="/assets/icons/AdvantageIcone4.png"
+        alt="Diversification Mastery"
+        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+      />
+    ),
   },
 ];
 
@@ -90,7 +112,7 @@ export const SmartInvestmentsSection = () => {
             </div>
           </div>
 
-          <div className="w-full min-[992px]:flex-3 bg-grey-08 light:bg-white-99 ring-4 md:ring-6 min-[992px]:ring-8 ring-grey-09 light:ring-white-97 border border-grey-15 light:border-white-90 rounded-10 md:rounded-12 min-[992px]:rounded-2xl p-10 md:p-20 min-[992px]:p-10 grid grid-cols-1 md:grid-cols-2 box-border">
+          <div className="w-full min-[992px]:flex-3 bg-grey-08 light:bg-white-99 ring-4 md:ring-6 min-[992px]:ring-8 ring-grey-09 light:ring-white-97 border border-grey-15 light:border-white-90 rounded-10 md:rounded-12 min-[992px]:rounded-2xl p-10 md:p-20 min-[992px]:p-10 grid grid-cols-1 md:grid-cols-2 box-border lg:[&_img/..]:p-0 lg:[&_div:has(>img)]:border-none lg:[&_div:has(>img)]:bg-transparent lg:[&_div:has(>img)]:p-0 lg:[&>div>div]:gap-[20px]">
             <div className="border-b md:border-r border-grey-15 light:border-white-90 p-16 md:p-24 min-[992px]:pb-20 min-[992px]:pr-20 hover:bg-grey-10/50 light:hover:bg-white-95/50 min-[992px]:hover:bg-grey-15 min-[992px]:light:hover:bg-white-90 transition-colors">
               <ValueCard {...INVESTMENT_SERVICES_DATA[0]} />
             </div>
