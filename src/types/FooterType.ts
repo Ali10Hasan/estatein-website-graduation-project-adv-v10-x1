@@ -1,7 +1,8 @@
 import type { IconType } from "react-icons/lib";
 
 export interface BrandingData {
-  logoIcon: string;
+  logoIconDark: string;
+  logoIconeLight: string;
   logoText: string;
   emailIcon: string;
   emailPlaceholder: string;
@@ -9,6 +10,7 @@ export interface BrandingData {
 }
 export interface ColumnData {
   header: string;
+  path: string;
   links: string[];
 }
 export interface FooterBottomData {
