@@ -6,7 +6,7 @@ import type { JSX } from "react";
 interface SelectProps {
   Icone: JSX.Element;
   FilterText: string;
-  filterKey: string;
+  filterKey: keyof RootState["properties"]["filters"];
   options: string[]; 
 }
 
@@ -26,7 +26,7 @@ const Select = ({ Icone, FilterText, filterKey, options }: SelectProps) => {
         <select 
           className="w-full bg-transparent text-white light:text-grey-08 text-lg md:text-[12px] lg:text-[16px] outline-none border-none appearance-none cursor-pointer"
           value={selectedValue}
-          onChange={(e) => dispatch(updateFilter({ key: filterKey as any, value: e.target.value }))}
+          onChange={(e) => dispatch(updateFilter({ key: filterKey, value: e.target.value }))}
         >
           <option value="" disabled hidden>{FilterText}</option>
           <option value="" className="bg-grey-10 light:bg-white-95 text-grey-40 light:text-grey-20">All {FilterText}s</option>

@@ -1,4 +1,4 @@
-import type { ExperienceCardProps } from '../../types/ExperinceCardsType'
+import type { ExperienceCardProps } from '../../types/experinceCardsType'
 import Container from '../Container'
 import ExperienceCards from '../ExperienceCards'
 import HeaderSection from '../HeaderSection'
