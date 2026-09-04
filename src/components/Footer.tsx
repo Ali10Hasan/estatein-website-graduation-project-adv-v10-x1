@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { TiSocialLinkedin } from "react-icons/ti";
 import type { BrandingData, ColumnData, FooterBottomData } from "../types/FooterType";
 import { PiTwitterLogoThin, PiYoutubeLogoThin } from "react-icons/pi";
@@ -6,7 +6,8 @@ import { BiLogoFacebook } from "react-icons/bi";
 
 
 const brandingData: BrandingData = {
-  logoIcon: "/assets/imgs/EstateinLogo.webp",
+  logoIconDark: "/assets/imgs/EstateinLogo.webp",
+  logoIconeLight:"/assets/imgs/logolight.webp",
   logoText: "Estatein",
   emailIcon: "/assets/icons/EmailImage.png",
   emailPlaceholder: "Enter Your Email",
@@ -14,11 +15,11 @@ const brandingData: BrandingData = {
 };
 
 const columnsData: { [key: string]: ColumnData } = {
-  home: { header: "Home", links: ["Hero Section", "Features", "Properties", "Testimonials", "FAQ's"] },
-  about: { header: "About Us", links: ["Our Story", "Our Works", "How It Works", "Our Team", "Our Clients"] },
-  properties: { header: "Properties", links: ["Portfolio", "Categories"] },
-  services: { header: "Services", links: ["Valuation Mastery", "Strategic Marketing", "Negotiation Wizardry", "Closing Success", "Property Management"] },
-  contact: { header: "Contact Us", links: ["Contact Form", "Our Offices"] }
+  home: { header: "Home",path: "/", links: ["Hero Section", "Features", "Properties", "Testimonials", "FAQ's"] },
+  about: { header: "About Us",path: "/about", links: ["Our Story", "Our Works", "How It Works", "Our Team", "Our Clients"] },
+  properties: { header: "Properties",path: "/properties", links: ["Portfolio", "Categories"] },
+  services: { header: "Services",path: "/services", links: ["Valuation Mastery", "Strategic Marketing", "Negotiation Wizardry", "Closing Success", "Property Management"] },
+  contact: { header: "Contact Us",path: "/contact", links: ["Contact Form", "Our Offices"] }
 };
 
 const footerBottomData: FooterBottomData = {
@@ -28,11 +29,15 @@ const footerBottomData: FooterBottomData = {
 };
 
 const Footer = () => {
-
+  const ScrollToTop=()=>{
+      window.scrollTo({top:0,behavior:"smooth"})
+  }
   const renderColumn = (column: ColumnData , hasBorderBottom = false, hasBorderRight = false) => (
     <div className={`w-full md:w-auto flex flex-col gap-y-23 pb-20 relative md:pb-0 md:mb-0`}>
       <h3 className="text-16 md:text-14 lg:text-[20px] font-semibold text-grey-60 light:text-grey-40 ">
+      <NavLink to={column.path} onClick={ScrollToTop} className="text-white light:text-grey-08">
         {column.header}
+      </NavLink>
       </h3>
       <ul className="text-14 md:text-16 flex flex-col gap-y-10">
         {column.links.map((link, linkIndex) => (
@@ -57,7 +62,8 @@ const Footer = () => {
         {/* اللوغو وحقل الإدخال */}
         <div className="w-full lg:w-[26%] flex flex-col items-start gap-20 pt-50 px-16 pb-8 lg:pt-0 lg:px-0">
           <div className="flex items-center light:fill-black gap-x-10">
-            <img src={brandingData.logoIcon}  />
+           <img src={brandingData.logoIconDark} className=" light:hidden" alt="Estatein_Logo" />
+        <img src={brandingData.logoIconeLight} className="hidden light:block" alt="Estatein_Logo" />
           </div>
 
           <div className="Email-Container flex items-center w-full relative">
