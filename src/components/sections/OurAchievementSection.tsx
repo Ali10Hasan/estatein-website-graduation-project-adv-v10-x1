@@ -1,4 +1,4 @@
-import type { OurAchievementProps } from "../../types/OurAchievementType"
+import type { OurAchievementProps } from "../../types/ourAchievementType"
 import Container from "../Container"
 import HeaderSection from "../HeaderSection"
 import OurAchievement from "../OurAchievement"

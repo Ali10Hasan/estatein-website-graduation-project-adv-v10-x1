@@ -1,4 +1,4 @@
-import type { OurAchievementProps } from "../types/OurAchievementType"
+import type { OurAchievementProps } from "../types/ourAchievementType"
 
 const OurAchievement = ({title, description}: OurAchievementProps) => {
   return (

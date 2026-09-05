@@ -104,7 +104,7 @@ const Location = () => {
                             {option.label}
                         </button>
                     ))}
-                </div>
+                </div> 
             </div>
 
 

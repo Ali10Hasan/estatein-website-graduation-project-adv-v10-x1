@@ -1,4 +1,4 @@
-import type { ExperienceCardProps } from "../types/ExperinceCardsType"
+import type { ExperienceCardProps } from "../types/experinceCardsType"
 const ExperienceCards = ({ step, title, description }: ExperienceCardProps) => {
   return (
     <div className="w-full h-full  rounded-xl rounded-t-none flex bg-grey-08 light:bg-white-99 flex-col text-white light:text-grey-10 group cursor-pointer">

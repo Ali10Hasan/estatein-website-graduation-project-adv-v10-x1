@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Container from "../Container";
 import { ValueCard } from "../ValueCard";
@@ -16,7 +15,7 @@ const INVESTMENT_SERVICES_DATA: ValueItem[] = [
       <img
         src="/assets/icons/Valuation.svg"
         alt="Market Insight"
-        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+        className="w-82 h-82 object-contain border-none p-0 shrink-0"
       />
     ),
   },
@@ -29,7 +28,7 @@ const INVESTMENT_SERVICES_DATA: ValueItem[] = [
       <img
         src="/assets/icons/rqi.svg"
         alt="ROI Assessment"
-        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+        className="w-82 h-82 object-contain border-none p-0 shrink-0"
       />
     ),
   },
@@ -42,7 +41,7 @@ const INVESTMENT_SERVICES_DATA: ValueItem[] = [
       <img
         src="/assets/icons/Customized.svg"
         alt="Customized Strategies"
-        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+        className="w-82 h-82 object-contain border-none p-0 shrink-0"
       />
     ),
   },
@@ -55,7 +54,7 @@ const INVESTMENT_SERVICES_DATA: ValueItem[] = [
       <img
         src="/assets/icons/AdvantageIcone4.png"
         alt="Diversification Mastery"
-        className="w-[82px] h-[82px] object-contain border-none p-0 shrink-0"
+        className="w-82 h-82 object-contain border-none p-0 shrink-0"
       />
     ),
   },
@@ -88,7 +87,7 @@ export const SmartInvestmentsSection = () => {
             </div>
 
             <div
-              className="relative overflow-hidden border border-grey-15 light:border-white-90 rounded-10 md:rounded-12 p-16 sm:p-24 md:p-30 lg:p-40 bg-grey-10 light:bg-white-95 flex flex-col justify-between gap-14 md:gap-20 bg-no-repeat bg-cover bg-center transition-all duration-300 hover:border-grey-30 light:hover:border-grey-40 mt-10 md:mt-0"
+              className="rounded-lg relative overflow-hidden border border-grey-15 light:border-white-90 rounded-10 md:rounded-12 p-16 sm:p-24 md:p-30 lg:p-40 bg-grey-10 light:bg-white-95 flex flex-col justify-between gap-14 md:gap-20 bg-no-repeat bg-cover bg-center transition-all duration-300 hover:border-grey-30 light:hover:border-grey-40 mt-10 md:mt-0"
               style={{ backgroundImage: "url('/assets/imgs/back3.svg')" }}
             >
               <div className="flex flex-col gap-10 relative z-10">
@@ -112,22 +111,15 @@ export const SmartInvestmentsSection = () => {
             </div>
           </div>
 
-          <div className="w-full min-[992px]:flex-3 bg-grey-08 light:bg-white-99 ring-4 md:ring-6 min-[992px]:ring-8 ring-grey-09 light:ring-white-97 border border-grey-15 light:border-white-90 rounded-10 md:rounded-12 min-[992px]:rounded-2xl p-10 md:p-20 min-[992px]:p-10 grid grid-cols-1 md:grid-cols-2 box-border lg:[&_img/..]:p-0 lg:[&_div:has(>img)]:border-none lg:[&_div:has(>img)]:bg-transparent lg:[&_div:has(>img)]:p-0 lg:[&>div>div]:gap-[20px]">
-            <div className="border-b md:border-r border-grey-15 light:border-white-90 p-16 md:p-24 min-[992px]:pb-20 min-[992px]:pr-20 hover:bg-grey-10/50 light:hover:bg-white-95/50 min-[992px]:hover:bg-grey-15 min-[992px]:light:hover:bg-white-90 transition-colors">
-              <ValueCard {...INVESTMENT_SERVICES_DATA[0]} />
-            </div>
-
-            <div className="border-b border-grey-15 light:border-white-90 p-16 md:p-24 min-[992px]:pb-20 min-[992px]:pl-20 hover:bg-grey-10/50 light:hover:bg-white-95/50 min-[992px]:hover:bg-grey-15 min-[992px]:light:hover:bg-white-90 transition-colors">
-              <ValueCard {...INVESTMENT_SERVICES_DATA[1]} />
-            </div>
-
-            <div className="border-b md:border-b-0 md:border-r border-grey-15 light:border-white-90 p-16 md:p-24 min-[992px]:pt-20 min-[992px]:pr-20 hover:bg-grey-10/50 light:hover:bg-white-95/50 min-[992px]:hover:bg-grey-15 min-[992px]:light:hover:bg-white-90 transition-colors">
-              <ValueCard {...INVESTMENT_SERVICES_DATA[2]} />
-            </div>
-
-            <div className="p-16 md:p-24 min-[992px]:pt-20 min-[992px]:pl-20 hover:bg-grey-10/50 light:hover:bg-white-95/50 min-[992px]:hover:bg-grey-15 min-[992px]:light:hover:bg-white-90 transition-colors">
-              <ValueCard {...INVESTMENT_SERVICES_DATA[3]} />
-            </div>
+          <div className="w-full min-[992px]:flex-3 bg-grey-10 light:bg-white-95 rounded-lg  p-10 md:p-14 min-[992px]:p-16 grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 min-[992px]:gap-16 box-border">
+            {INVESTMENT_SERVICES_DATA.map((item) => (
+              <div
+                key={item.id}
+                className="border border-grey-15 light:border-white-90 rounded-lg p-16 md:p-24 bg-grey-08 light:bg-white-99 hover:border-purple-60 light:hover:border-purple-60  transition-all duration-200"
+              >
+                <ValueCard {...item} />
+              </div>
+            ))}
           </div>
         </div>
       </Container>
