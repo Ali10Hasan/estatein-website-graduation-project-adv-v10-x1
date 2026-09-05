@@ -72,18 +72,17 @@ const Location = () => {
             : offices.filter((office) => office.category === activeFilter);
 
     return (
-        <Container className="flex flex-col gap-[80px]">
-
-            <div className="flex flex-col gap-10">
-                <div className="flex items-center gap-6 text-grey-40 light:text-grey-20">
+        <Container>
+            <div className="flex flex-col gap-10 mt-80 md:mt-120 lg:mt-150">
+                <div className="relative ">
                     <Stars />
                 </div>
 
-                <h2 className="text-white light:text-grey-08 text-2xl xs:text-3xl lg:text-4xl font-semibold font-urbanist">
+                <h2 className="text-white light:text-grey-08 text-3xl md:text-4xl lg:text-5xl font-semibold font-urbanist">
                     Discover Our Office Locations
                 </h2>
 
-                <p className="text-grey-40 light:text-grey-20 text-xs max-w-full lg:max-w-[850px]">
+                <p className="text-grey-40 light:text-grey-20 mt-8 md:mt-10 lg:mt-14 text-sm md:text-base lg:text-lg max-w-full md:max-w-1160 min-[1440]:max-w-1297">
                     Estatein is here to serve you across multiple locations. Whether
                     you're looking to meet our team, discuss real estate opportunities,
                     or simply drop by for a chat, we have offices conveniently located
@@ -91,17 +90,16 @@ const Location = () => {
                     Estatein office nearest to you.
                 </p>
 
-                <div className="flex flex-wrap gap-8 mt-10">
+                <div className="flex flex-wrap gap-8 mt-40 md:mt-60 lg:mt-80 mb-30 lg:mb-50 md:mb-40 p-10 bg-grey-10 light:bg-white-99 w-fit rounded-lg">
                     {filterOptions.map((option) => (
                         <button
                             key={option.value}
                             type="button"
                             onClick={() => setActiveFilter(option.value)}
-                            className={`rounded-lg px-16 py-8 text-sm font-medium transition ${
-                                activeFilter === option.value
-                                    ? "bg-white text-black light:bg-purple-60 light:text-white-95"
-                                    : "bg-grey-10 light:bg-white-95 text-grey-40 light:text-grey-20 border border-grey-15 light:border-white-90 hover:text-white light:hover:text-grey-08"
-                            }`}
+                            className={`text-center rounded-lg w-105 lg:w-125  py-14 text-sm md:text-base lg:text-lg font-medium transition ${activeFilter === option.value
+                                    ? "bg-grey-08 text-white light:bg-purple-70 light:text-white-95"
+                                    : "bg-grey-15 light:bg-white-90 text-white light:text-grey-20 border border-grey-15 light:border-white-90 "
+                                }`}
                         >
                             {option.label}
                         </button>
@@ -112,41 +110,27 @@ const Location = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-20">
                 {filteredOffices.map((office) => (
-                    <div
-                        key={office.id}
-                        className="flex flex-col gap-10 rounded-2xl border border-grey-15 light:border-white-90 p-20 md:p-24"
-                    >
-                        <span className="text-grey-40 light:text-grey-20 text-xs font-medium">
-                            {office.label}
-                        </span>
-
-                        <h3 className="text-white light:text-grey-08 font-semibold font-urbanist text-lg md:text-xl">
-                            {office.address}
-                        </h3>
-
-                        <p className="text-grey-40 light:text-grey-20 leading-relaxed text-xs md:text-sm">
-                            {office.description}
-                        </p>
+                    <div key={office.id} className="flex flex-col p-24 gap-24 md:p-40 md:gap-30 2xl:p-50 2xl:gap-40 rounded-lg lg:rounded-xl border bg-grey-08 border-grey-15 light:bg-white-99 light:border-white-90" >
+                        <span className="text-white light:text-grey-08 text-sm 2xl:text-lg font-medium"> {office.label} </span>
+                        <h3 className="text-white light:text-grey-08 font-semibold font-urbanist text-xl md:text-2xl 2xl:text-3xl"> {office.address} </h3>
+                        <p className="text-grey-60 light:text-grey-40 leading-relaxed text-sm md:text-base 2xl:text-lg flex-1"> {office.description} </p>
 
                         <div className="flex flex-wrap gap-8">
-                            <span className="flex items-center gap-6 rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 px-12 py-6 text-white light:text-grey-08 text-xs">
-                                <MdEmail size={13} className="shrink-0" />
+                            <span className="flex items-center gap-4 px-16 py-10 text-sm 2xl:gap-6 2xl:px-20 2xl:py-16 2xl:text-lg  rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 text-white light:text-grey-08 ">
+                                <MdEmail className="shrink-0 w-20 h-20 2xl:w-24 2xl:h-24" />
                                 {office.email}
                             </span>
-                            <span className="flex items-center gap-6 rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 px-12 py-6 text-white light:text-grey-08 text-xs">
-                                <FaPhoneAlt size={13} className="shrink-0" />
+                            <span className="flex items-center gap-4 px-16 py-10 text-sm 2xl:gap-6 2xl:px-20 2xl:py-16 2xl:text-lg  rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 text-white light:text-grey-08">
+                                <FaPhoneAlt className="shrink-0 w-20 h-20 2xl:w-24 2xl:h-24" />
                                 {office.phone}
                             </span>
-                            <span className="flex items-center gap-6 rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 px-12 py-6 text-white light:text-grey-08 text-xs">
-                                <TiLocation size={13} className="shrink-0" />
+                            <span className="flex items-center gap-4 px-16 py-10 text-sm 2xl:gap-6 2xl:px-20 2xl:py-16 2xl:text-lg  rounded-full border border-grey-15 light:border-white-90 bg-grey-10 light:bg-white-95 text-white light:text-grey-08">
+                                <TiLocation  className="shrink-0 w-20 h-20 2xl:w-24 2xl:h-24" />
                                 {office.location}
                             </span>
                         </div>
 
-                        <button
-                            type="button"
-                            className="mt-4 w-full rounded-lg bg-purple-60 py-12 text-sm text-white font-medium hover:opacity-90 transition"
-                        >
+                        <button type="button" className="px-14 py-20 2xl:px-18 2xl:py-24 w-full rounded-lg 2xl:rounded-xl text-sm 2xl:text-lg  bg-purple-60  text-white font-medium hover:opacity-90 transition">
                             Get Direction
                         </button>
                     </div>
