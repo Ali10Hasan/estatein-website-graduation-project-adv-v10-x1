@@ -18,6 +18,7 @@ type FormProps = {
     showPropertyFields?: boolean;
 };
 
+<<<<<<< Updated upstream
 type FormSelectValues = {
     preferredLocation: string;
     propertyType: string;
@@ -27,6 +28,14 @@ type FormSelectValues = {
     inquiryType: string;
     hearAboutUs: string;
 };
+=======
+type FormFilterKey =
+    | keyof RootState["properties"]["filters"]
+    | "bathrooms"
+    | "bedrooms"
+    | "inquiryType"
+    | "hearAboutUs";
+>>>>>>> Stashed changes
 
 const FormSelect = ({
     Icone,
@@ -38,14 +47,18 @@ const FormSelect = ({
 }: {
     Icone: JSX.Element;
     FilterText: string;
+<<<<<<< Updated upstream
     name: keyof FormSelectValues;
     value: string;
     onChange: (value: string) => void;
+=======
+    filterKey: FormFilterKey;
+>>>>>>> Stashed changes
     options: string[];
 }) => {
     return (
-        <div className="flex flex-col gap-10 text-white light:text-grey-08">
-            <span className="text-sm font-medium">
+        <div className="flex flex-col w-full relative px-10 text-white light:text-grey-08">
+            <span className="text-base lg:text-xl font-semibold text-white light:text-grey-08 mb-10 md:mb-14 lg:mb-16 font-urbanist">
                 {FilterText}
             </span>
 
@@ -60,15 +73,18 @@ const FormSelect = ({
                     [&_.icone]:!hidden
 
                     [&_select]:!w-full
-                    [&_select]:!rounded-lg
+                    [&_select]:!rounded-md
+                    lg:[&_select]:!rounded-lg
                     [&_select]:!border
                     [&_select]:!border-grey-15
                     [&_select]:!border-solid
-                    [&_select]:!bg-grey-10
+                    [&_select]:bg-grey-10!
                     [&_select]:!px-20
                     [&_select]:!py-16
+                    lg:[&_select]:!px-24
+                    lg:[&_select]:!py-20
                     [&_select]:!text-white
-                    [&_select]:!text-sm
+                    [&_select]:!text-base
                     [&_select]:!outline-none
 
                     [&_select]:light:!border-white-90
@@ -79,9 +95,15 @@ const FormSelect = ({
                 <Select
                     Icone={Icone}
                     FilterText={FilterText}
+<<<<<<< Updated upstream
                     name={name}
                     value={value}
                     onChange={onChange}
+=======
+                    filterKey={
+                        filterKey as keyof RootState["properties"]["filters"]
+                    }
+>>>>>>> Stashed changes
                     options={options}
                 />
             </div>
@@ -169,7 +191,7 @@ const Form = ({
 
     return (
         <div className="mx-auto my-60 max-w-[1597px] px-16 lg:px-0">
-            <div className="flex flex-col gap-[30px] lg:gap-[50px] rounded-2xl border border-grey-15 light:border-white-90 px-16 py-30 sm:px-30 sm:py-40 md:px-50 md:py-60 lg:p-[100px]">
+            <div className="flex flex-col gap-[30px] lg:gap-[50px] rounded-2xl px-16 py-30 sm:px-30 sm:py-40 md:px-50 md:py-60 lg:p-[100px]">
                 <div className="relative">
                     <div className="flex items-center gap-6 mb-10 text-grey-40 light:text-grey-20">
                         <Stars />
@@ -210,6 +232,7 @@ const Form = ({
                                     type="email"
                                     placeholder="Enter your Email"
                                     error={errors.email}
+                                    className="!py-8 lg:!py-10"
                                 />
 
                                 <InputCard
@@ -218,6 +241,7 @@ const Form = ({
                                     type="tel"
                                     placeholder="Enter Phone Number"
                                     error={errors.phone}
+                                    className="!py-8 lg:!py-10"
                                 />
 
                             </div>
