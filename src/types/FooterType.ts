@@ -16,5 +16,6 @@ export interface ColumnData {
 export interface FooterBottomData {
   copyright: string;
   legalLinks: string;
+  socialLinks: string[];
   socialIcons: IconType[];
 }

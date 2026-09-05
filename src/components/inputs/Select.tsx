@@ -12,11 +12,11 @@ interface SelectProps {
 const Select = ({ Icone, FilterText, name, value, onChange, options }: SelectProps) => {
   return (
     <div className="filter-info flex md:w-[30%] lg:items-center w-full md:justify-around p-20 md:p-2 md:py-15 lg:px-10 lg:py-25 bg-smoky-black light:bg-white-90 rounded-[10px] gap-5 md:gap-3 lg:gap-5">
-      <div className="icone text-[30px] md:text-[25px] lg:text-[30px] text-grey-20 light:text-grey-08">
+      <div className="icone text-[30px] md:text-[25px] lg:text-[30px] text-grey-20 light:text-grey-08 border border-y-0 border-l-0 border-r-1 border-grey-20 light:border-grey-08">
         {Icone}
       </div>
-
-      <div className="relative w-full flex">
+   
+      <div className="relative w-full flex px-4">
         <select 
           name={name}
           className="w-full bg-transparent text-white light:text-grey-08 text-lg md:text-[12px] lg:text-[16px] outline-none border-none appearance-none cursor-pointer"

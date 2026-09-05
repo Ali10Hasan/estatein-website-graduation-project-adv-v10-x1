@@ -25,6 +25,7 @@ const columnsData: { [key: string]: ColumnData } = {
 const footerBottomData: FooterBottomData = {
   copyright: "@2023 Estatein. All Rights Reserved.",
   legalLinks: "Terms & Conditions",
+  socialLinks: ["https://facebook.com","https://linkedin.com","https://twitter.com","https://youtube.com"],
   socialIcons: [BiLogoFacebook, TiSocialLinkedin, PiTwitterLogoThin, PiYoutubeLogoThin],
 };
 
@@ -118,7 +119,8 @@ const Footer = () => {
           {footerBottomData.socialIcons.map((IconComponent, iconIndex) => (
             <Link
               key={iconIndex}
-              to="#"
+              to={footerBottomData.socialLinks[iconIndex]}
+              target="_blank" 
               className="bg-grey-08 light:bg-white-99 p-10 rounded-full border border-grey-15 light:border-white-90 flex items-center justify-center hover:bg-black light:hover:bg-white text-white light:text-grey-08"
             >
               <IconComponent className="w-30 h-30" />
